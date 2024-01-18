@@ -1,0 +1,20 @@
+dependencies: \
+  /Users/vikas/development/flutter/unity_funds/ios/Runner/GeneratedPluginRegistrant.m \
+  /Users/vikas/development/flutter/unity_funds/ios/Runner/GeneratedPluginRegistrant.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Modules/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/Flutter.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterAppDelegate.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterMacros.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPlugin.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterBinaryMessenger.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterChannels.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterCodecs.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPlatformViews.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterTexture.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterCallbackCache.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterDartProject.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterEngine.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterEngineGroup.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterHeadlessDartRunner.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPluginAppLifeCycleDelegate.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterViewController.h
