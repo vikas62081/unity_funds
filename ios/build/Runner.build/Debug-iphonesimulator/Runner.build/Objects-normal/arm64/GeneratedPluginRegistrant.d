@@ -17,4 +17,13 @@ dependencies: \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterEngineGroup.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterHeadlessDartRunner.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPluginAppLifeCycleDelegate.h \
-  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterViewController.h
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterViewController.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTImagePickerPlugin.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Modules/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/image_picker_ios-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTImagePickerPlugin_Test.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/messages.g.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTImagePickerImageUtil.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTImagePickerMetaDataUtil.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTImagePickerPhotoAssetUtil.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTPHPickerSaveImageToPathOperation.h

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -21,34 +22,32 @@ const LIGHT_COLORS = [
   Color.fromARGB(255, 193, 218, 198),
 ];
 
-String formatCategory(ExpenseCategory category) {
-  String catName = category.name;
-  return catName[0].toUpperCase() + catName.substring(1);
-}
-
-enum ExpenseCategory { cinema, cash, food, shopping }
-
 class Expense {
   final String id;
   final String description;
-  final ExpenseCategory category;
+  final File? bill;
   final String group;
   final double amount;
   final DateTime createdAt;
   final Color color;
 
   Expense(
-      {required this.description, required this.category, required this.amount})
+      {required this.group,
+      required this.bill,
+      required this.description,
+      required this.amount})
       : id = uuid,
-        group = "N/A",
+        createdAt = DateTime.now(),
+        color = LIGHT_COLORS[random.nextInt(LIGHT_COLORS.length)];
+
+  Expense.withoutBill(
+      {required this.group, required this.description, required this.amount})
+      : id = uuid,
+        bill = null,
         createdAt = DateTime.now(),
         color = LIGHT_COLORS[random.nextInt(LIGHT_COLORS.length)];
 
   String get formattedDate {
     return formate.format(createdAt);
-  }
-
-  String get formattedCategory {
-    return formatCategory(category);
   }
 }

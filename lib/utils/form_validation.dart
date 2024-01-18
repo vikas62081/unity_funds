@@ -1,9 +1,7 @@
-import 'package:unity_funds/modals/expense.dart';
-
 class NewExpenseValidator {
-  String? validateCategory(ExpenseCategory? value) {
+  String? validateGroup(String? value) {
     if (value == null) {
-      return "Category cannot be empty";
+      return "Group name cannot be empty";
     }
     return null;
   }

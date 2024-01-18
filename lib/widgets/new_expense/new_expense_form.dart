@@ -1,9 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/expense.dart';
 import 'package:unity_funds/providers/expense_provider.dart';
 import 'package:unity_funds/utils/form_validation.dart';
+import 'package:unity_funds/widgets/form/image_input.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
+
+final groups = [
+  "Sarswati Puja",
+  "Chath Puja",
+  "Vishwakarma Puja",
+];
 
 class NewExpenseForm extends ConsumerStatefulWidget {
   const NewExpenseForm({super.key});
@@ -15,24 +24,37 @@ class NewExpenseForm extends ConsumerStatefulWidget {
 class _NewExpenseFormState extends ConsumerState<NewExpenseForm> {
   final _formKey = GlobalKey<FormState>();
   final _validator = NewExpenseValidator();
-  late ExpenseCategory category;
   late String description;
   late String amount;
+  late String group;
+  File? billImage;
 
   void _submitExpense() {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
       _formKey.currentState!.save();
-      Expense expense = Expense(
-          category: category,
-          description: description,
-          amount: double.parse(amount));
-      // call parent function to save the form
+      Expense expense;
+      if (billImage == null) {
+        expense = Expense.withoutBill(
+            group: group,
+            description: description,
+            amount: double.parse(amount));
+      } else {
+        expense = Expense(
+            bill: billImage,
+            group: group,
+            description: description,
+            amount: double.parse(amount));
+      }
       ref.watch(expenseProvider.notifier).addNewExpense(expense);
       showSnakebar(context, "Expense add successfully.");
       Navigator.of(context).pop();
     }
+  }
+
+  void _updateBillImage(File file) {
+    billImage = file;
   }
 
   @override
@@ -45,15 +67,15 @@ class _NewExpenseFormState extends ConsumerState<NewExpenseForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               DropdownButtonFormField(
-                items: ExpenseCategory.values
-                    .map((cat) => DropdownMenuItem(
-                        value: cat, child: Text(formatCategory(cat))))
+                items: groups
+                    .map(
+                        (cat) => DropdownMenuItem(value: cat, child: Text(cat)))
                     .toList(),
                 onChanged: (value) {},
-                validator: _validator.validateCategory,
-                onSaved: (newValue) => category = newValue!,
+                validator: _validator.validateGroup,
+                onSaved: (newValue) => group = newValue!,
                 decoration: const InputDecoration(
-                    hintText: "Select category",
+                    hintText: "Select group",
                     prefixIcon: Icon(
                       Icons.category,
                     ),
@@ -79,6 +101,8 @@ class _NewExpenseFormState extends ConsumerState<NewExpenseForm> {
                 validator: _validator.validateAmount,
                 onSaved: (newValue) => amount = newValue!,
               ),
+              const SizedBox(height: 16),
+              ImageInput(onBillImageChanged: _updateBillImage),
               const SizedBox(height: 20),
               ElevatedButton(
                   style: ButtonStyle(
