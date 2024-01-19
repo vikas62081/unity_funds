@@ -19,7 +19,8 @@ class ImagePickerOption extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: Theme.of(context).colorScheme.onPrimary),
+            color:
+                Theme.of(context).colorScheme.inversePrimary.withOpacity(.25)),
         child: Column(
           children: [
             Icon(icon, size: 32),

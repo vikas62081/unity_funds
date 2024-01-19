@@ -19,22 +19,13 @@ showSnakebar(BuildContext context, String title) {
 showBottomModal(BuildContext context, Function onOptionSelect) {
   return showModalBottomSheet(
       context: context,
+      showDragHandle: true,
       builder: (ctx) {
         return SizedBox(
           height: 200,
           width: double.infinity,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            const SizedBox(height: 4),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4),
-                color: Colors.grey,
-              ),
-              width: 100,
-              height: 5,
-            ),
-            const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

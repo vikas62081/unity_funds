@@ -40,12 +40,12 @@ class Expense {
         createdAt = DateTime.now(),
         color = LIGHT_COLORS[random.nextInt(LIGHT_COLORS.length)];
 
-  Expense.withoutBill(
-      {required this.group, required this.description, required this.amount})
-      : id = uuid,
-        bill = null,
-        createdAt = DateTime.now(),
-        color = LIGHT_COLORS[random.nextInt(LIGHT_COLORS.length)];
+  // Expense.withoutBill(
+  //     {required this.group, required this.description, required this.amount})
+  //     : id = uuid,
+  //       bill = null,
+  //       createdAt = DateTime.now(),
+  //       color = LIGHT_COLORS[random.nextInt(LIGHT_COLORS.length)];
 
   String get formattedDate {
     return formate.format(createdAt);
