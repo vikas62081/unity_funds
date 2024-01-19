@@ -24,14 +24,14 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
   String? name;
   String? description;
   DateTime? eventDate;
-  List<File>? images = [];
+  File? image;
   bool isDefaultGroup = true;
 
   void _submitExpense() {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
-      if (eventDate == null) {
+      if (eventDate == null || image == null) {
         showDialog(
             context: context,
             builder: (ctx) => AlertDialog.adaptive(
@@ -54,7 +54,7 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
           description: description!,
           eventDate: eventDate!,
           isDefault: isDefaultGroup,
-          files: images);
+          image: image!);
 
       ref.watch(groupProvider.notifier).addNewGroup(group);
       showSnakebar(context, "Group add successfully.");
@@ -64,11 +64,17 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
   }
 
   void _updateBillImage(File file) {
-    images = [];
+    image = file;
   }
 
   void _onEventDateChange(DateTime newDate) {
     eventDate = newDate;
+  }
+
+  void _onCheckboxChange(bool? newValue) {
+    setState(() {
+      isDefaultGroup = newValue!;
+    });
   }
 
   @override
@@ -81,33 +87,41 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
-                decoration: InputDecoration(
-                    hintText: "Enter function name",
-                    prefixIcon: Icon(Icons.festival,
-                        color: Theme.of(context).colorScheme.primary),
-                    border: const OutlineInputBorder()),
-                textCapitalization: TextCapitalization.sentences,
-                validator: _validator.validateFunctionName,
-                onSaved: (newValue) => name = newValue!,
-              ),
-              const SizedBox(height: 16),
+                  maxLength: 30,
+                  decoration: InputDecoration(
+                      hintText: "Enter function name",
+                      prefixIcon: Icon(Icons.festival,
+                          color: Theme.of(context).colorScheme.primary),
+                      border: const OutlineInputBorder()),
+                  textCapitalization: TextCapitalization.sentences,
+                  validator: _validator.validateFunctionName,
+                  onSaved: (newValue) => name = newValue!,
+                  autovalidateMode: AutovalidateMode.onUserInteraction),
+              const SizedBox(height: 4),
               TextFormField(
-                decoration: InputDecoration(
-                    hintText: "Enter description",
-                    prefixIcon: Icon(Icons.description,
-                        color: Theme.of(context).colorScheme.primary),
-                    border: const OutlineInputBorder()),
-                textCapitalization: TextCapitalization.sentences,
-                validator: _validator.validateDescription,
-                onSaved: (newValue) => description = newValue!,
-              ),
+                  decoration: InputDecoration(
+                      hintText: "Enter description",
+                      prefixIcon: Icon(Icons.description,
+                          color: Theme.of(context).colorScheme.primary),
+                      border: const OutlineInputBorder()),
+                  textCapitalization: TextCapitalization.sentences,
+                  validator: _validator.validateDescription,
+                  onSaved: (newValue) => description = newValue!,
+                  autovalidateMode: AutovalidateMode.onUserInteraction),
               const SizedBox(height: 16),
               DatePicker(
                 onEventDateChanged: _onEventDateChange,
               ),
               const SizedBox(height: 16),
               ImageInput(onBillImageChanged: _updateBillImage),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
+              CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  value: isDefaultGroup,
+                  onChanged: _onCheckboxChange,
+                  subtitle: const Text(
+                      "Set default group for easy expense and contributions when adding new entries.")),
+              const SizedBox(height: 16),
               ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll(

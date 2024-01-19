@@ -125,11 +125,18 @@ class _NewExpenseFormState extends ConsumerState<NewExpenseForm> {
               GestureDetector(
                 onTap: _showAlertMessage,
                 child: DropdownButtonFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   alignment: Alignment.center,
                   onTap: _showAlertMessage,
                   items: groups
-                      .map((cat) =>
-                          DropdownMenuItem(value: cat, child: Text(cat.name)))
+                      .map((cat) => DropdownMenuItem(
+                          value: cat,
+                          child: Expanded(
+                            child: Text(
+                              cat.name,
+                              style: TextStyle(overflow: TextOverflow.ellipsis),
+                            ),
+                          )))
                       .toList(),
                   onChanged: (value) {},
                   validator: _validator.validateGroup,
@@ -143,6 +150,7 @@ class _NewExpenseFormState extends ConsumerState<NewExpenseForm> {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: InputDecoration(
                     hintText: "Enter a description",
                     prefixIcon: Icon(Icons.description,
@@ -154,6 +162,7 @@ class _NewExpenseFormState extends ConsumerState<NewExpenseForm> {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: InputDecoration(
                     hintText: "0.00",
                     prefixIcon: Icon(Icons.currency_rupee,

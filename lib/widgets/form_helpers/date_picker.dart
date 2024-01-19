@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+
+final dateFormat = DateFormat.yMMMMd();
 
 class DatePicker extends StatefulWidget {
   const DatePicker({super.key, required this.onEventDateChanged});
@@ -16,7 +18,10 @@ class _DatePickerState extends State<DatePicker> {
 
   void _showDatePicker() async {
     final pickedDate = await showDatePicker(
-        context: context, initialDate: now, firstDate: now, lastDate: now);
+        context: context,
+        initialDate: now,
+        firstDate: DateTime(now.year - 2),
+        lastDate: DateTime(now.year + 3));
     if (pickedDate == null) return;
     setState(() {
       _selectedDate = pickedDate;
@@ -46,8 +51,9 @@ class _DatePickerState extends State<DatePicker> {
             const SizedBox(width: 8),
             Expanded(
               child: Text(
-                _selectedDate == null ? "DD/MM/YYYY" : _selectedDate.toString(),
-                style: const TextStyle(overflow: TextOverflow.ellipsis),
+                _selectedDate == null
+                    ? "DD/MM/YYYY"
+                    : dateFormat.format(_selectedDate!),
               ),
             ),
           ],
