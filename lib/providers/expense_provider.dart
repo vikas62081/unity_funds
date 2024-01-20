@@ -32,6 +32,10 @@ class ExpenseNotifier extends StateNotifier<List<Expense>> {
   void addNewExpense(Expense expense) {
     state = [...state, expense];
   }
+
+  List<Expense> getExpenseByCategoryName(String categoryName) {
+    return state.where((element) => element.group == categoryName).toList();
+  }
 }
 
 final expenseProvider = StateNotifierProvider<ExpenseNotifier, List<Expense>>(

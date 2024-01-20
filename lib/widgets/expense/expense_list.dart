@@ -1,37 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/expense.dart';
-import 'package:unity_funds/providers/expense_provider.dart';
 import 'package:unity_funds/widgets/expense/expense_tile.dart';
 
-class ExpenseList extends ConsumerWidget {
-  const ExpenseList({super.key, required this.onAddExpense});
+class ExpenseList extends StatelessWidget {
+  const ExpenseList({
+    Key? key,
+    required this.onAddExpense,
+    required this.expenses,
+  }) : super(key: key);
 
-  final void Function() onAddExpense;
+  final void Function()? onAddExpense;
+  final List<Expense> expenses;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    List<Expense> expenses = ref.watch(expenseProvider);
+  Widget build(BuildContext context) {
     if (expenses.isEmpty) {
       return Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text("No expense found."),
+            const Text("No expenses found."),
             const SizedBox(height: 8),
-            TextButton(
-              onPressed: onAddExpense,
-              child: const Text("Add expense"),
-            )
+            if (onAddExpense != null)
+              TextButton(
+                onPressed: onAddExpense,
+                child: const Text("Add expense"),
+              ),
           ],
         ),
       );
     }
     return ListView.builder(
-        itemCount: expenses.length,
-        itemBuilder: (ctx, int index) {
-          final expense = expenses[index];
-          return ExpenseTile(expense: expense);
-        });
+      itemCount: expenses.length,
+      itemBuilder: (context, index) {
+        final expense = expenses[index];
+        return ExpenseTile(expense: expense);
+      },
+    );
   }
 }

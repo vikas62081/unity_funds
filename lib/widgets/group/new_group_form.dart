@@ -27,43 +27,52 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
   File? image;
   bool isDefaultGroup = true;
 
-  void _submitExpense() {
+  void _submitGroup() {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
       if (eventDate == null || image == null) {
-        showDialog(
-            context: context,
-            builder: (ctx) => AlertDialog.adaptive(
-                  title: const Text("Error"),
-                  content: const Text(
-                      "Event Date and Image can not be empty, please provide valid input."),
-                  actions: [
-                    TextButton(
-                        onPressed: () => Navigator.of(context).pop(),
-                        child: const Text("Ok"))
-                  ],
-                ));
+        _showErrorDialog();
         return;
       }
 
       _formKey.currentState!.save();
 
       Group group = Group(
-          name: name!,
-          description: description!,
-          eventDate: eventDate!,
-          isDefault: isDefaultGroup,
-          image: image!);
+        name: name!,
+        description: description!,
+        eventDate: eventDate!,
+        isDefault: isDefaultGroup,
+        image: image!,
+      );
 
       ref.watch(groupProvider.notifier).addNewGroup(group);
-      showSnakebar(context, "Group add successfully.");
+      showSnackbar(context, "Group added successfully.");
+
       if (widget.onGroupCreated != null) widget.onGroupCreated!();
       Navigator.of(context).pop();
     }
   }
 
-  void _updateBillImage(File file) {
+  void _showErrorDialog() {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog.adaptive(
+        title: const Text("Error"),
+        content: const Text(
+          "Event Date and Image cannot be empty, please provide valid input.",
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text("Ok"),
+          )
+        ],
+      ),
+    );
+  }
+
+  void _updateGroupImage(File file) {
     image = file;
   }
 
@@ -79,62 +88,94 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 24),
-      child: Form(
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        const SectionTitle("Add a new group"),
+        const SizedBox(height: 16),
+        Form(
           key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormField(
-                  maxLength: 30,
-                  decoration: InputDecoration(
-                      hintText: "Enter function name",
-                      prefixIcon: Icon(Icons.festival,
-                          color: Theme.of(context).colorScheme.primary),
-                      border: const OutlineInputBorder()),
-                  textCapitalization: TextCapitalization.sentences,
-                  validator: _validator.validateFunctionName,
-                  onSaved: (newValue) => name = newValue!,
-                  autovalidateMode: AutovalidateMode.onUserInteraction),
+              _buildNameField(),
               const SizedBox(height: 4),
-              TextFormField(
-                  decoration: InputDecoration(
-                      hintText: "Enter description",
-                      prefixIcon: Icon(Icons.description,
-                          color: Theme.of(context).colorScheme.primary),
-                      border: const OutlineInputBorder()),
-                  textCapitalization: TextCapitalization.sentences,
-                  validator: _validator.validateDescription,
-                  onSaved: (newValue) => description = newValue!,
-                  autovalidateMode: AutovalidateMode.onUserInteraction),
+              _buildDescriptionField(),
               const SizedBox(height: 16),
-              DatePicker(
-                onEventDateChanged: _onEventDateChange,
-              ),
+              DatePicker(onEventDateChanged: _onEventDateChange),
               const SizedBox(height: 16),
-              ImageInput(onBillImageChanged: _updateBillImage),
+              ImageInput(
+                  onImageChanged: _updateGroupImage,
+                  labelBeforeImage: "No image"),
               const SizedBox(height: 16),
-              CheckboxListTile(
-                  controlAffinity: ListTileControlAffinity.leading,
-                  value: isDefaultGroup,
-                  onChanged: _onCheckboxChange,
-                  subtitle: const Text(
-                      "Set default group for easy expense and contributions when adding new entries.")),
+              _buildCheckbox(),
               const SizedBox(height: 16),
-              ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(
-                        Theme.of(context).colorScheme.primaryContainer),
-                    fixedSize: const MaterialStatePropertyAll(
-                        Size(double.maxFinite, 60)),
-                  ),
-                  onPressed: _submitExpense,
-                  child: const Text(
-                    "Save",
-                  ))
+              _buildSaveButton(),
             ],
-          )),
+          ),
+        ),
+      ]),
+    );
+  }
+
+  Widget _buildNameField() {
+    return TextFormField(
+      maxLength: 30,
+      decoration: InputDecoration(
+        hintText: "Enter function name",
+        prefixIcon: Icon(
+          Icons.festival,
+          color: Theme.of(context).colorScheme.primary,
+        ),
+        border: const OutlineInputBorder(),
+      ),
+      textCapitalization: TextCapitalization.sentences,
+      validator: _validator.validateFunctionName,
+      onSaved: (newValue) => name = newValue!,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+    );
+  }
+
+  Widget _buildDescriptionField() {
+    return TextFormField(
+      decoration: InputDecoration(
+        hintText: "Enter description",
+        prefixIcon: Icon(
+          Icons.description,
+          color: Theme.of(context).colorScheme.primary,
+        ),
+        border: const OutlineInputBorder(),
+      ),
+      textCapitalization: TextCapitalization.sentences,
+      validator: _validator.validateDescription,
+      onSaved: (newValue) => description = newValue!,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+    );
+  }
+
+  Widget _buildCheckbox() {
+    return CheckboxListTile(
+      controlAffinity: ListTileControlAffinity.leading,
+      value: isDefaultGroup,
+      onChanged: _onCheckboxChange,
+      subtitle: const Text(
+        "Set default group for easy expense and contributions when adding new entries.",
+      ),
+    );
+  }
+
+  Widget _buildSaveButton() {
+    return ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(
+          Theme.of(context).colorScheme.primaryContainer,
+        ),
+        fixedSize: MaterialStateProperty.all(
+          const Size(double.maxFinite, 60),
+        ),
+      ),
+      onPressed: _submitGroup,
+      child: const Text("Save"),
     );
   }
 }

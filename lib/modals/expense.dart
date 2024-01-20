@@ -6,7 +6,7 @@ import 'package:uuid/uuid.dart';
 import 'package:intl/intl.dart';
 
 var uuid = const Uuid().v4();
-var _format = DateFormat("d MMM");
+var _format = DateFormat.MMM();
 Random random = Random();
 // ignore: constant_identifier_names
 const LIGHT_COLORS = [
@@ -47,7 +47,7 @@ class Expense {
   //       createdAt = DateTime.now(),
   //       color = LIGHT_COLORS[random.nextInt(LIGHT_COLORS.length)];
 
-  String get formattedDate {
+  String get formattedMonth {
     return _format.format(createdAt);
   }
 }

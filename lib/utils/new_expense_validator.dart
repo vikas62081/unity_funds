@@ -3,7 +3,7 @@ import 'package:unity_funds/modals/group.dart';
 class NewExpenseValidator {
   String? validateGroup(Group? value) {
     if (value == null) {
-      return "Group name cannot be empty";
+      return "Group cannot be empty";
     }
     return null;
   }
@@ -21,7 +21,7 @@ class NewExpenseValidator {
   String? validateAmount(String? value) {
     final amount = double.tryParse(value!);
     if (amount == null || amount <= 0) {
-      return "Amount must be valid currency";
+      return "Amount must be a valid positive number";
     }
     return null;
   }

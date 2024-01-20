@@ -3,7 +3,7 @@ import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/screens/group/group_details.dart';
 
 class GroupTile extends StatelessWidget {
-  const GroupTile({super.key, required this.group});
+  const GroupTile({Key? key, required this.group}) : super(key: key);
 
   final Group group;
 
@@ -19,11 +19,16 @@ class GroupTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () => _showGroupDetails(context),
-      leading: CircleAvatar(backgroundImage: FileImage(group.image)),
+      leading: _buildCircleAvatar(),
       title: Text(group.name),
       subtitle: Text(group.description),
-      isThreeLine: true,
       trailing: Text(group.formattedEventDate),
+    );
+  }
+
+  Widget _buildCircleAvatar() {
+    return CircleAvatar(
+      backgroundImage: FileImage(group.image),
     );
   }
 }

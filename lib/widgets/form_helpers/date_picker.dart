@@ -4,7 +4,10 @@ import 'package:intl/intl.dart';
 final dateFormat = DateFormat.yMMMMd();
 
 class DatePicker extends StatefulWidget {
-  const DatePicker({super.key, required this.onEventDateChanged});
+  const DatePicker({
+    Key? key,
+    required this.onEventDateChanged,
+  }) : super(key: key);
 
   final void Function(DateTime eventDate) onEventDateChanged;
 
@@ -16,12 +19,13 @@ class _DatePickerState extends State<DatePicker> {
   final now = DateTime.now();
   DateTime? _selectedDate;
 
-  void _showDatePicker() async {
+  Future<void> _showDatePicker() async {
     final pickedDate = await showDatePicker(
-        context: context,
-        initialDate: now,
-        firstDate: DateTime(now.year - 2),
-        lastDate: DateTime(now.year + 3));
+      context: context,
+      initialDate: now,
+      firstDate: DateTime(now.year - 2),
+      lastDate: DateTime(now.year + 3),
+    );
     if (pickedDate == null) return;
     setState(() {
       _selectedDate = pickedDate;
@@ -37,17 +41,21 @@ class _DatePickerState extends State<DatePicker> {
         width: double.infinity,
         height: 64,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            border: Border.all(color: Theme.of(context).colorScheme.outline)),
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.outline,
+          ),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             IconButton(
-                onPressed: _showDatePicker,
-                icon: Icon(
-                  Icons.calendar_month,
-                  color: Theme.of(context).colorScheme.primary,
-                )),
+              onPressed: _showDatePicker,
+              icon: Icon(
+                Icons.calendar_month,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
             const SizedBox(width: 8),
             Expanded(
               child: Text(

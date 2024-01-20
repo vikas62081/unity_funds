@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:unity_funds/widgets/utils/image_picker_option.dart';
 
-showSnakebar(BuildContext context, String title) {
+showSnackbar(BuildContext context, String title) {
   return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Row(
     children: [
@@ -45,4 +45,19 @@ showBottomModal(BuildContext context, Function onOptionSelect) {
           ]),
         );
       });
+}
+
+class SectionTitle extends StatelessWidget {
+  final String title;
+
+  const SectionTitle(this.title, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: const TextStyle(
+          fontWeight: FontWeight.w500, fontSize: 20, color: Colors.black54),
+    );
+  }
 }
