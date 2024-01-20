@@ -6,6 +6,10 @@ class NewGroupValidator {
     if (value.trim().length < 3) {
       return "Function name must be at least 3 characters";
     }
+
+    if (value.trim().length > 30) {
+      return "Function name cannot be more than 30 characters";
+    }
     return null;
   }
 

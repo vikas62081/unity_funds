@@ -61,3 +61,66 @@ class SectionTitle extends StatelessWidget {
     );
   }
 }
+
+Widget buildTextField(
+    {required BuildContext context,
+    required String hintText,
+    required IconData icon,
+    String? Function(String?)? validator,
+    Function(String?)? onSaved,
+    TextInputType? keyboardType,
+    String? prefixText}) {
+  return TextFormField(
+    decoration: InputDecoration(
+      hintText: hintText,
+      prefixText: prefixText,
+      prefixIcon: Icon(
+        icon,
+        color: Theme.of(context).colorScheme.primary,
+      ),
+      border: const OutlineInputBorder(),
+    ),
+    textCapitalization: TextCapitalization.sentences,
+    keyboardType: keyboardType,
+    validator: validator,
+    onSaved: onSaved,
+    autovalidateMode: AutovalidateMode.onUserInteraction,
+  );
+}
+
+Widget buildSaveButton(
+    {required BuildContext context, required void Function()? onPressed}) {
+  return ElevatedButton(
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(
+        Theme.of(context).colorScheme.primaryContainer,
+      ),
+      fixedSize: MaterialStateProperty.all(
+        const Size(double.maxFinite, 60),
+      ),
+    ),
+    onPressed: onPressed,
+    child: const Text("Save"),
+  );
+}
+
+Widget buildSearchableDropdown(
+    {required BuildContext context,
+    required IconData? icon,
+    required String? hintText}) {
+  return DropdownMenu(
+    width: MediaQuery.of(context).size.width - 48,
+    leadingIcon: Icon(
+      icon,
+      color: Theme.of(context).colorScheme.primary,
+    ),
+    hintText: hintText,
+    requestFocusOnTap: true,
+    enableFilter: true,
+    dropdownMenuEntries: [
+      DropdownMenuEntry(label: "Hey", value: "HJK"),
+      DropdownMenuEntry(label: "abc", value: "HJK"),
+      DropdownMenuEntry(label: "bnc", value: "HJK"),
+    ],
+  );
+}

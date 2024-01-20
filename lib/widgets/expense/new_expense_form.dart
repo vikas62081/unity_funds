@@ -144,7 +144,7 @@ class _NewExpenseFormState extends ConsumerState<NewExpenseForm> {
               decoration: InputDecoration(
                 hintText: "Select group",
                 prefixIcon: Icon(
-                  Icons.category,
+                  Icons.group_outlined,
                   color: Theme.of(context).colorScheme.primary,
                 ),
                 border: const OutlineInputBorder(),
@@ -152,53 +152,28 @@ class _NewExpenseFormState extends ConsumerState<NewExpenseForm> {
             ),
           ),
           const SizedBox(height: 16),
-          TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            decoration: InputDecoration(
-              hintText: "Enter a description",
-              prefixIcon: Icon(
-                Icons.description,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              border: const OutlineInputBorder(),
-            ),
-            textCapitalization: TextCapitalization.sentences,
+          buildTextField(
+            context: context,
+            hintText: "Enter a description",
+            icon: Icons.description_outlined,
             validator: _validator.validateDescription,
             onSaved: (newValue) => description = newValue!,
           ),
           const SizedBox(height: 16),
-          TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            decoration: InputDecoration(
+          buildTextField(
+              context: context,
               hintText: "0.00",
-              prefixIcon: Icon(
-                Icons.currency_rupee,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              border: const OutlineInputBorder(),
-            ),
-            keyboardType: TextInputType.number,
-            validator: _validator.validateAmount,
-            onSaved: (newValue) => amount = newValue!,
-          ),
+              icon: Icons.currency_rupee_outlined,
+              validator: _validator.validateAmount,
+              onSaved: (newValue) => amount = newValue!,
+              keyboardType: TextInputType.number),
           const SizedBox(height: 16),
           ImageInput(
             onImageChanged: _updateBillImage,
             labelBeforeImage: "Bill not selected",
           ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(
-                Theme.of(context).colorScheme.primaryContainer,
-              ),
-              fixedSize: const MaterialStatePropertyAll(
-                Size(double.maxFinite, 60),
-              ),
-            ),
-            onPressed: _submitExpense,
-            child: const Text("Save"),
-          ),
+          const SizedBox(height: 16),
+          buildSaveButton(context: context, onPressed: _submitExpense),
           const SizedBox(height: 4),
           TextButton(
             onPressed: _showAddGroupDialog,

@@ -52,7 +52,7 @@ class _DatePickerState extends State<DatePicker> {
             IconButton(
               onPressed: _showDatePicker,
               icon: Icon(
-                Icons.calendar_month,
+                Icons.calendar_month_outlined,
                 color: Theme.of(context).colorScheme.primary,
               ),
             ),

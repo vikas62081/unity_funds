@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unity_funds/widgets/people/new_people_form.dart';
 
 class FriendsScreen extends StatelessWidget {
   const FriendsScreen({super.key});
@@ -6,7 +7,7 @@ class FriendsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(child: Text("Friends")),
+      body: NewPeopleForm(),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/expense.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/providers/expense_provider.dart';
+import 'package:unity_funds/widgets/contribution/container.dart';
 import 'package:unity_funds/widgets/expense/expense_list.dart';
 import 'package:unity_funds/widgets/group/tab.dart';
 
@@ -45,7 +46,6 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
       children: [
         _buildTabBar(),
         _buildTabBarView(),
@@ -69,14 +69,10 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.50,
       child: TabBarView(controller: _tabBarController, children: [
-        _buildContributionsTab(),
+        ContributionContainer(),
         _buildExpendituresTab(),
       ]),
     );
-  }
-
-  Widget _buildContributionsTab() {
-    return const Center(child: Text('Contributions tab'));
   }
 
   Widget _buildExpendituresTab() {

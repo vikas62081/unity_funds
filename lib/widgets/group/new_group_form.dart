@@ -98,9 +98,21 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildNameField(),
-              const SizedBox(height: 4),
-              _buildDescriptionField(),
+              buildTextField(
+                context: context,
+                hintText: "Enter function name",
+                icon: Icons.festival_sharp,
+                validator: _validator.validateFunctionName,
+                onSaved: (newValue) => name = newValue!,
+              ),
+              const SizedBox(height: 16),
+              buildTextField(
+                context: context,
+                hintText: "Enter description",
+                icon: Icons.description_outlined,
+                validator: _validator.validateDescription,
+                onSaved: (newValue) => description = newValue!,
+              ),
               const SizedBox(height: 16),
               DatePicker(onEventDateChanged: _onEventDateChange),
               const SizedBox(height: 16),
@@ -110,46 +122,11 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
               const SizedBox(height: 16),
               _buildCheckbox(),
               const SizedBox(height: 16),
-              _buildSaveButton(),
+              buildSaveButton(context: context, onPressed: _submitGroup)
             ],
           ),
         ),
       ]),
-    );
-  }
-
-  Widget _buildNameField() {
-    return TextFormField(
-      maxLength: 30,
-      decoration: InputDecoration(
-        hintText: "Enter function name",
-        prefixIcon: Icon(
-          Icons.festival,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-        border: const OutlineInputBorder(),
-      ),
-      textCapitalization: TextCapitalization.sentences,
-      validator: _validator.validateFunctionName,
-      onSaved: (newValue) => name = newValue!,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-    );
-  }
-
-  Widget _buildDescriptionField() {
-    return TextFormField(
-      decoration: InputDecoration(
-        hintText: "Enter description",
-        prefixIcon: Icon(
-          Icons.description,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-        border: const OutlineInputBorder(),
-      ),
-      textCapitalization: TextCapitalization.sentences,
-      validator: _validator.validateDescription,
-      onSaved: (newValue) => description = newValue!,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
     );
   }
 
@@ -161,21 +138,6 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
       subtitle: const Text(
         "Set default group for easy expense and contributions when adding new entries.",
       ),
-    );
-  }
-
-  Widget _buildSaveButton() {
-    return ElevatedButton(
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(
-          Theme.of(context).colorScheme.primaryContainer,
-        ),
-        fixedSize: MaterialStateProperty.all(
-          const Size(double.maxFinite, 60),
-        ),
-      ),
-      onPressed: _submitGroup,
-      child: const Text("Save"),
     );
   }
 }

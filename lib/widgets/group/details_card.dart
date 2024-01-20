@@ -95,18 +95,20 @@ class ActionCard extends StatelessWidget {
                 color: iconColor,
               ),
             ),
-            const SizedBox(width: 16),
-            Column(
-              children: [
-                AmountText(amount,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                    color: iconColor),
-                Text(
-                  label,
-                  style: Theme.of(context).textTheme.labelLarge,
-                ),
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  AmountText(amount,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                      color: iconColor),
+                  Text(
+                    label,
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
+                ],
+              ),
             ),
           ],
         ),
