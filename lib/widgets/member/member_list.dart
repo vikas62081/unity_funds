@@ -48,8 +48,24 @@ class MemberList extends ConsumerWidget {
               size: 36,
             ),
           ),
-          title: Text(user.name),
+          title: Text(
+            user.name,
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
           subtitle: Text("Phone : ${user.phoneNumber}"),
+          trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.location_on,
+                  color: Colors.black54,
+                ),
+                Text(
+                  user.address,
+                  style: Theme.of(context).textTheme.bodySmall,
+                )
+              ]),
         );
       },
     );

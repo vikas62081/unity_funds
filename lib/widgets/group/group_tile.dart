@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/screens/group/group_details.dart';
 import 'package:unity_funds/utils/colors.dart';
+import 'package:unity_funds/widgets/group/details_card.dart';
 
 class GroupTile extends StatelessWidget {
   const GroupTile({Key? key, required this.group}) : super(key: key);
@@ -24,7 +25,10 @@ class GroupTile extends StatelessWidget {
     return ListTile(
       onTap: () => _showGroupDetails(context),
       leading: _buildCircleAvatar(),
-      title: Text(group.name),
+      title: Text(
+        group.name,
+        style: Theme.of(context).textTheme.titleSmall,
+      ),
       subtitle: Text(group.description),
       trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +40,7 @@ class GroupTile extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              formattedBalance,
+              getFormattedNumber(balance),
               style: Theme.of(context)
                   .textTheme
                   .labelMedium!

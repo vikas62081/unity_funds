@@ -26,4 +26,7 @@ dependencies: \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTImagePickerImageUtil.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTImagePickerMetaDataUtil.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTImagePickerPhotoAssetUtil.h \
-  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTPHPickerSaveImageToPathOperation.h
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTPHPickerSaveImageToPathOperation.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/path_provider_foundation/path_provider_foundation.framework/Modules/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/path_provider_foundation/path_provider_foundation.framework/Headers/path_provider_foundation-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/path_provider_foundation/path_provider_foundation.framework/Headers/path_provider_foundation-Swift.h

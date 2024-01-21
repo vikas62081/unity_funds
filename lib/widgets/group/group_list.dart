@@ -5,13 +5,33 @@ import 'package:unity_funds/providers/group_provider.dart';
 import 'package:unity_funds/widgets/group/group_tile.dart';
 
 class GroupList extends ConsumerWidget {
-  const GroupList({Key? key, required this.onAddGroup}) : super(key: key);
+  const GroupList({Key? key, required this.onAddGroup, this.searchQuery})
+      : super(key: key);
 
   final void Function() onAddGroup;
+  final String? searchQuery;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Group> groups = ref.watch(groupProvider);
+    print(searchQuery);
+    List<Group> groups = [];
+    if (searchQuery == null || searchQuery!.isEmpty) {
+      groups = ref.watch(groupProvider);
+    } else {
+      groups = ref.watch(groupProvider.notifier).filterListByName(searchQuery!);
+    }
+
+    if (groups.isEmpty && searchQuery!.isNotEmpty) {
+      return Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text("No match found for $searchQuery"),
+            const SizedBox(height: 8),
+          ],
+        ),
+      );
+    }
 
     if (groups.isEmpty) {
       return _buildEmptyState();

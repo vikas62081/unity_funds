@@ -27,7 +27,7 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
   @override
   void initState() {
     super.initState();
-    _tabBarController = TabController(length: 2, vsync: this);
+    _tabBarController = TabController(initialIndex: 0, length: 2, vsync: this);
   }
 
   @override

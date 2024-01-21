@@ -6,13 +6,13 @@ import 'package:unity_funds/providers/group_provider.dart';
 import 'package:unity_funds/utils/colors.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
+String getFormattedNumber(number) {
+  return NumberFormat.currency(decimalDigits: 1, symbol: "₹").format(number);
+}
+
 class GroupDetailsCard extends ConsumerWidget {
   const GroupDetailsCard({super.key, required this.groupId});
   final String groupId;
-
-  getFormattedNumber(number) {
-    return NumberFormat.currency(decimalDigits: 1, symbol: "₹").format(number);
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

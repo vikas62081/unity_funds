@@ -18,7 +18,10 @@ class CreditTile extends StatelessWidget {
           size: 36,
         ),
       ),
-      title: Text(expense.member!),
+      title: Text(
+        expense.member!,
+        style: Theme.of(context).textTheme.labelLarge,
+      ),
       subtitle: Text(expense.formattedCreatedDate),
       trailing: Text(
         '₹${NumberFormat().format(expense.amount)}',

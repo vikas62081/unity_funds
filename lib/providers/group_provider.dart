@@ -73,6 +73,13 @@ class GroupNotifier extends StateNotifier<List<Group>> {
   Group getGroupById(String id) {
     return state.where((element) => element.id == id).first;
   }
+
+  List<Group> filterListByName(String query) {
+    return List<Group>.from(state)
+        .where((Group group) =>
+            group.name.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+  }
 }
 
 final groupProvider =

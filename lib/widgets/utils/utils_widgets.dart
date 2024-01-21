@@ -127,3 +127,18 @@ Widget buildSearchableDropdown(
     dropdownMenuEntries: items,
   );
 }
+
+Widget buildFloatingActionButton(
+    {required void Function()? onPressed, required String label}) {
+  return FloatingActionButton.extended(
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(120))),
+      label: Row(
+        children: [
+          const Icon(Icons.add),
+          const SizedBox(width: 8),
+          Text(label),
+        ],
+      ),
+      onPressed: onPressed);
+}
