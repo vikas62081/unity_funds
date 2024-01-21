@@ -7,52 +7,17 @@ import 'package:unity_funds/screens/expense/new_expense.dart';
 import 'package:unity_funds/widgets/debit/expense_list.dart';
 
 class ExpenseContainer extends ConsumerWidget {
-  const ExpenseContainer({super.key, required this.group});
+  const ExpenseContainer({super.key, required this.expenses});
 
-  final Group group;
-
-  void _showContributionModal(BuildContext context) {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        showDragHandle: true,
-        useSafeArea: true,
-        context: context,
-        builder: (ctx) => SingleChildScrollView(
-              child: SizedBox(
-                  height: MediaQuery.of(context).size.height - 300,
-                  child: const NewExpense()),
-            ));
-  }
+  final List<Transaction> expenses;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Transaction> expenses = ref
-        .watch(transactionPrvoider.notifier)
-        .getTransByCatNameAndType(group.name, transactionType.debit);
-    return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton.extended(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(120))),
-        label: const Row(children: [Icon(Icons.add), Text("Add Expense")]),
-        onPressed: () => _showContributionModal(context),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // const SizedBox(height: 8),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.end,
-          //   children: [
-          //     FilledButton.tonalIcon(
-          //         onPressed: () => _showContributionModal(context),
-          //         icon: const Icon(Icons.add),
-          //         label: const Text("Add")),
-          //   ],
-          // ),
-          Expanded(child: ExpenseList(onAddExpense: null, expenses: expenses)),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(child: ExpenseList(onAddExpense: null, expenses: expenses)),
+      ],
     );
   }
 }

@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/widgets/debit/new_expense_form.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
-class NewExpense extends StatefulWidget {
-  const NewExpense({super.key});
+class NewExpense extends StatelessWidget {
+  const NewExpense({super.key, this.group});
 
-  @override
-  State<NewExpense> createState() {
-    return _NewExpenseState();
-  }
-}
+  final Group? group;
 
-class _NewExpenseState extends State<NewExpense> {
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+    return SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SectionTitle("Add Expense"),
-            SizedBox(height: 16),
-            AddExpenseForm()
+            const SectionTitle("Add Expense"),
+            const SizedBox(height: 16),
+            AddExpenseForm(group: group)
           ],
         ));
   }

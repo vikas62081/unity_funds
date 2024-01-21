@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/utils/new_transaction_validator.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
 class AddContributionForm extends ConsumerStatefulWidget {
-  const AddContributionForm({super.key});
+  const AddContributionForm({super.key, this.group});
+
+  final Group? group;
 
   @override
   ConsumerState<AddContributionForm> createState() =>
@@ -17,15 +20,26 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
   final _validator = NewTransactionValidator();
   final _formKey = GlobalKey<FormState>();
   String member = "Member";
-  String group = "Diwali";
+  String? group;
   late double amount;
+  late bool isEnableGroupInput = true;
+
+  @override
+  void initState() {
+    if (widget.group != null) {
+      group = widget.group!.name;
+      isEnableGroupInput = false;
+    }
+    super.initState();
+  }
 
   void _saveForm(BuildContext context) {
     final isValid = _formKey.currentState!.validate();
+
     if (isValid) {
       _formKey.currentState!.save();
       ref.read(transactionPrvoider.notifier).addNewTransaction(
-          Transaction.credit(group: group, amount: amount, member: member));
+          Transaction.credit(group: group!, amount: amount, member: member));
       showSnackbar(context, "Contribution added successfully.");
       Navigator.of(context).pop();
       setState(() {});
@@ -45,15 +59,18 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               buildSearchableDropdown(
-                context: context,
-                icon: Icons.festival_sharp,
-                hintText: "Select group",
-              ),
+                  context: context,
+                  icon: Icons.festival_sharp,
+                  hintText: "Select group",
+                  enabled: isEnableGroupInput,
+                  initialSelection: group),
               const SizedBox(height: 16),
               buildSearchableDropdown(
-                  context: context,
-                  icon: Icons.person_outline,
-                  hintText: "Select a member"),
+                context: context,
+                icon: Icons.person_outline,
+                hintText: "Select a member",
+                onSelected: (String? value) => member = value!,
+              ),
               const SizedBox(height: 16),
               buildTextField(
                   context: context,

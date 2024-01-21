@@ -13,10 +13,13 @@ class GroupDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        // padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Column(
           children: [
-            const GroupDetailsCard(),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: GroupDetailsCard(),
+            ),
             const SizedBox(height: 8),
             GroupTabBar(group: group),
           ],

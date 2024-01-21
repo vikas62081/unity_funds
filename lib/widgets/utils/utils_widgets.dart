@@ -107,19 +107,25 @@ Widget buildSaveButton(
 Widget buildSearchableDropdown(
     {required BuildContext context,
     required IconData? icon,
-    required String? hintText}) {
+    required String? hintText,
+    String? initialSelection,
+    bool enabled = true,
+    void Function(String?)? onSelected}) {
   return DropdownMenu(
+    initialSelection: initialSelection,
+    enabled: enabled,
     width: MediaQuery.of(context).size.width - 48,
     leadingIcon: Icon(
       icon,
-      color: Theme.of(context).colorScheme.primary,
+      // color: Theme.of(context).colorScheme.primary,
     ),
     hintText: hintText,
     requestFocusOnTap: true,
     enableFilter: true,
+    onSelected: onSelected,
     dropdownMenuEntries: [
-      DropdownMenuEntry(label: "Hey", value: "HJK"),
-      DropdownMenuEntry(label: "abc", value: "HJK"),
+      DropdownMenuEntry(label: "Diwali", value: "Diwali"),
+      DropdownMenuEntry(label: "Chath puja", value: "Chath puja"),
       DropdownMenuEntry(label: "bnc", value: "HJK"),
     ],
   );

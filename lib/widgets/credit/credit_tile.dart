@@ -12,9 +12,10 @@ class CreditTile extends StatelessWidget {
     return ListTile(
       onTap: () {},
       leading: const CircleAvatar(
+        radius: 32,
         child: Icon(
           Icons.person,
-          size: 34,
+          size: 36,
         ),
       ),
       title: Text(expense.member!),

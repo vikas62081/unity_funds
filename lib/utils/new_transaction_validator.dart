@@ -8,6 +8,13 @@ class NewTransactionValidator {
     return null;
   }
 
+  String? validateMember(String? value) {
+    if (value == null) {
+      return "Member cannot be empty";
+    }
+    return null;
+  }
+
   String? validateDescription(String? value) {
     if (value == null || value.isEmpty) {
       return "Description cannot be empty";

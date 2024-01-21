@@ -11,36 +11,17 @@ class ContributionContainer extends ConsumerWidget {
 
   final Group group;
 
-  void _showContributionModal(BuildContext context) {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        showDragHandle: true,
-        useSafeArea: true,
-        context: context,
-        builder: (ctx) => SizedBox(
-            height: MediaQuery.of(context).size.height - 300,
-            child: AddContributionForm()));
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<Transaction> expenses = ref
         .watch(transactionPrvoider.notifier)
         .getTransByCatNameAndType(group.name, transactionType.credit);
 
-    return Scaffold(
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton.extended(
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(120))),
-          label: const Row(children: [Icon(Icons.add), Text("Add Credit")]),
-          onPressed: () => _showContributionModal(context),
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(child: CreditList(onAddExpense: null, expenses: expenses))
-          ],
-        ));
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(child: CreditList(onAddExpense: null, expenses: expenses))
+      ],
+    );
   }
 }

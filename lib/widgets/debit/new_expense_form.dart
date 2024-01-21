@@ -12,7 +12,8 @@ import 'package:unity_funds/widgets/group/new_group_form.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
 class AddExpenseForm extends ConsumerStatefulWidget {
-  const AddExpenseForm({super.key});
+  const AddExpenseForm({super.key, required this.group});
+  final Group? group;
 
   @override
   ConsumerState<AddExpenseForm> createState() => _AddExpenseFormState();
@@ -26,10 +27,15 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
   late Group group;
   File? billImage;
   late List<Group> groups;
+  bool isEnableGroupInput = true;
 
   @override
   void initState() {
     groups = ref.read(groupProvider);
+    if (widget.group != null) {
+      group = widget.group!;
+      isEnableGroupInput = false;
+    }
     super.initState();
   }
 
@@ -127,6 +133,7 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
               autovalidateMode: AutovalidateMode.onUserInteraction,
               alignment: Alignment.center,
               onTap: _showAlertMessage,
+              value: isEnableGroupInput ? null : group,
               items: groups
                   .map((group) => DropdownMenuItem(
                         value: group,
@@ -138,7 +145,7 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
                         ),
                       ))
                   .toList(),
-              onChanged: (value) => group = value!,
+              onChanged: isEnableGroupInput ? (value) => {} : null,
               validator: _validator.validateGroup,
               onSaved: (newValue) => group = newValue!,
               decoration: InputDecoration(
