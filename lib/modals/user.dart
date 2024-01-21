@@ -1,18 +1,20 @@
 import 'package:uuid/uuid.dart';
 
-var uuid = const Uuid().v4();
+var uuid = const Uuid();
 
-class Member {
+class User {
   final String id;
   final String name;
   final String phoneNumber;
   final int familyMemberCount;
   final String address;
+  final String? defaultGroup;
 
-  Member(
+  User(
       {required this.name,
       required this.phoneNumber,
       required this.familyMemberCount,
       required this.address})
-      : id = uuid;
+      : id = uuid.v4(),
+        defaultGroup = null;
 }

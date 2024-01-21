@@ -52,6 +52,10 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
       );
 
       ref.read(transactionPrvoider.notifier).addNewTransaction(expense);
+      ref
+          .read(groupProvider.notifier)
+          .updateTotalExpenses(group.id, double.parse(amount));
+
       showSnackbar(context, "Expense added successfully.");
       Navigator.of(context).pop();
     }
@@ -130,6 +134,7 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
           GestureDetector(
             onTap: _showAlertMessage,
             child: DropdownButtonFormField<Group>(
+              key: UniqueKey(),
               autovalidateMode: AutovalidateMode.onUserInteraction,
               alignment: Alignment.center,
               onTap: _showAlertMessage,

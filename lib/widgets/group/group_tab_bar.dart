@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/transaction.dart';
+import 'package:unity_funds/providers/group_provider.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/screens/expense/new_expense.dart';
 import 'package:unity_funds/widgets/credit/container.dart';
@@ -40,12 +41,12 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
       expenses = ref
           .watch(transactionPrvoider.notifier)
           .getTransByCatNameAndType(widget.group.name,
-              value == 0 ? transactionType.credit : transactionType.debit);
+              value == 0 ? TransactionType.credit : TransactionType.debit);
     });
   }
 
   void _showAddModal(BuildContext context) async {
-    final result = await showModalBottomSheet(
+    await showModalBottomSheet(
         isScrollControlled: true,
         showDragHandle: true,
         useSafeArea: true,
@@ -58,7 +59,10 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
                           group: widget.group,
                         )
                       : NewExpense(
-                          group: widget.group,
+                          group: ref
+                              .read(groupProvider.notifier)
+                              .getGroupById(widget.group.id),
+                          key: UniqueKey(),
                         )),
             ));
 

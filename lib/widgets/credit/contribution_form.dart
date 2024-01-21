@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/transaction.dart';
+import 'package:unity_funds/modals/user.dart';
+import 'package:unity_funds/providers/group_provider.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
+import 'package:unity_funds/providers/user_provider.dart';
 import 'package:unity_funds/utils/new_transaction_validator.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
@@ -19,13 +22,17 @@ class AddContributionForm extends ConsumerStatefulWidget {
 class _AddContributionFormState extends ConsumerState<AddContributionForm> {
   final _validator = NewTransactionValidator();
   final _formKey = GlobalKey<FormState>();
-  String member = "Member";
+  String? member;
   String? group;
   late double amount;
   late bool isEnableGroupInput = true;
+  List<User> users = [];
+  List<Group> groups = [];
 
   @override
   void initState() {
+    users = ref.read(userProvider);
+    groups = ref.read(groupProvider);
     if (widget.group != null) {
       group = widget.group!.name;
       isEnableGroupInput = false;
@@ -37,9 +44,21 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
+      if (member == null) {
+        showDialog(
+            context: context,
+            builder: (ctx) => const AlertDialog.adaptive(
+                  title: Text("Error"),
+                  content: Text("Select a member"),
+                ));
+        return;
+      }
       _formKey.currentState!.save();
       ref.read(transactionPrvoider.notifier).addNewTransaction(
           Transaction.credit(group: group!, amount: amount, member: member));
+      ref
+          .read(groupProvider.notifier)
+          .updateTotalCollection(widget.group!.id, amount);
       showSnackbar(context, "Contribution added successfully.");
       Navigator.of(context).pop();
       setState(() {});
@@ -63,14 +82,21 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
                   icon: Icons.festival_sharp,
                   hintText: "Select group",
                   enabled: isEnableGroupInput,
-                  initialSelection: group),
+                  initialSelection: group,
+                  items: groups
+                      .map((group) => DropdownMenuEntry(
+                          label: group.name, value: group.name))
+                      .toList()),
               const SizedBox(height: 16),
               buildSearchableDropdown(
-                context: context,
-                icon: Icons.person_outline,
-                hintText: "Select a member",
-                onSelected: (String? value) => member = value!,
-              ),
+                  context: context,
+                  icon: Icons.person_outline,
+                  hintText: "Select a member",
+                  onSelected: (String? value) => member = value!,
+                  items: users
+                      .map((user) =>
+                          DropdownMenuEntry(label: user.name, value: user.name))
+                      .toList()),
               const SizedBox(height: 16),
               buildTextField(
                   context: context,

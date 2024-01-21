@@ -110,7 +110,8 @@ Widget buildSearchableDropdown(
     required String? hintText,
     String? initialSelection,
     bool enabled = true,
-    void Function(String?)? onSelected}) {
+    void Function(String?)? onSelected,
+    required List<DropdownMenuEntry<String>> items}) {
   return DropdownMenu(
     initialSelection: initialSelection,
     enabled: enabled,
@@ -123,10 +124,6 @@ Widget buildSearchableDropdown(
     requestFocusOnTap: true,
     enableFilter: true,
     onSelected: onSelected,
-    dropdownMenuEntries: [
-      DropdownMenuEntry(label: "Diwali", value: "Diwali"),
-      DropdownMenuEntry(label: "Chath puja", value: "Chath puja"),
-      DropdownMenuEntry(label: "bnc", value: "HJK"),
-    ],
+    dropdownMenuEntries: items,
   );
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:unity_funds/modals/member.dart';
-import 'package:unity_funds/providers/member_provider.dart';
+import 'package:unity_funds/modals/user.dart';
+import 'package:unity_funds/providers/user_provider.dart';
 
 class MemberList extends ConsumerWidget {
   const MemberList({Key? key, required this.onAddMember}) : super(key: key);
@@ -9,13 +9,13 @@ class MemberList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Member> members = ref.watch(memberProvider);
+    List<User> users = ref.watch(userProvider);
 
-    if (members.isEmpty) {
+    if (users.isEmpty) {
       return _buildEmptyState();
     }
 
-    return _buildGroupListView(members);
+    return _buildGroupListView(users);
   }
 
   Widget _buildEmptyState() {
@@ -23,26 +23,33 @@ class MemberList extends ConsumerWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text("No member added yet."),
+          const Text("No user added yet."),
           const SizedBox(height: 8),
           TextButton(
             onPressed: onAddMember,
-            child: const Text("Add member"),
+            child: const Text("Add a user"),
           )
         ],
       ),
     );
   }
 
-  Widget _buildGroupListView(List<Member> members) {
+  Widget _buildGroupListView(List<User> users) {
     return ListView.builder(
-      itemCount: members.length,
+      itemCount: users.length,
       itemBuilder: (context, index) {
-        final member = members[index];
+        final user = users[index];
         return ListTile(
-          leading: CircleAvatar(child: Icon(Icons.person)),
-          title: Text(member.name),
-          subtitle: Text("Phone : ${member.phoneNumber}"),
+          onTap: () {},
+          leading: const CircleAvatar(
+            radius: 24,
+            child: Icon(
+              Icons.person,
+              size: 36,
+            ),
+          ),
+          title: Text(user.name),
+          subtitle: Text("Phone : ${user.phoneNumber}"),
         );
       },
     );

@@ -13,12 +13,12 @@ class TransactionNotifier extends StateNotifier<List<Transaction>> {
               bill: groups[0].image,
               description: "Tent"),
           Transaction.debit(
-              amount: 1235,
+              amount: 1200,
               group: groups[0].name,
               bill: groups[0].image,
               description: "Pandit fee"),
           Transaction.debit(
-              amount: 1430,
+              amount: 1800,
               group: groups[0].name,
               bill: groups[0].image,
               description: "Crackers"),
@@ -37,12 +37,12 @@ class TransactionNotifier extends StateNotifier<List<Transaction>> {
     return state.where((element) => element.group == categoryName).toList();
   }
 
-  List<Transaction> getTransByType(transactionType type) {
+  List<Transaction> getTransByType(TransactionType type) {
     return state.where((element) => element.type == type).toList();
   }
 
   List<Transaction> getTransByCatNameAndType(
-      String name, transactionType type) {
+      String name, TransactionType type) {
     return getTransByCategoryName(name)
         .where((element) => element.type == type)
         .toList();

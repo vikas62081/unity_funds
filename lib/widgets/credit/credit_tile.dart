@@ -12,15 +12,18 @@ class CreditTile extends StatelessWidget {
     return ListTile(
       onTap: () {},
       leading: const CircleAvatar(
-        radius: 32,
+        radius: 24,
         child: Icon(
           Icons.person,
           size: 36,
         ),
       ),
       title: Text(expense.member!),
-      subtitle: Text(expense.createdAt.toString()),
-      trailing: Text('₹${NumberFormat().format(expense.amount)}'),
+      subtitle: Text(expense.formattedCreatedDate),
+      trailing: Text(
+        '₹${NumberFormat().format(expense.amount)}',
+        style: Theme.of(context).textTheme.labelMedium,
+      ),
     );
   }
 }

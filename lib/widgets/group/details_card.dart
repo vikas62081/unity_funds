@@ -1,40 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
+import 'package:unity_funds/modals/group.dart';
+import 'package:unity_funds/providers/group_provider.dart';
+import 'package:unity_funds/utils/colors.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
-class GroupDetailsCard extends StatelessWidget {
-  const GroupDetailsCard({super.key});
+class GroupDetailsCard extends ConsumerWidget {
+  const GroupDetailsCard({super.key, required this.groupId});
+  final String groupId;
+
+  getFormattedNumber(number) {
+    return NumberFormat.currency(decimalDigits: 1, symbol: "₹").format(number);
+  }
 
   @override
-  Widget build(BuildContext context) {
-    return const Column(
+  Widget build(BuildContext context, WidgetRef ref) {
+    Group group =
+        ref.watch(groupProvider).where((Group gp) => gp.id == groupId).first;
+    final balance = group.totalCollected! - group.totalExpenses!;
+
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SectionTitle("Balance Amount"),
+        const SectionTitle("Balance Amount"),
         AmountText(
-          "₹23424",
+          getFormattedNumber(balance),
           fontWeight: FontWeight.bold,
           fontSize: 24,
           color: Colors.black,
         ),
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
               child: ActionCard(
                 icon: Icons.arrow_downward, //straight
-                amount: "₹20",
+                amount: getFormattedNumber(group.totalCollected),
                 label: "Income",
-                iconColor: Color.fromARGB(255, 34, 157, 100),
+                iconColor: successColor,
               ),
             ),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Expanded(
               child: ActionCard(
                 icon: Icons.arrow_upward, //south_rounded
-                amount: "₹200,00,00",
+                amount: getFormattedNumber(group.totalExpenses),
                 label: "Expense",
-                iconColor: Color.fromARGB(255, 240, 34, 34),
+                iconColor: errorColor,
               ),
             ),
           ],

@@ -87,7 +87,10 @@ class ExpenseTile extends StatelessWidget {
           )),
       title: Text(expense.description!),
       subtitle: Text(expense.group),
-      trailing: Text('₹${NumberFormat().format(expense.amount)}'),
+      trailing: Text(
+        '₹${NumberFormat().format(expense.amount)}',
+        style: Theme.of(context).textTheme.labelMedium,
+      ),
     );
   }
 }

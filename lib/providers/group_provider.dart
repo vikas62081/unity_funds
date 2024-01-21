@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,20 +14,64 @@ class GroupNotifier extends StateNotifier<List<Group>> {
           Group(
               name: "Chath puja",
               description: "Description",
-              isDefault: true,
               eventDate: DateTime.now(),
-              image: local_image),
+              image: local_image,
+              totalExpenses: 13000,
+              totalCollected: 0),
           Group(
               name: "Diwali",
               description: "Let's organize good",
-              isDefault: true,
               eventDate: DateTime(DateTime.now().day - 10),
-              image: local_image)
+              image: local_image,
+              totalExpenses: 8000,
+              totalCollected: 0)
         ]);
 
   void addNewGroup(Group group) {
     state = [...state, group];
     print(group.image);
+  }
+
+  void updateTotalExpenses(String groupId, double amount) {
+    state = state.map((group) {
+      if (group.id == groupId) {
+        return Group.transactionalUpdate(
+          id: group.id,
+          name: group.name,
+          description: group.description,
+          eventDate: group.eventDate,
+          createdAt: group.createdAt,
+          image: group.image,
+          totalCollected: group.totalCollected,
+          totalExpenses: (group.totalExpenses! + amount),
+        );
+      } else {
+        return group;
+      }
+    }).toList();
+  }
+
+  void updateTotalCollection(String groupId, double amount) {
+    state = state.map((group) {
+      if (group.id == groupId) {
+        return Group.transactionalUpdate(
+          id: group.id,
+          name: group.name,
+          description: group.description,
+          eventDate: group.eventDate,
+          createdAt: group.createdAt,
+          image: group.image,
+          totalCollected: (group.totalCollected! + amount),
+          totalExpenses: group.totalExpenses,
+        );
+      } else {
+        return group;
+      }
+    }).toList();
+  }
+
+  Group getGroupById(String id) {
+    return state.where((element) => element.id == id).first;
   }
 }
 

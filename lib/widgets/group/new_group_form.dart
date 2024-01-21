@@ -42,7 +42,6 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
         name: name!,
         description: description!,
         eventDate: eventDate!,
-        isDefault: isDefaultGroup,
         image: image!,
       );
 
