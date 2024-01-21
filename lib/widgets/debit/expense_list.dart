@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:unity_funds/modals/expense.dart';
-import 'package:unity_funds/widgets/expense/expense_tile.dart';
+import 'package:unity_funds/modals/transaction.dart';
+import 'package:unity_funds/widgets/debit/expense_tile.dart';
 
 class ExpenseList extends StatelessWidget {
   const ExpenseList({
@@ -10,7 +10,7 @@ class ExpenseList extends StatelessWidget {
   }) : super(key: key);
 
   final void Function()? onAddExpense;
-  final List<Expense> expenses;
+  final List<Transaction> expenses;
 
   @override
   Widget build(BuildContext context) {

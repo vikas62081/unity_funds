@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unity_funds/screens/activities.dart';
-import 'package:unity_funds/screens/people.dart';
+import 'package:unity_funds/screens/member.dart';
 import 'package:unity_funds/screens/group/groups.dart';
 import 'package:unity_funds/screens/home.dart';
 import 'package:unity_funds/screens/user_profile.dart';
@@ -18,7 +18,7 @@ class _ExpenseTrackerScreenState extends State<ExpenseTrackerScreen> {
   final _screens = const [
     HomeScreen(),
     GroupsScreen(),
-    FriendsScreen(),
+    MemberScreen(),
     ActivitiesScreen(),
     UserProfileScreen()
   ];

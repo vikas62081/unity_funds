@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:unity_funds/modals/expense.dart';
-import 'package:unity_funds/providers/expense_provider.dart';
-import 'package:unity_funds/widgets/expense/expense_list.dart';
+import 'package:unity_funds/modals/transaction.dart';
+import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/screens/expense/new_expense.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -10,17 +9,21 @@ class HomeScreen extends ConsumerWidget {
   void _onFloatingButtonPress(
     BuildContext context,
   ) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (ctx) => const NewExpense()));
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (ctx) =>
+            Scaffold(appBar: AppBar(), body: const NewExpense())));
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Expense> expenses = ref.watch(expenseProvider);
+    List<Transaction> expenses = ref.watch(transactionPrvoider);
     return Scaffold(
-      body: ExpenseList(
-          onAddExpense: () => _onFloatingButtonPress(context),
-          expenses: expenses),
+      body: Center(
+        child: Text("Work in progress"),
+      ),
+      //  ExpenseList(
+      //     onAddExpense: () => _onFloatingButtonPress(context),
+      //     expenses: expenses),
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
         onPressed: () => _onFloatingButtonPress(context),

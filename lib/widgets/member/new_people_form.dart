@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:unity_funds/utils/new_people_validator.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:unity_funds/modals/member.dart';
+import 'package:unity_funds/providers/member_provider.dart';
+import 'package:unity_funds/utils/new_member_validator.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
-class NewPeopleForm extends StatefulWidget {
-  const NewPeopleForm({super.key});
+class NewMemberForm extends ConsumerStatefulWidget {
+  const NewMemberForm({super.key});
 
   @override
-  State<NewPeopleForm> createState() => _NewPeopleFormState();
+  ConsumerState<NewMemberForm> createState() => _NewMemberFormState();
 }
 
-class _NewPeopleFormState extends State<NewPeopleForm> {
-  final _validator = NewPeopleValidator();
+class _NewMemberFormState extends ConsumerState<NewMemberForm> {
+  final _validator = NewMemberValidator();
   final _formKey = GlobalKey<FormState>();
   late String name;
   late String phoneNumber;
@@ -21,7 +24,14 @@ class _NewPeopleFormState extends State<NewPeopleForm> {
     final isValid = _formKey.currentState!.validate();
     if (isValid) {
       _formKey.currentState!.save();
-      // save the form state
+      ref.read(memberProvider.notifier).addNewMember(Member(
+          name: name,
+          phoneNumber: phoneNumber,
+          familyMemberCount: familyMemberCount,
+          address: wardNumber));
+
+      showSnackbar(context, "Member added successfully.");
+      Navigator.of(context).pop();
     }
   }
 

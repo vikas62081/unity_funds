@@ -46,7 +46,7 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
         image: image!,
       );
 
-      ref.watch(groupProvider.notifier).addNewGroup(group);
+      ref.read(groupProvider.notifier).addNewGroup(group);
       showSnackbar(context, "Group added successfully.");
 
       if (widget.onGroupCreated != null) widget.onGroupCreated!();

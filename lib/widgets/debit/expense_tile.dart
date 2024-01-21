@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:unity_funds/modals/expense.dart';
+import 'package:unity_funds/modals/transaction.dart';
 
 class ExpenseTile extends StatelessWidget {
   const ExpenseTile({super.key, required this.expense});
 
-  final Expense expense;
+  final Transaction expense;
 
   void _showFullScreenImage(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
@@ -85,7 +85,7 @@ class ExpenseTile extends StatelessWidget {
               )
             ],
           )),
-      title: Text(expense.description),
+      title: Text(expense.description!),
       subtitle: Text(expense.group),
       trailing: Text('₹${NumberFormat().format(expense.amount)}'),
     );

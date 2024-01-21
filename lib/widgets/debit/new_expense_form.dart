@@ -2,25 +2,25 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:unity_funds/modals/expense.dart';
 import 'package:unity_funds/modals/group.dart';
-import 'package:unity_funds/providers/expense_provider.dart';
+import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/providers/group_provider.dart';
-import 'package:unity_funds/utils/new_expense_validator.dart';
+import 'package:unity_funds/providers/transaction_provider.dart';
+import 'package:unity_funds/utils/new_transaction_validator.dart';
 import 'package:unity_funds/widgets/form_helpers/image_input.dart';
 import 'package:unity_funds/widgets/group/new_group_form.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
-class NewExpenseForm extends ConsumerStatefulWidget {
-  const NewExpenseForm({super.key});
+class AddExpenseForm extends ConsumerStatefulWidget {
+  const AddExpenseForm({super.key});
 
   @override
-  ConsumerState<NewExpenseForm> createState() => _NewExpenseFormState();
+  ConsumerState<AddExpenseForm> createState() => _AddExpenseFormState();
 }
 
-class _NewExpenseFormState extends ConsumerState<NewExpenseForm> {
+class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
   final _formKey = GlobalKey<FormState>();
-  final _validator = NewExpenseValidator();
+  final _validator = NewTransactionValidator();
   late String description;
   late String amount;
   late Group group;
@@ -38,14 +38,14 @@ class _NewExpenseFormState extends ConsumerState<NewExpenseForm> {
 
     if (isValid) {
       _formKey.currentState!.save();
-      Expense expense = Expense(
+      Transaction expense = Transaction.debit(
         bill: billImage,
         group: group.name,
         description: description,
         amount: double.parse(amount),
       );
 
-      ref.watch(expenseProvider.notifier).addNewExpense(expense);
+      ref.read(transactionPrvoider.notifier).addNewTransaction(expense);
       showSnackbar(context, "Expense added successfully.");
       Navigator.of(context).pop();
     }

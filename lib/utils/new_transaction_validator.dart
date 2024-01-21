@@ -1,6 +1,6 @@
 import 'package:unity_funds/modals/group.dart';
 
-class NewExpenseValidator {
+class NewTransactionValidator {
   String? validateGroup(Group? value) {
     if (value == null) {
       return "Group cannot be empty";

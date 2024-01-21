@@ -1,4 +1,4 @@
-class NewPeopleValidator {
+class NewMemberValidator {
   String? validateTextField(String title, String? value) {
     if (value == null || value.isEmpty) {
       return "$title cannot be empty";

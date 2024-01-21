@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:unity_funds/modals/expense.dart';
 import 'package:unity_funds/modals/group.dart';
-import 'package:unity_funds/providers/expense_provider.dart';
-import 'package:unity_funds/widgets/contribution/container.dart';
-import 'package:unity_funds/widgets/expense/expense_list.dart';
+import 'package:unity_funds/modals/transaction.dart';
+import 'package:unity_funds/widgets/credit/container.dart';
+import 'package:unity_funds/widgets/debit/container.dart';
 import 'package:unity_funds/widgets/group/tab.dart';
 
 class GroupTabBar extends ConsumerStatefulWidget {
@@ -19,7 +18,7 @@ class GroupTabBar extends ConsumerStatefulWidget {
 class _GroupTabBarState extends ConsumerState<GroupTabBar>
     with TickerProviderStateMixin {
   late final TabController _tabBarController;
-  List<Expense> expenses = [];
+  List<Transaction> expenses = [];
 
   @override
   void initState() {
@@ -31,16 +30,6 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
   void dispose() {
     _tabBarController.dispose();
     super.dispose();
-  }
-
-  void _onTabChange(int activeTabIndex) {
-    if (activeTabIndex == 1) {
-      setState(() {
-        expenses = ref
-            .read(expenseProvider.notifier)
-            .getExpenseByCategoryName(widget.group.name);
-      });
-    }
   }
 
   @override
@@ -57,7 +46,6 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
     return TabBar(
       tabAlignment: TabAlignment.fill,
       controller: _tabBarController,
-      onTap: _onTabChange,
       tabs: const [
         GroupTab(icon: Icons.group_add, label: "Contributors"),
         GroupTab(icon: Icons.group_add, label: "Expenditures"),
@@ -67,18 +55,11 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
 
   Widget _buildTabBarView() {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.50,
+      height: MediaQuery.of(context).size.height - 360,
       child: TabBarView(controller: _tabBarController, children: [
-        ContributionContainer(),
-        _buildExpendituresTab(),
+        ContributionContainer(group: widget.group),
+        ExpenseContainer(group: widget.group),
       ]),
-    );
-  }
-
-  Widget _buildExpendituresTab() {
-    return ExpenseList(
-      onAddExpense: null,
-      expenses: expenses,
     );
   }
 }
