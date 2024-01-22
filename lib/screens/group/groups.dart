@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unity_funds/screens/expense/new_expense.dart';
 import 'package:unity_funds/screens/group/new_group.dart';
+import 'package:unity_funds/screens/group/search.dart';
 import 'package:unity_funds/widgets/group/group_list.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
@@ -30,10 +31,16 @@ class GroupsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(actions: [
+        appBar: AppBar(title: const Text("Groups"), actions: [
           IconButton(
-              onPressed: () => _showAddGroupModal(context),
-              icon: const Icon(Icons.group_add_outlined))
+            onPressed: () =>
+                showSearch(context: context, delegate: GroupSearchDelegate()),
+            icon: const Icon(Icons.search),
+          ),
+          IconButton(
+            onPressed: () => _showAddGroupModal(context),
+            icon: const Icon(Icons.group_add_outlined),
+          )
         ]),
         body: GroupList(
           onAddGroup: () => _onFloatingButtonPress(context),

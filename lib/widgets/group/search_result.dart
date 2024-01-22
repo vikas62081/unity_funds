@@ -4,19 +4,19 @@ import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/providers/group_provider.dart';
 import 'package:unity_funds/widgets/group/group_tile.dart';
 
-class GroupList extends ConsumerWidget {
-  const GroupList({Key? key, required this.onAddGroup}) : super(key: key);
+class GroupSearchResult extends ConsumerWidget {
+  const GroupSearchResult({super.key, this.query});
 
-  final void Function() onAddGroup;
+  final String? query;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Group> groups = ref.watch(groupProvider);
+    List<Group> groups =
+        ref.watch(groupProvider.notifier).filterListByName(query!);
 
     if (groups.isEmpty) {
       return _buildEmptyState();
     }
-
     return _buildGroupListView(groups);
   }
 
@@ -25,12 +25,7 @@ class GroupList extends ConsumerWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text("No group found."),
-          const SizedBox(height: 8),
-          TextButton(
-            onPressed: onAddGroup,
-            child: const Text("Add group"),
-          )
+          Text("No result found for $query"),
         ],
       ),
     );

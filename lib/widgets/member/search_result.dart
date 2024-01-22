@@ -4,18 +4,19 @@ import 'package:unity_funds/modals/user.dart';
 import 'package:unity_funds/providers/user_provider.dart';
 import 'package:unity_funds/widgets/member/user_tile.dart';
 
-class MemberList extends ConsumerWidget {
-  const MemberList({Key? key, required this.onAddMember}) : super(key: key);
-  final void Function() onAddMember;
+class UserSearchResult extends ConsumerWidget {
+  const UserSearchResult({super.key, this.query});
+
+  final String? query;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<User> users = ref.watch(userProvider);
+    List<User> users =
+        ref.watch(userProvider.notifier).filterUserByNameOrPhone(query!);
 
     if (users.isEmpty) {
       return _buildEmptyState();
     }
-
     return _buildGroupListView(users);
   }
 
@@ -24,12 +25,7 @@ class MemberList extends ConsumerWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text("No user added yet."),
-          const SizedBox(height: 8),
-          TextButton(
-            onPressed: onAddMember,
-            child: const Text("Add a user"),
-          )
+          Text("No result found for $query"),
         ],
       ),
     );

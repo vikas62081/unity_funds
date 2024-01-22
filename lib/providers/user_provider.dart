@@ -19,6 +19,14 @@ class UserNotifier extends StateNotifier<List<User>> {
   void addNewMember(User member) {
     state = [...state, member];
   }
+
+  List<User> filterUserByNameOrPhone(String query) {
+    return List<User>.from(state)
+        .where((User user) =>
+            user.name.toLowerCase().contains(query.toLowerCase()) ||
+            user.phoneNumber.contains(query))
+        .toList();
+  }
 }
 
 final userProvider =
