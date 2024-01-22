@@ -20,7 +20,20 @@ class ActivitiesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Activity"),
+        actions: [
+          IconButton(
+            onPressed: () => null,
+            icon: const Icon(Icons.search),
+          ),
+          IconButton(
+            onPressed: () => null,
+            icon: const Icon(Icons.filter_list),
+          ),
+        ],
+      ),
       body: Center(
         child: Text("Activity"),
       ),
