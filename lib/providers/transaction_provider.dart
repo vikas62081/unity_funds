@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:unity_funds/modals/group.dart';
@@ -46,6 +47,10 @@ class TransactionNotifier extends StateNotifier<List<Transaction>> {
     return getTransByCategoryName(name)
         .where((element) => element.type == type)
         .toList();
+  }
+
+  List<Transaction> getTransByUsername(String username) {
+    return state.where((Transaction e) => e.userName == username).toList();
   }
 }
 

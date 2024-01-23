@@ -8,7 +8,9 @@ class UserNotifier extends StateNotifier<List<User>> {
               name: "Vikas",
               phoneNumber: "6205280071",
               familyMemberCount: 5,
-              address: "Ward 7"),
+              address: "Ward 7",
+              email: "vikas620@gmail.com",
+              defaultGroupName: "Diwali"),
           User(
               name: "Raju",
               phoneNumber: "8763564523",
@@ -16,8 +18,20 @@ class UserNotifier extends StateNotifier<List<User>> {
               address: "Ward 10"),
         ]);
 
-  void addNewMember(User member) {
-    state = [...state, member];
+  User addNewUser(User user) {
+    state = [...state, user];
+    return user;
+  }
+
+  User getActiveUser() {
+    return state[0];
+  }
+
+  User updateUser(String userId, User user) {
+    state = List<User>.from(state)
+        .map((User e) => e.id == userId ? user : e)
+        .toList();
+    return user;
   }
 
   List<User> filterUserByNameOrPhone(String query) {

@@ -3,7 +3,7 @@ import 'package:unity_funds/screens/activities.dart';
 import 'package:unity_funds/screens/user/users.dart';
 import 'package:unity_funds/screens/group/groups.dart';
 import 'package:unity_funds/screens/home.dart';
-import 'package:unity_funds/screens/user_profile.dart';
+import 'package:unity_funds/screens/profile/user_profile.dart';
 
 class ExpenseTrackerScreen extends StatefulWidget {
   const ExpenseTrackerScreen({super.key, required this.title});

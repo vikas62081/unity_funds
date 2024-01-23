@@ -36,6 +36,15 @@ class NewMemberValidator {
     return null;
   }
 
+  String? validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Email cannot be empty";
+    }
+    if (value.length < 3 || !value.contains('@')) {
+      return "Invalide email address";
+    }
+  }
+
   String? validateAddress(String? value) {
     if (value == null || value.isEmpty || value.trim().isEmpty) {
       return "Ward number cannot be empty";

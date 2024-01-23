@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:transparent_image/transparent_image.dart';
+import 'package:unity_funds/screens/profile/edit_profile_image.dart';
 import 'package:unity_funds/widgets/utils/image_picker_option.dart';
 
 showSnackbar(BuildContext context, String title) {
@@ -69,8 +73,10 @@ Widget buildTextField(
     String? Function(String?)? validator,
     Function(String?)? onSaved,
     TextInputType? keyboardType,
-    String? prefixText}) {
+    String? prefixText,
+    String? initialValue}) {
   return TextFormField(
+    initialValue: initialValue,
     decoration: InputDecoration(
       hintText: hintText,
       prefixText: prefixText,
@@ -119,7 +125,7 @@ Widget buildSearchableDropdown(
     width: MediaQuery.of(context).size.width - reduceWidth,
     leadingIcon: Icon(
       icon,
-      // color: Theme.of(context).colorScheme.primary,
+      color: Theme.of(context).colorScheme.primary,
     ),
     hintText: hintText,
     requestFocusOnTap: true,
@@ -144,29 +150,37 @@ Widget buildFloatingActionButton(
       onPressed: onPressed);
 }
 
-Widget buildProfileAvtar() {
+Widget buildProfileAvatar(
+    {bool isEditable = false,
+    required void Function(File image) onImageChanged,
+    File? image}) {
   return Stack(
     children: [
       Container(
-        padding: const EdgeInsets.all(8.0),
-        child: const CircleAvatar(
+        padding: const EdgeInsets.all(12.0),
+        child: CircleAvatar(
           radius: 52,
-          child: Icon(Icons.person, size: 64),
+          child: image != null
+              ? ClipOval(
+                  child: FadeInImage(
+                    height: double.infinity,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    placeholder: MemoryImage(kTransparentImage),
+                    image: FileImage(image),
+                  ),
+                )
+              : const Icon(Icons.person, size: 64),
         ),
       ),
-      Positioned(
-        right: 0,
-        bottom: 0,
-        child: Tooltip(
-          message: 'Change Photo',
-          child: IconButton(
-            onPressed: () {
-              // Handle changing photo
-            },
-            icon: const Icon(Icons.photo_camera),
-          ),
-        ),
-      )
+      if (isEditable)
+        Positioned(
+          right: 0,
+          bottom: 0,
+          child: Tooltip(
+              message: 'Change Photo',
+              child: EditProfileImage(onImageChanged: onImageChanged)),
+        )
     ],
   );
 }

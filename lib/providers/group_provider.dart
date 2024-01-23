@@ -29,7 +29,6 @@ class GroupNotifier extends StateNotifier<List<Group>> {
 
   void addNewGroup(Group group) {
     state = [...state, group];
-    print(group.image);
   }
 
   void updateTotalExpenses(String groupId, double amount) {

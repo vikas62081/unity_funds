@@ -55,7 +55,7 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
       }
       _formKey.currentState!.save();
       ref.read(transactionPrvoider.notifier).addNewTransaction(
-          Transaction.credit(group: group!, amount: amount, member: member));
+          Transaction.credit(group: group!, amount: amount, userName: member));
       ref
           .read(groupProvider.notifier)
           .updateTotalCollection(widget.group!.id, amount);
