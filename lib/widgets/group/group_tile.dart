@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/screens/group/group_details.dart';
 import 'package:unity_funds/utils/colors.dart';
@@ -21,7 +20,6 @@ class GroupTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final balance = group.totalCollected! - group.totalExpenses!;
-    final formattedBalance = NumberFormat().format(balance);
     return ListTile(
       onTap: () => _showGroupDetails(context),
       leading: _buildCircleAvatar(),

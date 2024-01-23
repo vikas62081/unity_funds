@@ -111,11 +111,12 @@ Widget buildSearchableDropdown(
     String? initialSelection,
     bool enabled = true,
     void Function(String?)? onSelected,
+    int reduceWidth = 48,
     required List<DropdownMenuEntry<String>> items}) {
   return DropdownMenu(
     initialSelection: initialSelection,
     enabled: enabled,
-    width: MediaQuery.of(context).size.width - 48,
+    width: MediaQuery.of(context).size.width - reduceWidth,
     leadingIcon: Icon(
       icon,
       // color: Theme.of(context).colorScheme.primary,
@@ -141,4 +142,31 @@ Widget buildFloatingActionButton(
         ],
       ),
       onPressed: onPressed);
+}
+
+Widget buildProfileAvtar() {
+  return Stack(
+    children: [
+      Container(
+        padding: const EdgeInsets.all(8.0),
+        child: const CircleAvatar(
+          radius: 52,
+          child: Icon(Icons.person, size: 64),
+        ),
+      ),
+      Positioned(
+        right: 0,
+        bottom: 0,
+        child: Tooltip(
+          message: 'Change Photo',
+          child: IconButton(
+            onPressed: () {
+              // Handle changing photo
+            },
+            icon: const Icon(Icons.photo_camera),
+          ),
+        ),
+      )
+    ],
+  );
 }

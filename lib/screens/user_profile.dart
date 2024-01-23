@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:unity_funds/screens/user/edit_profile.dart';
+import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({Key? key}) : super(key: key);
+
+  void _showEditProfileScreen(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (ctx) => const EditProfileScreen()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,28 +18,7 @@ class UserProfileScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Stack(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8.0),
-                  child: const CircleAvatar(
-                    radius: 52,
-                    child: Icon(Icons.person, size: 64),
-                  ),
-                ),
-                Positioned(
-                  right: 0,
-                  bottom: 0,
-                  child: Tooltip(
-                    message: 'Change Photo',
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.photo_camera),
-                    ),
-                  ),
-                )
-              ],
-            ),
+            buildProfileAvatar(),
             const SizedBox(height: 8),
             Text(
               "Vikas Kumar Vishwakarma",
@@ -44,9 +30,7 @@ class UserProfileScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             ElevatedButton(
-              onPressed: () {
-                // Handle editing profile
-              },
+              onPressed: () => _showEditProfileScreen(context),
               child: const Text("Edit Profile"),
             ),
             const SizedBox(height: 24),
@@ -56,12 +40,12 @@ class UserProfileScreen extends StatelessWidget {
               trailingIcon: Icons.edit,
               title: 'Default Group',
               subtitle: 'Group Name',
-              onTap: () => null,
+              onTap: () => _showEditProfileScreen(context),
             ),
             buildListTile(
               context: context,
               leadingIcon: Icons.monetization_on,
-              trailingIcon: Icons.arrow_forward,
+              trailingIcon: Icons.arrow_forward_ios,
               title: 'Loans',
               subtitle: 'View and Manage Your Loans',
               onTap: () => null,
@@ -69,7 +53,7 @@ class UserProfileScreen extends StatelessWidget {
             buildListTile(
               context: context,
               leadingIcon: Icons.group_add,
-              trailingIcon: Icons.arrow_forward,
+              trailingIcon: Icons.arrow_forward_ios,
               title: 'Contributions',
               subtitle: 'View Your Contributions',
               onTap: () => null,
