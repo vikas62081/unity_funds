@@ -113,6 +113,5 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
         ),
       ]),
     );
-    ;
   }
 }

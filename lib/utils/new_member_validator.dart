@@ -43,6 +43,7 @@ class NewMemberValidator {
     if (value.length < 3 || !value.contains('@')) {
       return "Invalide email address";
     }
+    return null;
   }
 
   String? validateAddress(String? value) {

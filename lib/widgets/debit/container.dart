@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/transaction.dart';
-import 'package:unity_funds/providers/transaction_provider.dart';
-import 'package:unity_funds/screens/expense/new_expense.dart';
 import 'package:unity_funds/widgets/debit/expense_list.dart';
 
 class ExpenseContainer extends ConsumerWidget {

@@ -85,6 +85,5 @@ class _NewMemberFormState extends ConsumerState<NewMemberForm> {
         ),
       ]),
     );
-    ;
   }
 }

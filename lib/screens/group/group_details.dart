@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/group.dart';
-import 'package:unity_funds/providers/group_provider.dart';
 import 'package:unity_funds/widgets/group/details_card.dart';
 import 'package:unity_funds/widgets/group/group_tab_bar.dart';
 

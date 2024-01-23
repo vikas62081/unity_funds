@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -62,11 +61,11 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
             const SizedBox(height: 8),
             Text(
               user!.name,
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             Text(
               user!.phoneNumber,
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
             const SizedBox(height: 8),
             ElevatedButton(
@@ -90,7 +89,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
               trailingIcon: Icons.arrow_forward_ios,
               title: 'Loans',
               subtitle: 'View and Manage Your Loans',
-              onTap: () => null,
+              onTap: () {},
             ),
             buildListTile(
               context: context,
@@ -106,7 +105,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
               trailingIcon: Icons.logout,
               title: 'Log Out',
               subtitle: 'Logout',
-              onTap: () => null,
+              onTap: () {},
             ),
           ],
         ),

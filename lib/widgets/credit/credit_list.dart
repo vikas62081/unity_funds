@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/widgets/credit/credit_tile.dart';
-import 'package:unity_funds/widgets/debit/expense_tile.dart';
 
 class CreditList extends StatelessWidget {
   const CreditList({

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:unity_funds/screens/expense/new_expense.dart';
-import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
 class ActivitiesScreen extends StatelessWidget {
   const ActivitiesScreen({super.key});
@@ -25,16 +24,16 @@ class ActivitiesScreen extends StatelessWidget {
         title: const Text("Activity"),
         actions: [
           IconButton(
-            onPressed: () => null,
+            onPressed: () {},
             icon: const Icon(Icons.search),
           ),
           IconButton(
-            onPressed: () => null,
+            onPressed: () {},
             icon: const Icon(Icons.filter_list),
           ),
         ],
       ),
-      body: Center(
+      body: const Center(
         child: Text("Activity"),
       ),
       // floatingActionButton: buildFloatingActionButton(
