@@ -1,0 +1,32 @@
+dependencies: \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/testing_hooks.cc \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/testing_hooks.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/api/listener_registration.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/remote/bloom_filter.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/nanopb/byte_string.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/nanopb/pb.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/comparison.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/meta/type_traits.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/config.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/options.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/policy_checks.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/strings/string_view.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/attributes.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/throw_delegate.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/macros.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/optimization.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/port.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/statusor.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/include/firebase/firestore/firestore_errors.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/status.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/status_fwd.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/statusor_internals.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/no_destructor.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/types/optional.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/utility/utility.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/inline_variable.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/identity.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/invoke.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/types/bad_optional_access.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/types/internal/optional.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/memory/memory.h

@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/src/core/ext/transport/chttp2/transport/hpack_encoder_table.cc \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/Target\ Support\ Files/gRPC-Core/gRPC-Core-prefix.pch \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/support/port_platform.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/port_platform.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/src/core/ext/transport/chttp2/transport/hpack_encoder_table.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/container/inlined_vector.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/algorithm/algorithm.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/config.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/options.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/policy_checks.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/throw_delegate.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/macros.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/attributes.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/optimization.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/port.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/container/internal/inlined_vector.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/container/internal/compressed_tuple.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/utility/utility.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/inline_variable.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/identity.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/invoke.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/meta/type_traits.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/memory/memory.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/types/span.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/types/internal/span.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/src/core/ext/transport/chttp2/transport/hpack_constants.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/support/log.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/log.h

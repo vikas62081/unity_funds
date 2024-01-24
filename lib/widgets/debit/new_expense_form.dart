@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path/path.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/providers/group_provider.dart';
@@ -25,7 +26,7 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
   late String description;
   late String amount;
   late Group group;
-  File? billImage;
+  String? billImage;
   late List<Group> groups;
   bool isEnableGroupInput = true;
 
@@ -39,22 +40,23 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
     super.initState();
   }
 
-  void _submitExpense() {
+  void _submitExpense(BuildContext context) {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
       _formKey.currentState!.save();
       Transaction expense = Transaction.debit(
         bill: billImage,
-        group: group.name,
+        groupName: group.name,
+        groupId: group.id,
         description: description,
         amount: double.parse(amount),
       );
 
-      ref.read(transactionPrvoider.notifier).addNewTransaction(expense);
+      ref.read(transactionPrvoider.notifier).addTransaction(expense);
       ref
           .read(groupProvider.notifier)
-          .updateTotalExpenses(group.id, double.parse(amount));
+          .updateGroupTotalExpenses(group.id, double.parse(amount));
 
       showSnackbar(context, "Expense added successfully.");
       Navigator.of(context).pop();
@@ -62,10 +64,10 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
   }
 
   void _updateBillImage(File file) {
-    billImage = file;
+    billImage = dirname(file.path);
   }
 
-  void _showAlertMessage() {
+  void _showAlertMessage(BuildContext context) {
     if (groups.isNotEmpty) return;
     showDialog(
       context: context,
@@ -80,7 +82,7 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
-              _showAddGroupDialog();
+              _showAddGroupDialog(context);
             },
             child: const Text("Add"),
           ),
@@ -90,7 +92,7 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
     return;
   }
 
-  void _showAddGroupDialog() {
+  void _showAddGroupDialog(BuildContext context) {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
@@ -132,12 +134,12 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GestureDetector(
-            onTap: _showAlertMessage,
+            onTap: () => _showAlertMessage(context),
             child: DropdownButtonFormField<Group>(
               key: UniqueKey(),
               autovalidateMode: AutovalidateMode.onUserInteraction,
               alignment: Alignment.center,
-              onTap: _showAlertMessage,
+              onTap: () => _showAlertMessage(context),
               value: isEnableGroupInput ? null : group,
               items: groups
                   .map((group) => DropdownMenuItem(
@@ -185,10 +187,11 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
             labelBeforeImage: "Bill not selected",
           ),
           const SizedBox(height: 16),
-          buildSaveButton(context: context, onPressed: _submitExpense),
+          buildSaveButton(
+              context: context, onPressed: () => _submitExpense(context)),
           const SizedBox(height: 4),
           TextButton(
-            onPressed: _showAddGroupDialog,
+            onPressed: () => _showAddGroupDialog(context),
             child: const Text("Can't find your group? Try adding a new one."),
           ),
         ],

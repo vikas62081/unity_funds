@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/src/core/tsi/alts/crypt/gsec.cc \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/Target\ Support\ Files/gRPC-Core/gRPC-Core-prefix.pch \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/support/port_platform.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/port_platform.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/src/core/tsi/alts/crypt/gsec.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/event_engine/port.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/grpc.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/byte_buffer.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/byte_buffer.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/grpc_types.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/compression_types.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/gpr_types.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/slice.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/gpr_slice.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/status.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/slice_buffer.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/slice.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/support/sync.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/sync.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/sync_generic.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/atm.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/atm_gcc_atomic.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/sync_posix.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/connectivity_state.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/impl/codegen/propagation_bits.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/status.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/support/time.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/gRPC-Core/include/grpc/support/alloc.h

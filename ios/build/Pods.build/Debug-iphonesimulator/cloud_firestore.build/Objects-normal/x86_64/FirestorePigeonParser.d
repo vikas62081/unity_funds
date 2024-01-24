@@ -1,0 +1,76 @@
+dependencies: \
+  /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/cloud_firestore.build/module.modulemap \
+  /Users/vikas/.pub-cache/hosted/pub.dev/cloud_firestore-4.14.0/ios/Classes/FirestorePigeonParser.m \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/Target\ Support\ Files/cloud_firestore/cloud_firestore-prefix.pch \
+  /Users/vikas/.pub-cache/hosted/pub.dev/cloud_firestore-4.14.0/ios/Classes/Private/FirestorePigeonParser.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/Headers/Public/Firebase/Firebase.h \
+  /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseCore.build/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/Target\ Support\ Files/FirebaseCore/FirebaseCore-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRApp.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FirebaseCore.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIROptions.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FirebaseFirestore.h \
+  /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseFirestore.build/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseFirestoreInternal.build/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/Target\ Support\ Files/FirebaseFirestoreInternal/FirebaseFirestoreInternal-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRAggregateField.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRAggregateQuery.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRAggregateSource.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRAggregateQuerySnapshot.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRCollectionReference.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRQuery.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRFirestoreSource.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRListenerRegistration.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRDocumentChange.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRDocumentReference.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRDocumentSnapshot.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FirebaseFirestore.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRFieldPath.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRFieldValue.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRFilter.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRFirestore.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRFirestoreErrors.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRFirestoreSettings.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRGeoPoint.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRLoadBundleTask.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRLocalCacheSettings.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRQuerySnapshot.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRSnapshotMetadata.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRTimestamp.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRTransaction.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRTransactionOptions.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRWriteBatch.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRPersistentCacheIndexManager.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/Target\ Support\ Files/FirebaseFirestore/FirebaseFirestore-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRAggregateField.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRAggregateQuery.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRAggregateQuerySnapshot.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRAggregateSource.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRCollectionReference.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRDocumentChange.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRDocumentReference.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRDocumentSnapshot.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRFieldPath.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRFieldValue.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRFilter.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRFirestore.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRFirestoreErrors.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRFirestoreSettings.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRFirestoreSource.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRGeoPoint.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRListenerRegistration.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRLoadBundleTask.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRLocalCacheSettings.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRPersistentCacheIndexManager.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRQuery.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRQuerySnapshot.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRSnapshotMetadata.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRTimestamp.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRTransaction.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRTransactionOptions.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRWriteBatch.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseFirestore/FirebaseFirestore.framework/Headers/FirebaseFirestore-Swift.h \
+  /Users/vikas/.pub-cache/hosted/pub.dev/cloud_firestore-4.14.0/ios/Classes/Public/FirestoreMessages.g.h

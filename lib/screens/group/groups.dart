@@ -43,7 +43,7 @@ class GroupsScreen extends StatelessWidget {
           )
         ]),
         body: GroupList(
-          onAddGroup: () => _onFloatingButtonPress(context),
+          onAddGroup: () => _showAddGroupModal(context),
         ),
         floatingActionButton: buildFloatingActionButton(
             onPressed: () => _onFloatingButtonPress(context),

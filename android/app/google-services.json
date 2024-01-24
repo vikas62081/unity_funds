@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "685650143431",
+    "project_id": "unity-funds",
+    "storage_bucket": "unity-funds.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685650143431:android:04a52a7542de8c09b3b6e2",
+        "android_client_info": {
+          "package_name": "com.example.unity_funds"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp5Rn6n9TJVn4ECvWkjBO7I2geXxJOXdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

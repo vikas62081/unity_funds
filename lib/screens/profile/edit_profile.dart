@@ -136,7 +136,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     enabled: true,
                     initialSelection: widget.user.defaultGroupName,
                     reduceWidth: 32,
-                    onSelected: (String? value) => group = value!,
+                    onSelected: (value) => group = value!,
                     items: groups
                         .map((group) => DropdownMenuEntry(
                             label: group.name, value: group.name))

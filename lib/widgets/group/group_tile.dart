@@ -19,7 +19,8 @@ class GroupTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final balance = group.totalCollected! - group.totalExpenses!;
+    final balance = group.totalCollected - group.totalExpenses;
+
     return ListTile(
       onTap: () => _showGroupDetails(context),
       leading: _buildCircleAvatar(),
@@ -50,7 +51,7 @@ class GroupTile extends StatelessWidget {
 
   Widget _buildCircleAvatar() {
     return CircleAvatar(
-      backgroundImage: FileImage(group.image),
+      backgroundImage: NetworkImage(group.image),
     );
   }
 }

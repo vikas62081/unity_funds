@@ -37,15 +37,19 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
   }
 
   void _assignExpenseState(int value) {
-    setState(() {
-      expenses = ref
-          .watch(transactionPrvoider.notifier)
-          .getTransByCatNameAndType(widget.group.name,
-              value == 0 ? TransactionType.credit : TransactionType.debit);
-    });
+    // setState(() {
+    //   expenses = ref
+    //       .watch(transactionPrvoider.notifier)
+    //       .getTransByCatNameAndType(widget.group.name,
+    //           value == 0 ? TransactionType.credit : TransactionType.debit);
+    // });
   }
 
   void _showAddModal(BuildContext context) async {
+    Group group = ref
+        .read(groupProvider.notifier)
+        .getGroupByIdFromProvider(widget.group.id);
+
     await showModalBottomSheet(
         isScrollControlled: true,
         showDragHandle: true,
@@ -56,12 +60,10 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
                   height: MediaQuery.of(context).size.height - 300,
                   child: _tabBarController.index == 0
                       ? AddContributionForm(
-                          group: widget.group,
+                          group: group,
                         )
                       : NewExpense(
-                          group: ref
-                              .read(groupProvider.notifier)
-                              .getGroupById(widget.group.id),
+                          group: group,
                           key: UniqueKey(),
                         )),
             ));
@@ -108,7 +110,7 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
               onPressed: () => _showAddModal(context)),
           body: TabBarView(controller: _tabBarController, children: [
             ContributionContainer(group: widget.group),
-            ExpenseContainer(expenses: expenses),
+            ExpenseContainer(group: widget.group),
           ]),
         ));
   }

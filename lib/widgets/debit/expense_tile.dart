@@ -19,7 +19,7 @@ class ExpenseTile extends StatelessWidget {
             height: double.infinity,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: FileImage(expense.bill!),
+                image: NetworkImage(expense.bill!),
               ),
             ),
           ),
@@ -48,7 +48,7 @@ class ExpenseTile extends StatelessWidget {
                   child: FadeInImage(
                     height: 350,
                     placeholder: MemoryImage(kTransparentImage),
-                    image: FileImage(expense.bill!),
+                    image: NetworkImage(expense.bill!),
                   ),
                 )
               else
@@ -89,7 +89,7 @@ class ExpenseTile extends StatelessWidget {
         expense.description!,
         style: Theme.of(context).textTheme.labelLarge,
       ),
-      subtitle: Text(expense.group),
+      subtitle: Text(expense.groupName),
       trailing: Text(
         '₹${NumberFormat().format(expense.amount)}',
         style: Theme.of(context).textTheme.labelMedium,

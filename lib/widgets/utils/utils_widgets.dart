@@ -114,11 +114,11 @@ Widget buildSearchableDropdown(
     {required BuildContext context,
     required IconData? icon,
     required String? hintText,
-    String? initialSelection,
+    dynamic initialSelection,
     bool enabled = true,
-    void Function(String?)? onSelected,
+    void Function(dynamic)? onSelected,
     int reduceWidth = 48,
-    required List<DropdownMenuEntry<String>> items}) {
+    required List<DropdownMenuEntry<dynamic>> items}) {
   return DropdownMenu(
     initialSelection: initialSelection,
     enabled: enabled,

@@ -23,7 +23,7 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
   final _validator = NewTransactionValidator();
   final _formKey = GlobalKey<FormState>();
   String? member;
-  String? group;
+  Group? group;
   late double amount;
   late bool isEnableGroupInput = true;
   List<User> users = [];
@@ -34,7 +34,7 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
     users = ref.read(userProvider);
     groups = ref.read(groupProvider);
     if (widget.group != null) {
-      group = widget.group!.name;
+      group = widget.group!;
       isEnableGroupInput = false;
     }
     super.initState();
@@ -54,11 +54,15 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
         return;
       }
       _formKey.currentState!.save();
-      ref.read(transactionPrvoider.notifier).addNewTransaction(
-          Transaction.credit(group: group!, amount: amount, userName: member));
+      ref.read(transactionPrvoider.notifier).addTransaction(Transaction.credit(
+          groupId: group!.id,
+          groupName: group!.name,
+          amount: amount,
+          contributorName: member,
+          contributorUserId: "N/A"));
       ref
           .read(groupProvider.notifier)
-          .updateTotalCollection(widget.group!.id, amount);
+          .updateGroupTotalCollected(widget.group!.id, amount);
       showSnackbar(context, "Contribution added successfully.");
       Navigator.of(context).pop();
       setState(() {});
@@ -84,15 +88,15 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
                   enabled: isEnableGroupInput,
                   initialSelection: group,
                   items: groups
-                      .map((group) => DropdownMenuEntry(
-                          label: group.name, value: group.name))
+                      .map((group) =>
+                          DropdownMenuEntry(label: group.name, value: group))
                       .toList()),
               const SizedBox(height: 16),
               buildSearchableDropdown(
                   context: context,
                   icon: Icons.person_outline,
                   hintText: "Select a member",
-                  onSelected: (String? value) => member = value!,
+                  onSelected: (value) => member = value!,
                   items: users
                       .map((user) =>
                           DropdownMenuEntry(label: user.name, value: user.name))

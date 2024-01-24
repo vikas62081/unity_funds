@@ -18,6 +18,25 @@ dependencies: \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterHeadlessDartRunner.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPluginAppLifeCycleDelegate.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/Flutter.framework/Headers/FlutterViewController.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/Headers/FLTFirebaseFirestorePlugin.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/Modules/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/Modules/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/Modules/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/Headers/FirebaseCore-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/Headers/FIRApp.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/Headers/FIRConfiguration.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/Headers/FIRLoggerLevel.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/Headers/FirebaseCore.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/Headers/FIROptions.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseCore/FirebaseCore.framework/Headers/FIRVersion.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/Headers/firebase_core-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/Headers/FLTFirebaseCorePlugin.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/Headers/FLTFirebasePlugin.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/Headers/messages.g.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/Headers/FLTFirebasePluginRegistry.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/Headers/cloud_firestore-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/Headers/CustomPigeonHeaderFirestore.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/Headers/FirestoreMessages.g.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/FLTImagePickerPlugin.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Modules/module.modulemap \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/image_picker_ios/image_picker_ios.framework/Headers/image_picker_ios-umbrella.h \

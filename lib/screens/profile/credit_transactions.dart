@@ -19,10 +19,10 @@ class CreditTransactionScreen extends ConsumerWidget {
         appBar: AppBar(
           title: const Text("Transactions"),
         ),
-        body: Column(
+        body: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: CreditList(onAddExpense: null, expenses: expenses))
+            // Expanded(child: CreditList(onAddExpense: null, expenses: expenses))
           ],
         ));
   }

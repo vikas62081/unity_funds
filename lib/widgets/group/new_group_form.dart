@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path/path.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/providers/group_provider.dart';
 import 'package:unity_funds/utils/new_group_validator.dart';
@@ -24,15 +25,15 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
   String? name;
   String? description;
   DateTime? eventDate;
-  File? image;
+  String? image;
   bool isDefaultGroup = true;
 
-  void _submitGroup() {
+  void _submitGroup(BuildContext context) {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
       if (eventDate == null || image == null) {
-        _showErrorDialog();
+        _showErrorDialog(context);
         return;
       }
 
@@ -45,7 +46,7 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
         image: image!,
       );
 
-      ref.read(groupProvider.notifier).addNewGroup(group);
+      ref.read(groupProvider.notifier).addGroup(group);
       showSnackbar(context, "Group added successfully.");
 
       if (widget.onGroupCreated != null) widget.onGroupCreated!();
@@ -53,7 +54,7 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
     }
   }
 
-  void _showErrorDialog() {
+  void _showErrorDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog.adaptive(
@@ -72,7 +73,7 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
   }
 
   void _updateGroupImage(File file) {
-    image = file;
+    image = dirname(file.path);
   }
 
   void _onEventDateChange(DateTime newDate) {
@@ -121,7 +122,8 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
               const SizedBox(height: 16),
               _buildCheckbox(),
               const SizedBox(height: 16),
-              buildSaveButton(context: context, onPressed: _submitGroup)
+              buildSaveButton(
+                  context: context, onPressed: () => _submitGroup(context))
             ],
           ),
         ),

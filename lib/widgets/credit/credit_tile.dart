@@ -19,7 +19,7 @@ class CreditTile extends StatelessWidget {
         ),
       ),
       title: Text(
-        expense.userName!,
+        expense.contributorName!,
         style: Theme.of(context).textTheme.labelLarge,
       ),
       subtitle: Text(expense.formattedCreatedDate),

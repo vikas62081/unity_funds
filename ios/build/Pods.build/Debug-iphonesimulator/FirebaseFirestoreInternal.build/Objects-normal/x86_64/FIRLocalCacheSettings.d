@@ -1,0 +1,32 @@
+dependencies: \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/API/FIRLocalCacheSettings.mm \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/Public/FirebaseFirestore/FIRLocalCacheSettings.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/Source/API/FIRLocalCacheSettings+Internal.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/api/settings.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/memory/memory.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/macros.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/attributes.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/config.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/options.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/policy_checks.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/optimization.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/port.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/meta/type_traits.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/exception.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/include/firebase/firestore/firestore_errors.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/string_format.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/objc/objc_type_traits.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/string_apple.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/strings/string_view.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/throw_delegate.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestoreInternal/Firestore/core/src/util/type_traits.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/strings/str_cat.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/strings/numbers.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/endian.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/casts.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/identity.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/unaligned_access.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/numeric/bits.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/numeric/internal/bits.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/numeric/int128.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/numeric/int128_have_intrinsic.inc
