@@ -24,7 +24,7 @@ class _NewMemberFormState extends ConsumerState<NewMemberForm> {
     final isValid = _formKey.currentState!.validate();
     if (isValid) {
       _formKey.currentState!.save();
-      ref.read(userProvider.notifier).addNewUser(User(
+      ref.read(userProvider.notifier).addUser(User.createMember(
           name: name,
           phoneNumber: phoneNumber,
           familyMemberCount: familyMemberCount,

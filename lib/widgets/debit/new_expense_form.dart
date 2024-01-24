@@ -27,12 +27,21 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
   late String amount;
   late Group group;
   String? billImage;
-  late List<Group> groups;
+  List<Group>? groups;
   bool isEnableGroupInput = true;
+
+  void _loadAllGroups() async {
+    List<Group> groupList;
+    await ref.read(groupProvider.notifier).getGroups();
+    groupList = await ref.read(groupProvider);
+    setState(() {
+      groups = groupList;
+    });
+  }
 
   @override
   void initState() {
-    groups = ref.read(groupProvider);
+    _loadAllGroups();
     if (widget.group != null) {
       group = widget.group!;
       isEnableGroupInput = false;
@@ -67,9 +76,9 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
     billImage = dirname(file.path);
   }
 
-  void _showAlertMessage(BuildContext context) {
-    if (groups.isNotEmpty) return;
-    showDialog(
+  void _showAlertMessage(BuildContext context) async {
+    if (groups!.isNotEmpty) return;
+    await showDialog(
       context: context,
       builder: (ctx) => AlertDialog.adaptive(
         title: const Text("No groups found"),
@@ -89,11 +98,12 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
         ],
       ),
     );
+    _loadAllGroups();
     return;
   }
 
-  void _showAddGroupDialog(BuildContext context) {
-    showModalBottomSheet(
+  void _showAddGroupDialog(BuildContext context) async {
+    await showModalBottomSheet(
       isScrollControlled: true,
       context: context,
       useSafeArea: true,
@@ -124,10 +134,14 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
         );
       },
     );
+    _loadAllGroups();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (groups == null) {
+      return const Center(child: CircularProgressIndicator.adaptive());
+    }
     return Form(
       key: _formKey,
       child: Column(
@@ -141,7 +155,7 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
               alignment: Alignment.center,
               onTap: () => _showAlertMessage(context),
               value: isEnableGroupInput ? null : group,
-              items: groups
+              items: groups!
                   .map((group) => DropdownMenuItem(
                         value: group,
                         child: Text(

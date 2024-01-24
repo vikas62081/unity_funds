@@ -45,7 +45,10 @@ class CreditList extends ConsumerWidget {
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               final expense = snapshot.data![index];
-              return CreditTile(expense: expense);
+              return CreditTile(
+                expense: expense,
+                isGroupAsTitle: false,
+              );
             },
           );
         });

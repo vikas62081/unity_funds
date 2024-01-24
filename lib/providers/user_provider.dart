@@ -1,33 +1,56 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/user.dart';
+import 'package:unity_funds/providers/group_provider.dart';
+import 'package:unity_funds/providers/transaction_provider.dart';
 
 class UserNotifier extends StateNotifier<List<User>> {
-  UserNotifier()
-      : super([
-          User(
-              name: "Vikas",
-              phoneNumber: "6205280071",
-              familyMemberCount: 5,
-              address: "Ward 7",
-              email: "vikas620@gmail.com",
-              defaultGroupName: "Diwali"),
-          User(
-              name: "Raju",
-              phoneNumber: "8763564523",
-              familyMemberCount: 5,
-              address: "Ward 10"),
-        ]);
+  late TransactionNotifier transactionNotifier = TransactionNotifier();
+  UserNotifier() : super([]);
 
-  User addNewUser(User user) {
-    state = [...state, user];
-    return user;
+  Future<List<User>> getUsers() async {
+    final QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await FirebaseFirestore.instance.collection('users').get();
+
+    final List<User> users =
+        querySnapshot.docs.map((doc) => User.fromFirestore(doc)).toList();
+    state = users;
+    return users;
   }
 
-  User getActiveUser() {
-    return state[0];
+  Future<void> addUser(User newUser) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .add(newUser.toFirestore());
+    state = [...state, newUser];
   }
 
-  User updateUser(String userId, User user) {
+  Future<User> getUserById(String id) async {
+    final DocumentSnapshot<Map<String, dynamic>> response =
+        await FirebaseFirestore.instance.collection('users').doc(id).get();
+    return User.fromFirestore(response);
+  }
+
+  Future<User> getActiveUser() {
+    return getUserById("BT9kGjosqu1kQ1LcczKz");
+  }
+
+  Future<void> updateUserById(String id, User user,
+      {bool hasUserNameChanged = false}) async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(id)
+        .update(user.toFirestore());
+    _updateUserInProvider(id, user);
+
+//batch to update all transactions by contributor id
+    if (hasUserNameChanged) {
+      transactionNotifier.updateTransContributorNameByContId(id, user.name);
+    }
+  }
+
+  User _updateUserInProvider(String userId, User user) {
     state = List<User>.from(state)
         .map((User e) => e.id == userId ? user : e)
         .toList();

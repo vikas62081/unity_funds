@@ -22,16 +22,27 @@ class AddContributionForm extends ConsumerStatefulWidget {
 class _AddContributionFormState extends ConsumerState<AddContributionForm> {
   final _validator = NewTransactionValidator();
   final _formKey = GlobalKey<FormState>();
-  String? member;
+  User? user;
   Group? group;
   late double amount;
   late bool isEnableGroupInput = true;
   List<User> users = [];
   List<Group> groups = [];
 
+  void _loadUsers() async {
+    List<User> userList = await ref.read(userProvider);
+    if (userList.isEmpty) {
+      await ref.read(userProvider.notifier).getUsers();
+      userList = await ref.read(userProvider);
+    }
+    setState(() {
+      users = userList;
+    });
+  }
+
   @override
   void initState() {
-    users = ref.read(userProvider);
+    _loadUsers();
     groups = ref.read(groupProvider);
     if (widget.group != null) {
       group = widget.group!;
@@ -44,7 +55,7 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
-      if (member == null) {
+      if (user == null) {
         showDialog(
             context: context,
             builder: (ctx) => const AlertDialog.adaptive(
@@ -58,8 +69,8 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
           groupId: group!.id,
           groupName: group!.name,
           amount: amount,
-          contributorName: member,
-          contributorUserId: "N/A"));
+          contributorName: user!.name,
+          contributorUserId: user!.id));
       ref
           .read(groupProvider.notifier)
           .updateGroupTotalCollected(widget.group!.id, amount);
@@ -96,10 +107,10 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
                   context: context,
                   icon: Icons.person_outline,
                   hintText: "Select a member",
-                  onSelected: (value) => member = value!,
+                  onSelected: (value) => user = value!,
                   items: users
                       .map((user) =>
-                          DropdownMenuEntry(label: user.name, value: user.name))
+                          DropdownMenuEntry(label: user.name, value: user))
                       .toList()),
               const SizedBox(height: 16),
               buildTextField(

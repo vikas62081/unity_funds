@@ -10,13 +10,21 @@ class MemberList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<User> users = ref.watch(userProvider);
+    return FutureBuilder(
+        future: ref.read(userProvider.notifier).getUsers(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          }
 
-    if (users.isEmpty) {
-      return _buildEmptyState();
-    }
+          if (snapshot.data == null || snapshot.data!.isEmpty) {
+            return _buildEmptyState();
+          }
 
-    return _buildGroupListView(users);
+          return _buildUserListView(snapshot.data as List<User>);
+        });
   }
 
   Widget _buildEmptyState() {
@@ -35,7 +43,7 @@ class MemberList extends ConsumerWidget {
     );
   }
 
-  Widget _buildGroupListView(List<User> users) {
+  Widget _buildUserListView(List<User> users) {
     return ListView.builder(
       itemCount: users.length,
       itemBuilder: (context, index) {

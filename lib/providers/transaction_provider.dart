@@ -6,7 +6,7 @@ import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/providers/group_provider.dart';
 
 class TransactionNotifier extends StateNotifier<List<Transaction>> {
-  TransactionNotifier(List<Group> groups)
+  TransactionNotifier()
       : super([
           // Transaction.debit(
           //     amount: 10000,
@@ -41,7 +41,6 @@ class TransactionNotifier extends StateNotifier<List<Transaction>> {
   Future<List<Transaction>> getTransByGroupIdAndType(
       String groupId, TransactionType type) async {
     try {
-      // Assuming your Firestore collection is named 'transactions'
       cloud_firestore.QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await cloud_firestore.FirebaseFirestore.instance
               .collection('transactions')
@@ -56,34 +55,66 @@ class TransactionNotifier extends StateNotifier<List<Transaction>> {
 
       return transactions;
     } catch (error) {
+      print('Error getting transactions: $error');
+      return [];
+    }
+  }
+
+  Future<List<Transaction>> getTransByUserId(String userId) async {
+    try {
+      cloud_firestore.QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await cloud_firestore.FirebaseFirestore.instance
+              .collection('transactions')
+              .where('contributorUserId', isEqualTo: userId)
+              .where('type', isEqualTo: 'credit')
+              .get();
+
+      List<Transaction> transactions = querySnapshot.docs
+          .map((doc) => Transaction.fromFirestore(doc))
+          .toList();
+
+      return transactions;
+    } catch (error) {
       // Handle error as needed
       print('Error getting transactions: $error');
       return [];
     }
   }
 
-  List<Transaction> getTransByGroupId(String categoryId) {
-    return state.where((element) => element.groupId == categoryId).toList();
-  }
-
-  List<Transaction> getTransByType(TransactionType type) {
-    return state.where((element) => element.type == type).toList();
-  }
-
-  // List<Transaction> getTransByCatIdAndType(String catId, TransactionType type) {
-  //   return getTransByGroupId(catId)
-  //       .where((element) => element.type == type)
-  //       .toList();
-  // }
-
   List<Transaction> getTransByUsername(String username) {
     return state
         .where((Transaction e) => e.contributorName == username)
         .toList();
   }
+
+  Future<void> updateTransContributorNameByContId(
+      String userId, String updatedName) async {
+    try {
+      cloud_firestore.WriteBatch batch =
+          cloud_firestore.FirebaseFirestore.instance.batch();
+
+      // Assuming 'transactions' is the Firestore collection
+      cloud_firestore.QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await cloud_firestore.FirebaseFirestore.instance
+              .collection('transactions')
+              .where('contributorUserId', isEqualTo: userId)
+              .get();
+
+      querySnapshot.docs.forEach((doc) {
+        batch.update(doc.reference, {'contributorName': updatedName});
+      });
+
+      await batch.commit();
+    } catch (error) {
+      print('Error updating transactions: $error');
+      // Handle error as needed
+    }
+  }
+
+// Usage
 }
 
 final transactionPrvoider =
     StateNotifierProvider<TransactionNotifier, List<Transaction>>(
-  (ref) => TransactionNotifier(ref.read(groupProvider)),
+  (ref) => TransactionNotifier(),
 );

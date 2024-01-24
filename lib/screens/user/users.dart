@@ -39,7 +39,7 @@ class MemberScreen extends StatelessWidget {
             onPressed: () => _showAddUserScreen(context),
             icon: const Icon(Icons.person_add_alt_1_outlined))
       ]),
-      body: MemberList(onAddMember: () => _onFloatingButtonPress(context)),
+      body: MemberList(onAddMember: () => _showAddUserScreen(context)),
       floatingActionButton: buildFloatingActionButton(
           onPressed: () => _onFloatingButtonPress(context),
           label: "Add expense"),

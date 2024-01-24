@@ -17,11 +17,11 @@ class ExpenseTile extends StatelessWidget {
           child: Container(
             alignment: Alignment.center,
             height: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(expense.bill!),
-              ),
-            ),
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //     image: AssetImage(expense.bill!),
+            //   ),
+            // ),
           ),
         ),
       );
@@ -43,15 +43,15 @@ class ExpenseTile extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               if (expense.bill != null)
-                InkWell(
-                  onDoubleTap: () => _showFullScreenImage(context),
-                  child: FadeInImage(
-                    height: 350,
-                    placeholder: MemoryImage(kTransparentImage),
-                    image: NetworkImage(expense.bill!),
-                  ),
-                )
-              else
+                // InkWell(
+                //   onDoubleTap: () => _showFullScreenImage(context),
+                //   child: FadeInImage(
+                //     height: 350,
+                //     placeholder: MemoryImage(kTransparentImage),
+                //     image: AssetImage(expense.bill!),
+                //   ),
+                // )
+                // else
                 const Center(
                   child: Text("No billing information uploaded."),
                 ),

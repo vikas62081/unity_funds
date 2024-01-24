@@ -3,9 +3,11 @@ import 'package:intl/intl.dart';
 import 'package:unity_funds/modals/transaction.dart';
 
 class CreditTile extends StatelessWidget {
-  const CreditTile({super.key, required this.expense});
+  const CreditTile(
+      {super.key, required this.expense, required this.isGroupAsTitle});
 
   final Transaction expense;
+  final bool isGroupAsTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class CreditTile extends StatelessWidget {
         ),
       ),
       title: Text(
-        expense.contributorName!,
+        isGroupAsTitle ? expense.groupName : expense.contributorName!,
         style: Theme.of(context).textTheme.labelLarge,
       ),
       subtitle: Text(expense.formattedCreatedDate),

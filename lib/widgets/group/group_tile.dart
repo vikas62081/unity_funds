@@ -51,7 +51,7 @@ class GroupTile extends StatelessWidget {
 
   Widget _buildCircleAvatar() {
     return CircleAvatar(
-      backgroundImage: NetworkImage(group.image),
-    );
+        // backgroundImage: AssetImage(group.image),
+        );
   }
 }

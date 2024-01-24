@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path/path.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/user.dart';
 import 'package:unity_funds/providers/group_provider.dart';
@@ -22,32 +23,45 @@ class EditProfileScreen extends ConsumerStatefulWidget {
 class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   final _validator = NewMemberValidator();
   final _formKey = GlobalKey<FormState>();
-  late List<Group> groups;
+  List<Group> groups = [];
 
-  String? group;
+  Group? group;
   String? email;
   String? phoneNumber;
-  File? image;
+  String? profilePic;
   late String name;
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
+  void _loadAllGroups() async {
+    List<Group> groupList;
+    await ref.read(groupProvider.notifier).getGroups();
+    groupList = await ref.read(groupProvider);
+    _updateGroupInitialState(groupList);
+  }
+
+  void _updateGroupInitialState(List<Group> allGroup) {
+    setState(() {
+      groups = allGroup;
+      group = allGroup
+          .firstWhere((element) => element.id == widget.user.defaultGroupId);
+    });
+  }
+
   @override
   void initState() {
-    groups = ref.read(groupProvider);
+    _loadAllGroups();
     name = widget.user.name;
     phoneNumber = widget.user.phoneNumber;
     email = widget.user.email;
-    group = widget.user.defaultGroupName;
-    image = widget.user.image;
-
+    profilePic = widget.user.profilePic;
     super.initState();
   }
 
-  void _profilePictureChanged(File profilePic) {
+  void _profilePictureChanged(File _profilePic) {
     setState(() {
-      image = profilePic;
+      profilePic = dirname(_profilePic.path);
     });
   }
 
@@ -71,13 +85,15 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
 
       _formKey.currentState!.save();
       widget.onUpdateUser(User(
+          id: widget.user.id,
           name: name,
           phoneNumber: phoneNumber!,
           familyMemberCount: widget.user.familyMemberCount,
           address: widget.user.address,
-          defaultGroupName: group,
+          defaultGroupName: group!.name,
+          defaultGroupId: group!.id,
           email: email,
-          image: image));
+          profilePic: profilePic));
       Navigator.of(context).pop();
     }
   }
@@ -99,7 +115,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                 buildProfileAvatar(
                     isEditable: true,
                     onImageChanged: _profilePictureChanged,
-                    image: image),
+                    image: null),
                 const SizedBox(height: 16),
                 buildTextField(
                     context: context,
@@ -134,12 +150,12 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     icon: Icons.festival_sharp,
                     hintText: "Select group",
                     enabled: true,
-                    initialSelection: widget.user.defaultGroupName,
+                    initialSelection: group,
                     reduceWidth: 32,
                     onSelected: (value) => group = value!,
                     items: groups
-                        .map((group) => DropdownMenuEntry(
-                            label: group.name, value: group.name))
+                        .map((group) =>
+                            DropdownMenuEntry(label: group.name, value: group))
                         .toList()),
                 const SizedBox(height: 16),
                 buildSaveButton(
