@@ -126,6 +126,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     onSaved: (newValue) => name = newValue!),
                 const SizedBox(height: 16),
                 buildTextField(
+                  enabled: false,
                   context: context,
                   hintText: "Phone",
                   icon: Icons.phone,

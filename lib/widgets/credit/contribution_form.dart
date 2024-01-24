@@ -65,12 +65,13 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
         return;
       }
       _formKey.currentState!.save();
-      ref.read(transactionPrvoider.notifier).addTransaction(Transaction.credit(
-          groupId: group!.id,
-          groupName: group!.name,
-          amount: amount,
-          contributorName: user!.name,
-          contributorUserId: user!.id));
+      ref.read(creditTransactionPrvoider.notifier).addCreditTransaction(
+          Transaction.credit(
+              groupId: group!.id,
+              groupName: group!.name,
+              amount: amount,
+              contributorName: user!.name,
+              contributorUserId: user!.id));
       ref
           .read(groupProvider.notifier)
           .updateGroupTotalCollected(widget.group!.id, amount);

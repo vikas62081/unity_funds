@@ -74,15 +74,17 @@ Widget buildTextField(
     Function(String?)? onSaved,
     TextInputType? keyboardType,
     String? prefixText,
-    String? initialValue}) {
+    String? initialValue,
+    bool enabled = true}) {
   return TextFormField(
+    enabled: enabled,
     initialValue: initialValue,
     decoration: InputDecoration(
       hintText: hintText,
       prefixText: prefixText,
       prefixIcon: Icon(
         icon,
-        color: Theme.of(context).colorScheme.primary,
+        color: enabled ? Theme.of(context).colorScheme.primary : Colors.grey,
       ),
       border: const OutlineInputBorder(),
     ),

@@ -51,7 +51,8 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => PersonalTransactionScreen(
-          user: user!,
+          label: "Your",
+          userId: user!.id,
         ),
       ),
     );

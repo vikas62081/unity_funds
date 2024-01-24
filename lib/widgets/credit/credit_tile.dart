@@ -14,7 +14,7 @@ class CreditTile extends StatelessWidget {
     return ListTile(
       onTap: () {},
       leading: const CircleAvatar(
-        radius: 24,
+        radius: 26,
         child: Icon(
           Icons.person,
           size: 36,

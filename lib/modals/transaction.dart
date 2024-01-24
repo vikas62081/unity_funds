@@ -15,7 +15,7 @@ DateTime now = DateTime.now();
 enum TransactionType { credit, debit }
 
 class Transaction {
-  final String id;
+  late final String id;
   final String? description;
   final String? bill;
   final String? groupId;

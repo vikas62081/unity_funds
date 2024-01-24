@@ -11,6 +11,7 @@ import 'package:unity_funds/utils/new_transaction_validator.dart';
 import 'package:unity_funds/widgets/form_helpers/image_input.dart';
 import 'package:unity_funds/widgets/group/new_group_form.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
+import 'package:uuid/uuid.dart';
 
 class AddExpenseForm extends ConsumerStatefulWidget {
   const AddExpenseForm({super.key, required this.group});
@@ -25,28 +26,46 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
   final _validator = NewTransactionValidator();
   late String description;
   late String amount;
-  late Group group;
+  String? groupId;
   String? billImage;
   List<Group>? groups;
   bool isEnableGroupInput = true;
 
-  void _loadAllGroups() async {
+  Future<List<Group>> _loadGroups() async {
     List<Group> groupList;
     await ref.read(groupProvider.notifier).getGroups();
     groupList = await ref.read(groupProvider);
     setState(() {
       groups = groupList;
     });
+    return groupList;
+  }
+
+  void _setGroupInitialState(String newGroupId) async {
+    await _loadGroups();
+    setState(() {
+      groupId = newGroupId;
+    });
+  }
+
+  Group _getGroupById(String id) {
+    return groups!.firstWhere((element) => element.id == id);
   }
 
   @override
   void initState() {
-    _loadAllGroups();
     if (widget.group != null) {
-      group = widget.group!;
+      _setGroupInitialState(widget.group!.id);
       isEnableGroupInput = false;
+      return;
     }
+    _loadGroups();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   void _submitExpense(BuildContext context) {
@@ -54,6 +73,8 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
 
     if (isValid) {
       _formKey.currentState!.save();
+      final Group group = _getGroupById(groupId!);
+
       Transaction expense = Transaction.debit(
         bill: billImage,
         groupName: group.name,
@@ -62,7 +83,7 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
         amount: double.parse(amount),
       );
 
-      ref.read(transactionPrvoider.notifier).addTransaction(expense);
+      ref.read(debitTransactionPrvoider.notifier).addDebitTransaction(expense);
       ref
           .read(groupProvider.notifier)
           .updateGroupTotalExpenses(group.id, double.parse(amount));
@@ -98,7 +119,7 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
         ],
       ),
     );
-    _loadAllGroups();
+    _loadGroups();
     return;
   }
 
@@ -134,14 +155,15 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
         );
       },
     );
-    _loadAllGroups();
+    _loadGroups();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (groups == null) {
+    if (groups == null || (widget.group != null && groupId == null)) {
       return const Center(child: CircularProgressIndicator.adaptive());
     }
+
     return Form(
       key: _formKey,
       child: Column(
@@ -149,15 +171,14 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
         children: [
           GestureDetector(
             onTap: () => _showAlertMessage(context),
-            child: DropdownButtonFormField<Group>(
-              key: UniqueKey(),
+            child: DropdownButtonFormField<String>(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               alignment: Alignment.center,
               onTap: () => _showAlertMessage(context),
-              value: isEnableGroupInput ? null : group,
+              value: groupId,
               items: groups!
                   .map((group) => DropdownMenuItem(
-                        value: group,
+                        value: group.id,
                         child: Text(
                           group.name,
                           style: const TextStyle(
@@ -167,8 +188,8 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
                       ))
                   .toList(),
               onChanged: isEnableGroupInput ? (value) => {} : null,
-              validator: _validator.validateGroup,
-              onSaved: (newValue) => group = newValue!,
+              // validator: _validator.validateGroup,
+              onSaved: (newValue) => groupId = newValue!,
               decoration: InputDecoration(
                 hintText: "Select group",
                 prefixIcon: Icon(

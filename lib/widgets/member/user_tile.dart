@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:unity_funds/modals/user.dart';
+import 'package:unity_funds/screens/profile/personal_transactions.dart';
 
 class UserTile extends StatelessWidget {
   const UserTile({super.key, required this.user});
 
   final User user;
 
+  void _showAllTransactionsByUser(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => PersonalTransactionScreen(
+          label: user.name,
+          userId: user.id,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () => _showAllTransactionsByUser(context),
       leading: const CircleAvatar(
         radius: 24,
         child: Icon(

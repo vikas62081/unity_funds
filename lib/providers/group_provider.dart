@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,10 +20,11 @@ class GroupNotifier extends StateNotifier<List<Group>> {
   }
 
   Future<void> addGroup(Group newGroup) async {
-    await FirebaseFirestore.instance
-        .collection('groups')
-        .add(newGroup.toFirestore());
-
+    DocumentReference<Map<String, dynamic>> documentReference =
+        await FirebaseFirestore.instance
+            .collection('groups')
+            .add(newGroup.toFirestore());
+    newGroup.id = documentReference.id;
     state = [...state, newGroup];
   }
 

@@ -4,7 +4,7 @@ import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/widgets/debit/expense_tile.dart';
 
-class ExpenseList extends ConsumerWidget {
+class ExpenseList extends ConsumerStatefulWidget {
   const ExpenseList(
       {Key? key, required this.onAddExpense, required this.groupId})
       : super(key: key);
@@ -13,42 +13,61 @@ class ExpenseList extends ConsumerWidget {
   final String groupId;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return FutureBuilder(
-      future: ref
-          .read(transactionPrvoider.notifier)
-          .getTransByGroupIdAndType(groupId, TransactionType.debit),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
-        }
+  ConsumerState<ExpenseList> createState() {
+    return _ExpenseListState();
+  }
+}
 
-        if (snapshot.data!.isEmpty) {
-          return Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text("No expense found."),
-                const SizedBox(height: 8),
-                if (onAddExpense != null)
-                  TextButton(
-                    onPressed: onAddExpense,
-                    child: const Text("Add expense"),
-                  ),
-              ],
-            ),
-          );
-        }
+class _ExpenseListState extends ConsumerState<ExpenseList> {
+  bool isLoading = true;
+  List<Transaction>? transactions;
 
-        return ListView.builder(
-          itemCount: snapshot.data!.length,
-          itemBuilder: (context, index) {
-            final expense = snapshot.data![index];
-            return ExpenseTile(expense: expense);
-          },
-        );
+  void _loadTransactions() {
+    ref
+        .read(debitTransactionPrvoider.notifier)
+        .getDebitTransByGroupId(widget.groupId);
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    _loadTransactions();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    transactions = ref.watch(debitTransactionPrvoider); //
+
+    if (isLoading || transactions == null) {
+      return const Center(
+        child: CircularProgressIndicator.adaptive(),
+      );
+    }
+    if (transactions!.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text("No expense found."),
+            const SizedBox(height: 8),
+            if (widget.onAddExpense != null)
+              TextButton(
+                onPressed: widget.onAddExpense,
+                child: const Text("Add expense"),
+              ),
+          ],
+        ),
+      );
+    }
+    return ListView.builder(
+      itemCount: transactions!.length,
+      itemBuilder: (context, index) {
+        final expense = transactions![index];
+        return ExpenseTile(expense: expense);
       },
     );
   }

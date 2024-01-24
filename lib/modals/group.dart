@@ -19,7 +19,7 @@ class Group {
         createdAt = now,
         updatedAt = now;
 
-  final String id;
+  late final String id;
   final String name;
   final String description;
   final DateTime eventDate;

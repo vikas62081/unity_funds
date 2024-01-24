@@ -4,27 +4,45 @@ import 'package:unity_funds/modals/user.dart';
 import 'package:unity_funds/providers/user_provider.dart';
 import 'package:unity_funds/widgets/member/user_tile.dart';
 
-class MemberList extends ConsumerWidget {
+class MemberList extends ConsumerStatefulWidget {
   const MemberList({Key? key, required this.onAddMember}) : super(key: key);
   final void Function() onAddMember;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return FutureBuilder(
-        future: ref.read(userProvider.notifier).getUsers(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator.adaptive(),
-            );
-          }
+  ConsumerState<MemberList> createState() => _MemberListState();
+}
 
-          if (snapshot.data == null || snapshot.data!.isEmpty) {
-            return _buildEmptyState();
-          }
+class _MemberListState extends ConsumerState<MemberList> {
+  List<User>? users;
+  bool isLoading = false;
 
-          return _buildUserListView(snapshot.data as List<User>);
-        });
+  void _loadAllUsers() async {
+    await ref.read(userProvider.notifier).getUsers();
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    isLoading = true;
+    _loadAllUsers();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    users = ref.watch(userProvider);
+
+    if (isLoading || users == null) {
+      return const Center(
+        child: CircularProgressIndicator.adaptive(),
+      );
+    }
+    if (users!.isEmpty) {
+      return _buildEmptyState();
+    }
+    return _buildUserListView(users!);
   }
 
   Widget _buildEmptyState() {
@@ -35,7 +53,7 @@ class MemberList extends ConsumerWidget {
           const Text("No user added yet."),
           const SizedBox(height: 8),
           TextButton(
-            onPressed: onAddMember,
+            onPressed: widget.onAddMember,
             child: const Text("Add a user"),
           )
         ],

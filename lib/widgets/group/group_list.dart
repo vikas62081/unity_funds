@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/group.dart';
@@ -15,36 +14,36 @@ class GroupList extends ConsumerStatefulWidget {
 }
 
 class _GroupListState extends ConsumerState<GroupList> {
-  late Future<List<Group>> groups;
+  List<Group>? groups;
+  bool isLoading = false;
+
+  void _loadAllGroups() async {
+    await ref.read(groupProvider.notifier).getGroups();
+    setState(() {
+      isLoading = false;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
-    groups = ref.read(groupProvider.notifier).getGroups();
+    isLoading = true;
+    _loadAllGroups();
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: groups,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
-        }
+    groups = ref.watch(groupProvider);
 
-        if (snapshot.hasError) {
-          return _buildErrorState(snapshot.error as Object);
-        }
-
-        if ((snapshot.data as List).isEmpty) {
-          return _buildEmptyState();
-        }
-
-        return _buildGroupListView(snapshot.data as List<Group>);
-      },
-    );
+    if (isLoading || groups == null) {
+      return const Center(
+        child: CircularProgressIndicator.adaptive(),
+      );
+    }
+    if (groups!.isEmpty) {
+      return _buildEmptyState();
+    }
+    return _buildGroupListView(groups!);
   }
 
   Widget _buildEmptyState() {
@@ -69,27 +68,6 @@ class _GroupListState extends ConsumerState<GroupList> {
       itemBuilder: (context, index) {
         return GroupTile(group: groups[index]);
       },
-    );
-  }
-
-  Widget _buildErrorState(Object error) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text("Error loading groups: $error"),
-            const SizedBox(height: 8),
-            TextButton(
-              onPressed: () {
-                // Retry or handle error as needed
-              },
-              child: const Text("Retry"),
-            )
-          ],
-        ),
-      ),
     );
   }
 }

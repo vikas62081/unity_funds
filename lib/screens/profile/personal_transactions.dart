@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:unity_funds/modals/transaction.dart';
-import 'package:unity_funds/modals/user.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
-import 'package:unity_funds/widgets/credit/credit_list.dart';
 import 'package:unity_funds/widgets/credit/credit_tile.dart';
+import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
 class PersonalTransactionScreen extends ConsumerWidget {
-  const PersonalTransactionScreen({super.key, required this.user});
+  const PersonalTransactionScreen(
+      {super.key, required this.userId, required this.label});
 
-  final User user;
+  final String userId;
+  final String label;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Transactions"),
+          title: Text("${label.split(' ')[0]}'s Contributions"),
         ),
         body: FutureBuilder(
-            future: ref
-                .read(transactionPrvoider.notifier)
-                .getTransByUserId(user.id),
+            future:
+                ref.read(transactionPrvoider.notifier).getTransByUserId(userId),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(

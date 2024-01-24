@@ -1,12 +1,10 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 
 var uuid = const Uuid();
 
 class User {
-  final String id;
+  late final String id;
   final String name;
   final String phoneNumber;
   final int familyMemberCount;

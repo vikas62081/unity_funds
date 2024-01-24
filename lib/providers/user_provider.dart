@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/user.dart';
-import 'package:unity_funds/providers/group_provider.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
 
 class UserNotifier extends StateNotifier<List<User>> {
@@ -20,9 +18,11 @@ class UserNotifier extends StateNotifier<List<User>> {
   }
 
   Future<void> addUser(User newUser) async {
-    await FirebaseFirestore.instance
-        .collection('users')
-        .add(newUser.toFirestore());
+    DocumentReference<Map<String, dynamic>> documentReference =
+        await FirebaseFirestore.instance
+            .collection('users')
+            .add(newUser.toFirestore());
+    newUser.id = documentReference.id;
     state = [...state, newUser];
   }
 

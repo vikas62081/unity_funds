@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart' as cloud_firestore;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:unity_funds/modals/group.dart';
 
 import 'package:unity_funds/modals/transaction.dart';
-import 'package:unity_funds/providers/group_provider.dart';
 
 class TransactionNotifier extends StateNotifier<List<Transaction>> {
   TransactionNotifier()
@@ -30,28 +28,28 @@ class TransactionNotifier extends StateNotifier<List<Transaction>> {
           //     description: "DJ"),
         ]);
 
-  Future<void> addTransaction(Transaction newTransaction) async {
-    await cloud_firestore.FirebaseFirestore.instance
-        .collection('transactions')
-        .add(newTransaction.toFirestore());
-
-    state = [...state, newTransaction];
+  Future<String> addTransaction(Transaction newTransaction) async {
+    cloud_firestore.DocumentReference<Map<String, dynamic>> documentReference =
+        await cloud_firestore.FirebaseFirestore.instance
+            .collection('transactions')
+            .add(newTransaction.toFirestore());
+    return documentReference.id;
   }
 
   Future<List<Transaction>> getTransByGroupIdAndType(
-      String groupId, TransactionType type) async {
+      String groupId, String type) async {
     try {
       cloud_firestore.QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await cloud_firestore.FirebaseFirestore.instance
               .collection('transactions')
               .where('groupId', isEqualTo: groupId)
-              .where('type',
-                  isEqualTo: type == TransactionType.debit ? 'debit' : 'credit')
+              .where('type', isEqualTo: type)
               .get();
 
       List<Transaction> transactions = querySnapshot.docs
           .map((doc) => Transaction.fromFirestore(doc))
           .toList();
+      state = transactions;
 
       return transactions;
     } catch (error) {
@@ -117,4 +115,46 @@ class TransactionNotifier extends StateNotifier<List<Transaction>> {
 final transactionPrvoider =
     StateNotifierProvider<TransactionNotifier, List<Transaction>>(
   (ref) => TransactionNotifier(),
+);
+
+class CreditNotifier extends StateNotifier<List<Transaction>> {
+  TransactionNotifier transactionNotifier = TransactionNotifier();
+  CreditNotifier() : super([]);
+
+  Future<void> getCreditTransByGroupId(String groupId) async {
+    state =
+        await transactionNotifier.getTransByGroupIdAndType(groupId, "credit");
+  }
+
+  Future<void> addCreditTransaction(Transaction newTransaction) async {
+    String id = await transactionNotifier.addTransaction(newTransaction);
+    newTransaction.id = id;
+    state = [...state, newTransaction];
+  }
+}
+
+final creditTransactionPrvoider =
+    StateNotifierProvider<CreditNotifier, List<Transaction>>(
+  (ref) => CreditNotifier(),
+);
+
+class DebitNotifier extends StateNotifier<List<Transaction>> {
+  TransactionNotifier transactionNotifier = TransactionNotifier();
+  DebitNotifier() : super([]);
+
+  Future<void> getDebitTransByGroupId(String groupId) async {
+    state =
+        await transactionNotifier.getTransByGroupIdAndType(groupId, "debit");
+  }
+
+  Future<void> addDebitTransaction(Transaction newTransaction) async {
+    String id = await transactionNotifier.addTransaction(newTransaction);
+    newTransaction.id = id;
+    state = [...state, newTransaction];
+  }
+}
+
+final debitTransactionPrvoider =
+    StateNotifierProvider<DebitNotifier, List<Transaction>>(
+  (ref) => DebitNotifier(),
 );

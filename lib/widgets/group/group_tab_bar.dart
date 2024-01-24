@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/providers/group_provider.dart';
-import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/screens/expense/new_expense.dart';
 import 'package:unity_funds/widgets/credit/container.dart';
 import 'package:unity_funds/widgets/credit/contribution_form.dart';
@@ -23,10 +22,22 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
     with TickerProviderStateMixin {
   late final TabController _tabBarController;
   List<Transaction> expenses = [];
+  Group? group;
+  bool isLoading = true;
+
+  void _loadCurrentGroup() async {
+    group = ref
+        .read(groupProvider.notifier)
+        .getGroupByIdFromProvider(widget.group.id);
+    setState(() {
+      isLoading = false;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+    _loadCurrentGroup();
     _tabBarController = TabController(initialIndex: 0, length: 2, vsync: this);
   }
 
@@ -37,19 +48,10 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
   }
 
   void _assignExpenseState(int value) {
-    // setState(() {
-    //   expenses = ref
-    //       .watch(transactionPrvoider.notifier)
-    //       .getTransByCatNameAndType(widget.group.name,
-    //           value == 0 ? TransactionType.credit : TransactionType.debit);
-    // });
+    setState(() {});
   }
 
   void _showAddModal(BuildContext context) async {
-    Group group = ref
-        .read(groupProvider.notifier)
-        .getGroupByIdFromProvider(widget.group.id);
-
     await showModalBottomSheet(
         isScrollControlled: true,
         showDragHandle: true,
@@ -73,6 +75,11 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
 
   @override
   Widget build(BuildContext context) {
+    if (isLoading) {
+      return const Center(
+        child: CircularProgressIndicator.adaptive(),
+      );
+    }
     return Column(
       children: [
         _buildTabBar(),
@@ -109,8 +116,8 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
               ]),
               onPressed: () => _showAddModal(context)),
           body: TabBarView(controller: _tabBarController, children: [
-            ContributionContainer(group: widget.group),
-            ExpenseContainer(group: widget.group),
+            ContributionContainer(group: group!),
+            ExpenseContainer(group: group!),
           ]),
         ));
   }
