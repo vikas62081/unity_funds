@@ -53,8 +53,9 @@ class _ExpenseTrackerScreenState extends State<ExpenseTrackerScreen> {
             BottomNavigationBarItem(
                 icon: CircleAvatar(
                   radius: 14,
+                  child: Icon(Icons.person),
                 ),
-                label: "Account")
+                label: "Profile")
           ]),
     );
   }

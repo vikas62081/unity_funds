@@ -22,7 +22,7 @@ class UserNotifier extends StateNotifier<List<User>> {
         await FirebaseFirestore.instance
             .collection('users')
             .add(newUser.toFirestore());
-    newUser.id = documentReference.id;
+    newUser.setId(documentReference.id);
     state = [...state, newUser];
   }
 

@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart' as cloud_firestore;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:unity_funds/modals/transaction.dart';
+import 'package:unity_funds/providers/credit_notifier.dart';
+import 'package:unity_funds/providers/debit_notifier.dart';
 
 class TransactionNotifier extends StateNotifier<List<Transaction>> {
   TransactionNotifier()
@@ -115,46 +117,4 @@ class TransactionNotifier extends StateNotifier<List<Transaction>> {
 final transactionPrvoider =
     StateNotifierProvider<TransactionNotifier, List<Transaction>>(
   (ref) => TransactionNotifier(),
-);
-
-class CreditNotifier extends StateNotifier<List<Transaction>> {
-  TransactionNotifier transactionNotifier = TransactionNotifier();
-  CreditNotifier() : super([]);
-
-  Future<void> getCreditTransByGroupId(String groupId) async {
-    state =
-        await transactionNotifier.getTransByGroupIdAndType(groupId, "credit");
-  }
-
-  Future<void> addCreditTransaction(Transaction newTransaction) async {
-    String id = await transactionNotifier.addTransaction(newTransaction);
-    newTransaction.id = id;
-    state = [...state, newTransaction];
-  }
-}
-
-final creditTransactionPrvoider =
-    StateNotifierProvider<CreditNotifier, List<Transaction>>(
-  (ref) => CreditNotifier(),
-);
-
-class DebitNotifier extends StateNotifier<List<Transaction>> {
-  TransactionNotifier transactionNotifier = TransactionNotifier();
-  DebitNotifier() : super([]);
-
-  Future<void> getDebitTransByGroupId(String groupId) async {
-    state =
-        await transactionNotifier.getTransByGroupIdAndType(groupId, "debit");
-  }
-
-  Future<void> addDebitTransaction(Transaction newTransaction) async {
-    String id = await transactionNotifier.addTransaction(newTransaction);
-    newTransaction.id = id;
-    state = [...state, newTransaction];
-  }
-}
-
-final debitTransactionPrvoider =
-    StateNotifierProvider<DebitNotifier, List<Transaction>>(
-  (ref) => DebitNotifier(),
 );

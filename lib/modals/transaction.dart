@@ -15,7 +15,7 @@ DateTime now = DateTime.now();
 enum TransactionType { credit, debit }
 
 class Transaction {
-  late final String id;
+  late String id;
   final String? description;
   final String? bill;
   final String? groupId;
@@ -69,6 +69,10 @@ class Transaction {
         createdAt = now,
         updatedAt = now,
         color = LIGHT_COLORS[random.nextInt(LIGHT_COLORS.length)];
+
+  setId(String id) {
+    this.id = id;
+  }
 
   Map<String, dynamic> toFirestore() {
     return {

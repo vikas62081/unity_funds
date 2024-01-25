@@ -24,6 +24,7 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
   List<Transaction> expenses = [];
   Group? group;
   bool isLoading = true;
+  DateTime date = DateTime.now();
 
   void _loadCurrentGroup() async {
     group = ref
@@ -48,7 +49,9 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
   }
 
   void _assignExpenseState(int value) {
-    setState(() {});
+    setState(() {
+      date = DateTime.now();
+    });
   }
 
   void _showAddModal(BuildContext context) async {
@@ -83,7 +86,7 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
     return Column(
       children: [
         _buildTabBar(),
-        _buildTabBarView(),
+        Expanded(child: _buildTabBarView()),
       ],
     );
   }
@@ -101,24 +104,27 @@ class _GroupTabBarState extends ConsumerState<GroupTabBar>
   }
 
   Widget _buildTabBarView() {
-    return SizedBox(
-        height: MediaQuery.of(context).size.height - 360,
-        child: Scaffold(
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: FloatingActionButton.extended(
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(120))),
-              label: Row(children: [
-                const Icon(Icons.add_circle_outline),
-                const SizedBox(width: 8),
-                Text(_tabBarController.index == 0 ? "INCOME" : "EXPENSE")
-              ]),
-              onPressed: () => _showAddModal(context)),
-          body: TabBarView(controller: _tabBarController, children: [
-            ContributionContainer(group: group!),
-            ExpenseContainer(group: group!),
-          ]),
-        ));
+    return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton.extended(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(120),
+          ),
+        ),
+        label: Row(
+          children: [
+            const Icon(Icons.add_circle_outline),
+            const SizedBox(width: 8),
+            Text(_tabBarController.index == 0 ? "INCOME" : "EXPENSE")
+          ],
+        ),
+        onPressed: () => _showAddModal(context),
+      ),
+      body: TabBarView(controller: _tabBarController, children: [
+        ContributionContainer(group: group!),
+        ExpenseContainer(group: group!),
+      ]),
+    );
   }
 }

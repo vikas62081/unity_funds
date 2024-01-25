@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/widgets/credit/credit_tile.dart';
-import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
 class PersonalTransactionScreen extends ConsumerWidget {
   const PersonalTransactionScreen(

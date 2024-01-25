@@ -24,7 +24,7 @@ class GroupNotifier extends StateNotifier<List<Group>> {
         await FirebaseFirestore.instance
             .collection('groups')
             .add(newGroup.toFirestore());
-    newGroup.id = documentReference.id;
+    newGroup.setId(documentReference.id);
     state = [...state, newGroup];
   }
 

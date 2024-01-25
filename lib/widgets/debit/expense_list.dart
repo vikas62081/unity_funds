@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/transaction.dart';
+import 'package:unity_funds/providers/debit_notifier.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/widgets/debit/expense_tile.dart';
 
@@ -40,7 +41,7 @@ class _ExpenseListState extends ConsumerState<ExpenseList> {
 
   @override
   Widget build(BuildContext context) {
-    transactions = ref.watch(debitTransactionPrvoider); //
+    transactions = ref.watch(debitTransactionPrvoider);
 
     if (isLoading || transactions == null) {
       return const Center(

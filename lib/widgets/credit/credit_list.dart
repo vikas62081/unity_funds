@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/transaction.dart';
+import 'package:unity_funds/providers/credit_notifier.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/widgets/credit/credit_tile.dart';
 

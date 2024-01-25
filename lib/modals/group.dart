@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
@@ -19,7 +18,7 @@ class Group {
         createdAt = now,
         updatedAt = now;
 
-  late final String id;
+  late String id;
   final String name;
   final String description;
   final DateTime eventDate;
@@ -39,6 +38,10 @@ class Group {
     required this.totalExpenses,
     required this.image,
   }) : updatedAt = DateTime.now();
+
+  setId(String id) {
+    this.id = id;
+  }
 
   String get formattedEventDate {
     return _format.format(eventDate);

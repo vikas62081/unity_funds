@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/modals/user.dart';
+import 'package:unity_funds/providers/credit_notifier.dart';
 import 'package:unity_funds/providers/group_provider.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/providers/user_provider.dart';

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/transaction.dart';
+import 'package:unity_funds/providers/debit_notifier.dart';
 import 'package:unity_funds/providers/group_provider.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/utils/new_transaction_validator.dart';

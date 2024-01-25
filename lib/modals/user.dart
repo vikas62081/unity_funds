@@ -4,7 +4,7 @@ import 'package:uuid/uuid.dart';
 var uuid = const Uuid();
 
 class User {
-  late final String id;
+  late String id;
   final String name;
   final String phoneNumber;
   final int familyMemberCount;
@@ -24,6 +24,10 @@ class User {
       this.defaultGroupName,
       this.profilePic,
       required this.id});
+
+  setId(String id) {
+    this.id = id;
+  }
 
   User.createMember({
     required this.name,

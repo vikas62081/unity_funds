@@ -20,18 +20,15 @@ class GroupDetails extends StatelessWidget {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        // padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: GroupDetailsCard(groupId: group.id),
-            ),
-            const SizedBox(height: 8),
-            GroupTabBar(group: group),
-          ],
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: GroupDetailsCard(groupId: group.id),
+          ),
+          const SizedBox(height: 8),
+          Expanded(child: GroupTabBar(group: group)),
+        ],
       ),
     );
   }
