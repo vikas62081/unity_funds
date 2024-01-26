@@ -72,16 +72,19 @@ Widget buildTextField(
     required String hintText,
     required IconData icon,
     String? Function(String?)? validator,
+    void Function(String)? onChanged,
     Function(String?)? onSaved,
     TextInputType? keyboardType,
     String? prefixText,
     String? initialValue,
     bool enabled = true,
-    bool obscureText = false}) {
+    bool obscureText = false,
+    TextCapitalization textCapitalization = TextCapitalization.sentences}) {
   return TextFormField(
     enabled: enabled,
     initialValue: initialValue,
     obscureText: obscureText,
+    onChanged: onChanged,
     decoration: InputDecoration(
       hintText: hintText,
       prefixText: prefixText,
@@ -91,7 +94,7 @@ Widget buildTextField(
       ),
       border: const OutlineInputBorder(),
     ),
-    textCapitalization: TextCapitalization.sentences,
+    textCapitalization: textCapitalization,
     keyboardType: keyboardType,
     validator: validator,
     onSaved: onSaved,

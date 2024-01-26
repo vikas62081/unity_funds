@@ -1,0 +1,18 @@
+"/Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/Result.swift":
+  object: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/Result.o"
+  dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/Result.d"
+  swift-dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/Result.swiftdeps"
+  diagnostics: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/Result.dia"
+  const-values: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/Result.swiftconstvalues"
+"/Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/Storage.swift":
+  diagnostics: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/Storage.dia"
+  dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/Storage.d"
+  object: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/Storage.o"
+  const-values: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/Storage.swiftconstvalues"
+  swift-dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/Storage.swiftdeps"
+"/Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/AsyncAwait.swift":
+  object: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/AsyncAwait.o"
+  dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/AsyncAwait.d"
+  diagnostics: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/AsyncAwait.dia"
+  const-values: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/AsyncAwait.swiftconstvalues"
+  swift-dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/x86_64/AsyncAwait.swiftdeps"

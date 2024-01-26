@@ -46,6 +46,16 @@ class NewMemberValidator {
     return null;
   }
 
+  String? validateConfirmPassword(String? value, String? password) {
+    if (value == null || value.isEmpty) {
+      return "Confirm password cannot be empty";
+    }
+    if (value != password) {
+      return "Confirm password did not match";
+    }
+    return null;
+  }
+
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return "Email cannot be empty";

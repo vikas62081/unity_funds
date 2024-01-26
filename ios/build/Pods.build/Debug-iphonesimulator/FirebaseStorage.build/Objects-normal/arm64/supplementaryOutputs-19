@@ -1,0 +1,18 @@
+"/Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/Internal/StoragePath.swift":
+  swift-dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StoragePath.swiftdeps"
+  diagnostics: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StoragePath.dia"
+  const-values: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StoragePath.swiftconstvalues"
+  object: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StoragePath.o"
+  dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StoragePath.d"
+"/Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/StorageObservableTask.swift":
+  const-values: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StorageObservableTask.swiftconstvalues"
+  swift-dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StorageObservableTask.swiftdeps"
+  dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StorageObservableTask.d"
+  diagnostics: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StorageObservableTask.dia"
+  object: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StorageObservableTask.o"
+"/Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseStorage/FirebaseStorage/Sources/StorageMetadata.swift":
+  diagnostics: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StorageMetadata.dia"
+  dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StorageMetadata.d"
+  swift-dependencies: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StorageMetadata.swiftdeps"
+  const-values: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StorageMetadata.swiftconstvalues"
+  object: "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/Objects-normal/arm64/StorageMetadata.o"

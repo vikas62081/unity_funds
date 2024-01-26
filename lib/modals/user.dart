@@ -40,6 +40,15 @@ class User {
         profilePic = null,
         id = uuid.v4();
 
+  User.createNewAccount(
+      {required this.name, required this.phoneNumber, required this.email})
+      : defaultGroupId = null,
+        defaultGroupName = null,
+        profilePic = null,
+        familyMemberCount = 0,
+        address = "",
+        id = uuid.v4();
+
   Map<String, dynamic> toFirestore() {
     return {
       'name': name,

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:unity_funds/services/auth.dart';
 import 'package:unity_funds/utils/new_member_validator.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+  const LoginForm({super.key, required this.onCreateAccount});
+
+  final void Function() onCreateAccount;
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -24,8 +27,11 @@ class _LoginFormState extends State<LoginForm> {
       setState(() {
         isLoading = true;
       });
-      Focus.of(context).unfocus();
       _formKey.currentState!.save();
+      AuthService().login(phoneNumber!, password!);
+      setState(() {
+        isLoading = false;
+      });
     }
     // Perform login authentication here
     // You can use Firebase Authentication or any other authentication method
@@ -59,10 +65,11 @@ class _LoginFormState extends State<LoginForm> {
                 const SizedBox(height: 30),
                 buildTextField(
                     context: context,
-                    hintText: "Phone Number",
+                    hintText: "Email",
                     icon: Icons.phone,
                     onSaved: (value) => phoneNumber = value,
-                    validator: _validator.validatePhoneNumber),
+                    textCapitalization: TextCapitalization.none,
+                    validator: _validator.validateEmail),
                 const SizedBox(height: 20),
                 buildTextField(
                     context: context,
@@ -77,13 +84,12 @@ class _LoginFormState extends State<LoginForm> {
                     context: context,
                     onPressed: _login,
                     label: "Login"),
-                const SizedBox(height: 20),
+                const SizedBox(height: 4),
                 TextButton(
                     onPressed: () {}, child: const Text("Forgot password")),
                 TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                        "Don't have an account! Create a new account"))
+                    onPressed: widget.onCreateAccount,
+                    child: const Text("Don't have an account? Sign Up"))
               ],
             ),
           ),

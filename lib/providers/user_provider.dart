@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/user.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
+import 'package:unity_funds/services/auth.dart';
 
 class UserNotifier extends StateNotifier<List<User>> {
   late TransactionNotifier transactionNotifier = TransactionNotifier();
@@ -33,7 +34,7 @@ class UserNotifier extends StateNotifier<List<User>> {
   }
 
   Future<User> getActiveUser() {
-    return getUserById("hogT0gabzzjSsbJqrAPK");
+    return getUserById(AuthService().getActiveUser()!.uid);
   }
 
   Future<void> updateUserById(String id, User user,

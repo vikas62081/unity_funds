@@ -37,13 +37,47 @@ dependencies: \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/Headers/cloud_firestore-umbrella.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/Headers/CustomPigeonHeaderFirestore.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/Headers/FirestoreMessages.g.h \
-  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/Headers/FLTFirebaseStoragePlugin.h \
-  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/Modules/module.modulemap \
-  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Modules/module.modulemap \
-  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Headers/FirebaseStorage-umbrella.h \
-  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Headers/FIRStorageTypedefs.h \
-  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Headers/FirebaseStorage-Swift.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/Headers/FLTFirebaseAuthPlugin.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/Modules/module.modulemap \
   /Users/vikas/development/flutter/unity_funds/ios/Pods/Firebase/CoreOnly/Sources/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Modules/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FirebaseAuth-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRActionCodeSettings.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRAdditionalUserInfo.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRAuth.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRAuthAPNSTokenType.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRAuthErrors.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRAuthCredential.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRAuthDataResult.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRAuthSettings.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRAuthTokenResult.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRAuthUIDelegate.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FirebaseAuth.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIREmailAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRFacebookAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRFederatedAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRGameCenterAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRGitHubAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRGoogleAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRMultiFactor.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRMultiFactorAssertion.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRMultiFactorInfo.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRMultiFactorSession.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRMultiFactorResolver.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIROAuthCredential.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIROAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRTwitterAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRUser.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRUserInfo.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRUserMetadata.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRPhoneAuthCredential.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRPhoneAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRPhoneMultiFactorAssertion.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRPhoneMultiFactorGenerator.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRPhoneMultiFactorInfo.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRTOTPMultiFactorAssertion.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRTOTPMultiFactorGenerator.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseAuth/FirebaseAuth.framework/Headers/FIRTOTPSecret.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseFirestore/FirebaseFirestore.framework/Modules/module.modulemap \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseFirestoreInternal/FirebaseFirestoreInternal.framework/Modules/module.modulemap \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseFirestoreInternal/FirebaseFirestoreInternal.framework/Headers/FirebaseFirestoreInternal-umbrella.h \
@@ -105,7 +139,20 @@ dependencies: \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseFirestore/FirebaseFirestore.framework/Headers/FIRTransactionOptions.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseFirestore/FirebaseFirestore.framework/Headers/FIRWriteBatch.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseFirestore/FirebaseFirestore.framework/Headers/FirebaseFirestore-Swift.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Modules/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Headers/FirebaseStorage-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Headers/FIRStorageTypedefs.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Headers/FirebaseStorage-Swift.h \
   /Users/vikas/development/flutter/unity_funds/ios/Pods/Firebase/CoreOnly/Sources/Firebase.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/Headers/firebase_auth-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/Headers/FLTAuthStateChannelStreamHandler.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/Headers/CustomPigeonHeader.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/Headers/firebase_auth_messages.g.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/Headers/PigeonParser.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/Headers/FLTIdTokenChannelStreamHandler.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/Headers/FLTPhoneNumberVerificationStreamHandler.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/Headers/FLTFirebaseStoragePlugin.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/Modules/module.modulemap \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/Headers/firebase_storage-umbrella.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/Headers/firebase_storage_messages.g.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/Headers/FLTTaskStateChannelStreamHandler.h \

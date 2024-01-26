@@ -41,6 +41,44 @@ dependencies: \
   /Users/vikas/.pub-cache/hosted/pub.dev/firebase_storage-11.6.0/ios/Classes/firebase_storage_messages.g.h \
   /Users/vikas/.pub-cache/hosted/pub.dev/firebase_storage-11.6.0/ios/Classes/FLTTaskStateChannelStreamHandler.h \
   /Users/vikas/development/flutter/unity_funds/ios/Pods/Headers/Public/Firebase/Firebase.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FirebaseAuth.h \
+  /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseAuth.build/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/Target\ Support\ Files/FirebaseAuth/FirebaseAuth-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRActionCodeSettings.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAdditionalUserInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuth.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthAPNSTokenType.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthErrors.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthCredential.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthDataResult.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthSettings.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthTokenResult.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthUIDelegate.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIREmailAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRFacebookAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRFederatedAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRGameCenterAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRGitHubAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRGoogleAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactor.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactorAssertion.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactorInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactorSession.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactorResolver.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIROAuthCredential.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIROAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRTwitterAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRUser.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRUserInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRUserMetadata.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRPhoneAuthCredential.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRPhoneAuthProvider.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRPhoneMultiFactorAssertion.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRPhoneMultiFactorGenerator.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRPhoneMultiFactorInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRTOTPMultiFactorAssertion.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRTOTPMultiFactorGenerator.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRTOTPSecret.h \
   /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FirebaseFirestore.h \
   /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseFirestore.build/module.modulemap \
   /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseFirestoreInternal.build/module.modulemap \

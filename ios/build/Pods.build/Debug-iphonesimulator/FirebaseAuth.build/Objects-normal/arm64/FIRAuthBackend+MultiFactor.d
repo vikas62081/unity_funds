@@ -1,0 +1,39 @@
+dependencies: \
+  /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseAuth.build/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthBackend+MultiFactor.m \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthBackend+MultiFactor.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthBackend.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRPCRequest.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRPCResponse.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Enroll/FIRFinalizeMFAEnrollmentRequest.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRIdentityToolkitRequest.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRequestConfiguration.h \
+  /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseAppCheckInterop.build/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/Target\ Support\ Files/FirebaseAppCheckInterop/FirebaseAppCheckInterop-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAppCheckInterop/FirebaseAppCheck/Interop/Public/FirebaseAppCheckInterop/FIRAppCheckInterop.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAppCheckInterop/FirebaseAppCheck/Interop/Public/FirebaseAppCheckInterop/FIRAppCheckProtocol.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAppCheckInterop/FirebaseAppCheck/Interop/Public/FirebaseAppCheckInterop/FIRAppCheckTokenResultInterop.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAppCheckInterop/FirebaseAppCheck/Interop/Public/FirebaseAppCheckInterop/FirebaseAppCheckInterop.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuth.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthAPNSTokenType.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthErrors.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/Phone/FIRAuthProtoFinalizeMFAPhoneRequestInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/FIRAuthProto.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/TOTP/FIRAuthProtoFinalizeMFATOTPEnrollmentRequestInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Enroll/FIRFinalizeMFAEnrollmentResponse.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/Phone/FIRAuthProtoFinalizeMFAPhoneResponseInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/TOTP/FIRAuthProtoFinalizeMFATOTPEnrollmentResponseInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Enroll/FIRStartMFAEnrollmentRequest.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/Phone/FIRAuthProtoStartMFAPhoneRequestInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/SystemService/FIRAuthAppCredential.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/TOTP/FIRAuthProtoStartMFATOTPEnrollmentRequestInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Enroll/FIRStartMFAEnrollmentResponse.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/Phone/FIRAuthProtoStartMFAPhoneResponseInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/TOTP/FIRAuthProtoStartMFATOTPEnrollmentResponseInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/SignIn/FIRFinalizeMFASignInRequest.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/TOTP/FIRAuthProtoFinalizeMFATOTPSignInRequestInfo.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/SignIn/FIRFinalizeMFASignInResponse.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/SignIn/FIRStartMFASignInRequest.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/SignIn/FIRStartMFASignInResponse.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Unenroll/FIRWithdrawMFARequest.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Unenroll/FIRWithdrawMFAResponse.h

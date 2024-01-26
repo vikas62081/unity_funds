@@ -4,6 +4,7 @@ import 'package:unity_funds/modals/user.dart';
 import 'package:unity_funds/providers/user_provider.dart';
 import 'package:unity_funds/screens/profile/personal_transactions.dart';
 import 'package:unity_funds/screens/profile/edit_profile.dart';
+import 'package:unity_funds/services/auth.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
 class UserProfileScreen extends ConsumerStatefulWidget {
@@ -121,7 +122,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                     trailingIcon: Icons.logout,
                     title: 'Log Out',
                     subtitle: 'Logout',
-                    onTap: () {},
+                    onTap: () => AuthService().logOut(),
                   ),
                 ],
               ),
