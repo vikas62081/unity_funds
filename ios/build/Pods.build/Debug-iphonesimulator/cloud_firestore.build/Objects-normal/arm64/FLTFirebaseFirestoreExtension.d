@@ -72,4 +72,8 @@ dependencies: \
   /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRTransactionOptions.h \
   /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRWriteBatch.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseFirestore/FirebaseFirestore.framework/Headers/FirebaseFirestore-Swift.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/Target\ Support\ Files/FirebaseStorage/FirebaseStorage-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseStorage/FirebaseStorage/Typedefs/FIRStorageTypedefs.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Headers/FirebaseStorage-Swift.h \
   /Users/vikas/.pub-cache/hosted/pub.dev/cloud_firestore-4.14.0/ios/Classes/Private/FLTFirebaseFirestoreExtension.h

@@ -72,6 +72,10 @@ dependencies: \
   /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRTransactionOptions.h \
   /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseFirestore/FirebaseFirestoreInternal/FirebaseFirestore/FIRWriteBatch.h \
   /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseFirestore/FirebaseFirestore.framework/Headers/FirebaseFirestore-Swift.h \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/Target\ Support\ Files/FirebaseStorage/FirebaseStorage-umbrella.h \
+  /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/module.modulemap \
+  /Users/vikas/development/flutter/unity_funds/ios/Pods/FirebaseStorage/FirebaseStorage/Typedefs/FIRStorageTypedefs.h \
+  /Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Headers/FirebaseStorage-Swift.h \
   /Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/firebase_core.build/module.modulemap \
   /Users/vikas/development/flutter/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64_x86_64-simulator/Flutter.framework/Modules/module.modulemap \
   /Users/vikas/development/flutter/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework/ios-arm64_x86_64-simulator/Flutter.framework/Headers/Flutter.h \

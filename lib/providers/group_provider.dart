@@ -1,11 +1,15 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:unity_funds/modals/group.dart';
+import 'package:unity_funds/repositories/storage_helper.dart';
 
 var db = FirebaseFirestore.instance;
 
 class GroupNotifier extends StateNotifier<List<Group>> {
+  StorageHelper storageHelper = StorageHelper();
   GroupNotifier() : super([]);
 
   Future<List<Group>> getGroups() async {
@@ -19,12 +23,18 @@ class GroupNotifier extends StateNotifier<List<Group>> {
     return groups;
   }
 
-  Future<void> addGroup(Group newGroup) async {
+  Future<void> addGroup(Group newGroup, File image) async {
     DocumentReference<Map<String, dynamic>> documentReference =
         await FirebaseFirestore.instance
             .collection('groups')
             .add(newGroup.toFirestore());
-    newGroup.setId(documentReference.id);
+    String id = documentReference.id;
+
+    String imageUrl = await storageHelper.uploadImageAndGetURL(id, image);
+    await updateGroupImageUrl(id, imageUrl);
+    newGroup.setId(id);
+    newGroup.setImage(imageUrl);
+
     state = [...state, newGroup];
   }
 
@@ -32,6 +42,12 @@ class GroupNotifier extends StateNotifier<List<Group>> {
     final DocumentSnapshot<Map<String, dynamic>> response =
         await FirebaseFirestore.instance.collection('groups').doc(id).get();
     return Group.fromFirestore(response);
+  }
+
+  Future<void> updateGroupImageUrl(String groupId, String url) async {
+    await FirebaseFirestore.instance.collection('groups').doc(groupId).update({
+      'image': url,
+    });
   }
 
   Group getGroupByIdFromProvider(String id) {

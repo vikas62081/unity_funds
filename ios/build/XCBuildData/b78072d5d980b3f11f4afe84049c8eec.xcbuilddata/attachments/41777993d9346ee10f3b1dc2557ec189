@@ -1,0 +1,23 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    'type': 'directory',
+    'name': "/Users/vikas/development/flutter/unity_funds/build/ios/Debug-iphonesimulator/FirebaseStorage/FirebaseStorage.framework/Headers"
+    'contents': [{
+      'type': 'file',
+      'name': "FirebaseStorage-Swift.h",
+      'external-contents': "/Users/vikas/development/flutter/unity_funds/ios/build/Pods.build/Debug-iphonesimulator/FirebaseStorage.build/unextended-interface-header.h",
+    }]
+    }]
+}

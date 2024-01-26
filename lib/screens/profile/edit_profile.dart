@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path/path.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/user.dart';
 import 'package:unity_funds/providers/group_provider.dart';
+import 'package:unity_funds/repositories/storage_helper.dart';
 import 'package:unity_funds/utils/new_member_validator.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
@@ -24,12 +24,14 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   final _validator = NewMemberValidator();
   final _formKey = GlobalKey<FormState>();
   List<Group> groups = [];
+  bool isLoading = false;
 
   Group? group;
   String? email;
   String? phoneNumber;
-  String? profilePic;
+  File? profilePic;
   late String name;
+  String? imageUrl;
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -55,17 +57,16 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     name = widget.user.name;
     phoneNumber = widget.user.phoneNumber;
     email = widget.user.email;
-    profilePic = widget.user.profilePic;
     super.initState();
   }
 
-  void _profilePictureChanged(File _profilePic) {
+  void _profilePictureChanged(File newPicture) {
     setState(() {
-      profilePic = dirname(_profilePic.path);
+      profilePic = newPicture;
     });
   }
 
-  void _submitProfile(BuildContext context) {
+  void _submitProfile(BuildContext context) async {
     final isValid = _formKey.currentState!.validate();
     if (isValid) {
       if (group == null) {
@@ -82,6 +83,13 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                 ));
         return;
       }
+      setState(() {
+        isLoading = true;
+      });
+      if (profilePic != null) {
+        imageUrl = await StorageHelper()
+            .uploadImageAndGetURL(widget.user.id, profilePic!);
+      }
 
       _formKey.currentState!.save();
       widget.onUpdateUser(User(
@@ -93,8 +101,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
           defaultGroupName: group!.name,
           defaultGroupId: group!.id,
           email: email,
-          profilePic: profilePic));
-      Navigator.of(context).pop();
+          profilePic: imageUrl ?? widget.user.profilePic));
+      if (context.mounted) Navigator.of(context).pop();
     }
   }
 
@@ -115,7 +123,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                 buildProfileAvatar(
                     isEditable: true,
                     onImageChanged: _profilePictureChanged,
-                    image: null),
+                    localImageFile: profilePic,
+                    imageUrl: widget.user.profilePic),
                 const SizedBox(height: 16),
                 buildTextField(
                     context: context,
@@ -160,7 +169,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                         .toList()),
                 const SizedBox(height: 16),
                 buildSaveButton(
-                    context: context, onPressed: () => _submitProfile(context))
+                    isLoading: isLoading,
+                    context: context,
+                    onPressed: () => _submitProfile(context))
               ],
             ),
           ),

@@ -22,12 +22,16 @@ class UserTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () => _showAllTransactionsByUser(context),
-      leading: const CircleAvatar(
+      leading: CircleAvatar(
+        backgroundImage:
+            user.profilePic != null ? NetworkImage(user.profilePic!) : null,
         radius: 24,
-        child: Icon(
-          Icons.person,
-          size: 36,
-        ),
+        child: user.profilePic == null
+            ? const Icon(
+                Icons.person,
+                size: 36,
+              )
+            : null,
       ),
       title: Text(
         user.name,

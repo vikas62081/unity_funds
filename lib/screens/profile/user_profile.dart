@@ -70,7 +70,10 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  buildProfileAvatar(onImageChanged: (image) {}, image: null),
+                  buildProfileAvatar(
+                      onImageChanged: (image) {},
+                      localImageFile: null,
+                      imageUrl: user!.profilePic),
                   const SizedBox(height: 8),
                   Text(
                     user!.name,

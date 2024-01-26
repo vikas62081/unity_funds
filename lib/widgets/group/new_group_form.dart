@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path/path.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/providers/group_provider.dart';
 import 'package:unity_funds/utils/new_group_validator.dart';
@@ -25,7 +24,7 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
   String? name;
   String? description;
   DateTime? eventDate;
-  String? image;
+  File? image;
   bool isDefaultGroup = true;
 
   void _submitGroup(BuildContext context) {
@@ -43,10 +42,10 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
         name: name!,
         description: description!,
         eventDate: eventDate!,
-        image: image!,
+        image: '',
       );
 
-      ref.read(groupProvider.notifier).addGroup(group);
+      ref.read(groupProvider.notifier).addGroup(group, image!);
       showSnackbar(context, "Group added successfully.");
 
       if (widget.onGroupCreated != null) widget.onGroupCreated!();
@@ -73,7 +72,7 @@ class _NewGroupFormState extends ConsumerState<NewGroupForm> {
   }
 
   void _updateGroupImage(File file) {
-    image = dirname(file.path);
+    image = file;
   }
 
   void _onEventDateChange(DateTime newDate) {

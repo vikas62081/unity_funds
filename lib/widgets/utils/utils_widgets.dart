@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:unity_funds/screens/profile/edit_profile_image.dart';
 import 'package:unity_funds/widgets/utils/image_picker_option.dart';
@@ -97,7 +98,9 @@ Widget buildTextField(
 }
 
 Widget buildSaveButton(
-    {required BuildContext context, required void Function()? onPressed}) {
+    {required BuildContext context,
+    required void Function()? onPressed,
+    bool isLoading = false}) {
   return ElevatedButton(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all(
@@ -107,8 +110,8 @@ Widget buildSaveButton(
         const Size(double.maxFinite, 60),
       ),
     ),
-    onPressed: onPressed,
-    child: const Text("Save"),
+    onPressed: isLoading ? null : onPressed,
+    child: isLoading ? const CircularProgressIndicator() : const Text("Save"),
   );
 }
 
@@ -155,34 +158,61 @@ Widget buildFloatingActionButton(
 Widget buildProfileAvatar(
     {bool isEditable = false,
     required void Function(File image) onImageChanged,
-    File? image}) {
+    File? localImageFile,
+    String? imageUrl}) {
+  Widget buildImageRenderer() {
+    if (localImageFile != null) {
+      return FadeInImage(
+        placeholder: MemoryImage(kTransparentImage),
+        image: FileImage(localImageFile),
+        fit: BoxFit.cover,
+        height: 250,
+        width: double.infinity,
+      );
+    }
+    return FadeInImage(
+      placeholder: MemoryImage(kTransparentImage),
+      image: NetworkImage(imageUrl!),
+      fit: BoxFit.cover,
+      height: 250,
+      width: double.infinity,
+    );
+  }
+
+  Widget buildImage() {
+    if (imageUrl != null || localImageFile != null) {
+      return ClipOval(
+        child: buildImageRenderer(),
+      );
+    } else {
+      return const Icon(Icons.person, size: 64);
+    }
+  }
+
+  Widget buildAvatar() {
+    return Container(
+      padding: const EdgeInsets.all(12.0),
+      child: CircleAvatar(
+        radius: 52,
+        child: buildImage(),
+      ),
+    );
+  }
+
+  Widget buildEditButton() {
+    return Positioned(
+      right: 0,
+      bottom: 0,
+      child: Tooltip(
+          message: 'Change Photo',
+          child: EditProfileImage(onImageChanged: onImageChanged)),
+    );
+  }
+
   return Stack(
     children: [
-      Container(
-        padding: const EdgeInsets.all(12.0),
-        child: CircleAvatar(
-          radius: 52,
-          child: image != null
-              ? ClipOval(
-                  child: FadeInImage(
-                    height: double.infinity,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                    placeholder: MemoryImage(kTransparentImage),
-                    image: FileImage(image),
-                  ),
-                )
-              : const Icon(Icons.person, size: 64),
-        ),
-      ),
-      if (isEditable)
-        Positioned(
-          right: 0,
-          bottom: 0,
-          child: Tooltip(
-              message: 'Change Photo',
-              child: EditProfileImage(onImageChanged: onImageChanged)),
-        )
+      buildAvatar(),
+      if (isEditable) buildEditButton(),
     ],
   );
 }

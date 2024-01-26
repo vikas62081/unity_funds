@@ -24,7 +24,7 @@ class Group {
   final DateTime eventDate;
   final DateTime createdAt;
   final DateTime updatedAt;
-  final String image;
+  late String image;
   final double totalCollected;
   final double totalExpenses;
 
@@ -41,6 +41,10 @@ class Group {
 
   setId(String id) {
     this.id = id;
+  }
+
+  setImage(String url) {
+    image = url;
   }
 
   String get formattedEventDate {

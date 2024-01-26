@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/screens/group/group_details.dart';
 import 'package:unity_funds/utils/colors.dart';
@@ -51,7 +52,7 @@ class GroupTile extends StatelessWidget {
 
   Widget _buildCircleAvatar() {
     return CircleAvatar(
-        // backgroundImage: AssetImage(group.image),
-        );
+      backgroundImage: NetworkImage(group.image),
+    );
   }
 }
