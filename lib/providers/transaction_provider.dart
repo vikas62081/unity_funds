@@ -81,6 +81,13 @@ class TransactionNotifier extends StateNotifier<List<Transaction>> {
     }
   }
 
+  Future<void> updateTransactionBillUrl(String transId, String url) async {
+    await cloud_firestore.FirebaseFirestore.instance
+        .collection('transactions')
+        .doc(transId)
+        .update({'bill': url});
+  }
+
   List<Transaction> getTransByUsername(String username) {
     return state
         .where((Transaction e) => e.contributorName == username)

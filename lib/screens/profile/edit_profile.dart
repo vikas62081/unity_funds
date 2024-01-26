@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/user.dart';
 import 'package:unity_funds/providers/group_provider.dart';
-import 'package:unity_funds/repositories/storage_helper.dart';
+import 'package:unity_funds/services/storage.dart';
 import 'package:unity_funds/utils/new_member_validator.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
 
@@ -87,7 +87,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
         isLoading = true;
       });
       if (profilePic != null) {
-        imageUrl = await StorageHelper()
+        imageUrl = await StorageService()
             .uploadImageAndGetURL(widget.user.id, profilePic!);
       }
 

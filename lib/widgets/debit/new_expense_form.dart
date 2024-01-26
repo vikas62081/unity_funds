@@ -2,17 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path/path.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/providers/debit_notifier.dart';
 import 'package:unity_funds/providers/group_provider.dart';
-import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/utils/new_transaction_validator.dart';
 import 'package:unity_funds/widgets/form_helpers/image_input.dart';
 import 'package:unity_funds/widgets/group/new_group_form.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
-import 'package:uuid/uuid.dart';
 
 class AddExpenseForm extends ConsumerStatefulWidget {
   const AddExpenseForm({super.key, required this.group});
@@ -28,7 +25,7 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
   late String description;
   late String amount;
   String? groupId;
-  String? billImage;
+  File? billImage;
   List<Group>? groups;
   bool isEnableGroupInput = true;
 
@@ -77,14 +74,16 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
       final Group group = _getGroupById(groupId!);
 
       Transaction expense = Transaction.debit(
-        bill: billImage,
+        bill: null,
         groupName: group.name,
         groupId: group.id,
         description: description,
         amount: double.parse(amount),
       );
 
-      ref.read(debitTransactionPrvoider.notifier).addDebitTransaction(expense);
+      ref
+          .read(debitTransactionPrvoider.notifier)
+          .addDebitTransaction(expense, billImage);
       ref
           .read(groupProvider.notifier)
           .updateGroupTotalExpenses(group.id, double.parse(amount));
@@ -95,7 +94,7 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
   }
 
   void _updateBillImage(File file) {
-    billImage = dirname(file.path);
+    billImage = file;
   }
 
   void _showAlertMessage(BuildContext context) async {

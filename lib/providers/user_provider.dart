@@ -33,7 +33,7 @@ class UserNotifier extends StateNotifier<List<User>> {
   }
 
   Future<User> getActiveUser() {
-    return getUserById("BT9kGjosqu1kQ1LcczKz");
+    return getUserById("hogT0gabzzjSsbJqrAPK");
   }
 
   Future<void> updateUserById(String id, User user,

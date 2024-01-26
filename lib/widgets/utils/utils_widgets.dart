@@ -76,10 +76,12 @@ Widget buildTextField(
     TextInputType? keyboardType,
     String? prefixText,
     String? initialValue,
-    bool enabled = true}) {
+    bool enabled = true,
+    bool obscureText = false}) {
   return TextFormField(
     enabled: enabled,
     initialValue: initialValue,
+    obscureText: obscureText,
     decoration: InputDecoration(
       hintText: hintText,
       prefixText: prefixText,
@@ -100,7 +102,8 @@ Widget buildTextField(
 Widget buildSaveButton(
     {required BuildContext context,
     required void Function()? onPressed,
-    bool isLoading = false}) {
+    bool isLoading = false,
+    String label = "Save"}) {
   return ElevatedButton(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all(
@@ -111,7 +114,7 @@ Widget buildSaveButton(
       ),
     ),
     onPressed: isLoading ? null : onPressed,
-    child: isLoading ? const CircularProgressIndicator() : const Text("Save"),
+    child: isLoading ? const CircularProgressIndicator() : Text(label),
   );
 }
 

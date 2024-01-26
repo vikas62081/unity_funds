@@ -36,6 +36,16 @@ class NewMemberValidator {
     return null;
   }
 
+  String? validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Password cannot be empty";
+    }
+    if (value.trim().length < 6) {
+      return "Password must be more than 6 characters";
+    }
+    return null;
+  }
+
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return "Email cannot be empty";

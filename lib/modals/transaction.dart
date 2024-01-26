@@ -17,7 +17,7 @@ enum TransactionType { credit, debit }
 class Transaction {
   late String id;
   final String? description;
-  final String? bill;
+  String? bill;
   final String? groupId;
   final String groupName;
   final double amount;
@@ -72,6 +72,10 @@ class Transaction {
 
   setId(String id) {
     this.id = id;
+  }
+
+  setBill(String billUrl) {
+    bill = billUrl;
   }
 
   Map<String, dynamic> toFirestore() {

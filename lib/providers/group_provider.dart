@@ -4,12 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:unity_funds/modals/group.dart';
-import 'package:unity_funds/repositories/storage_helper.dart';
+import 'package:unity_funds/services/storage.dart';
 
 var db = FirebaseFirestore.instance;
 
 class GroupNotifier extends StateNotifier<List<Group>> {
-  StorageHelper storageHelper = StorageHelper();
+  StorageService storageHelper = StorageService();
   GroupNotifier() : super([]);
 
   Future<List<Group>> getGroups() async {
