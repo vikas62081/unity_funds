@@ -66,10 +66,11 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
     super.dispose();
   }
 
-  void _submitExpense(BuildContext context) {
+  void _submitExpense(BuildContext context) async {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
+      buildLoadingDialog(context);
       _formKey.currentState!.save();
       final Group group = _getGroupById(groupId!);
 
@@ -81,15 +82,19 @@ class _AddExpenseFormState extends ConsumerState<AddExpenseForm> {
         amount: double.parse(amount),
       );
 
-      ref
+      await ref
           .read(debitTransactionPrvoider.notifier)
           .addDebitTransaction(expense, billImage);
-      ref
+      await ref
           .read(groupProvider.notifier)
           .updateGroupTotalExpenses(group.id, double.parse(amount));
-
-      showSnackbar(context, "Expense added successfully.");
-      Navigator.of(context).pop();
+      if (context.mounted) {
+        if (context.mounted) {
+          showSnackbar(context, "Expense added successfully.");
+          Navigator.of(context).pop(); // removing loader
+          Navigator.of(context).pop(); // removing form
+        }
+      }
     }
   }
 

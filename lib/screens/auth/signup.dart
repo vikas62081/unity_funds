@@ -22,25 +22,19 @@ class _SignUpFormState extends State<SignUpForm> {
   String? phoneNumber;
   String? password;
   String? confirmPassword;
-  bool isLoading = false;
 
   void _signUp() async {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
-      setState(() {
-        isLoading = true;
-      });
+      buildLoadingDialog(context);
 
       _formKey.currentState!.save();
       await AuthService().createAccount(
           User.createNewAccount(
               name: name!, phoneNumber: phoneNumber!, email: email!),
           password!);
-      setState(() {
-        isLoading = false;
-      });
-      widget.onLogin();
+      if (context.mounted) Navigator.of(context).pop();
       // Perform sign-up authentication here
       // You can use Firebase Authentication or any other authentication method
       // Example:
@@ -121,7 +115,6 @@ class _SignUpFormState extends State<SignUpForm> {
                 ),
                 const SizedBox(height: 20),
                 buildSaveButton(
-                  isLoading: isLoading,
                   context: context,
                   onPressed: _signUp,
                   label: "Sign Up",

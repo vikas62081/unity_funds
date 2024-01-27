@@ -14,7 +14,7 @@ class EditProfileScreen extends ConsumerStatefulWidget {
       {super.key, required this.user, required this.onUpdateUser});
 
   final User user;
-  final void Function(User user) onUpdateUser;
+  final Future<void> Function(User user) onUpdateUser;
 
   @override
   ConsumerState<EditProfileScreen> createState() => _EditProfileScreenState();
@@ -24,7 +24,6 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   final _validator = NewMemberValidator();
   final _formKey = GlobalKey<FormState>();
   List<Group> groups = [];
-  bool isLoading = false;
 
   Group? group;
   String? email;
@@ -83,16 +82,14 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                 ));
         return;
       }
-      setState(() {
-        isLoading = true;
-      });
+      buildLoadingDialog(context);
       if (profilePic != null) {
         imageUrl = await StorageService()
             .uploadImageAndGetURL(widget.user.id, profilePic!);
       }
 
       _formKey.currentState!.save();
-      widget.onUpdateUser(User(
+      await widget.onUpdateUser(User(
           id: widget.user.id,
           name: name,
           phoneNumber: phoneNumber!,
@@ -102,7 +99,10 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
           defaultGroupId: group!.id,
           email: email,
           profilePic: imageUrl ?? widget.user.profilePic));
-      if (context.mounted) Navigator.of(context).pop();
+      if (context.mounted) {
+        Navigator.of(context).pop(); // removing loading indicator
+        Navigator.of(context).pop(); // moving to profile route
+      }
     }
   }
 
@@ -169,9 +169,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                         .toList()),
                 const SizedBox(height: 16),
                 buildSaveButton(
-                    isLoading: isLoading,
-                    context: context,
-                    onPressed: () => _submitProfile(context))
+                    context: context, onPressed: () => _submitProfile(context))
               ],
             ),
           ),

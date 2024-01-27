@@ -18,25 +18,16 @@ class _LoginFormState extends State<LoginForm> {
 
   late String? phoneNumber;
   late String? password;
-  bool isLoading = false;
 
-  void _login() {
+  void _login() async {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
-      setState(() {
-        isLoading = true;
-      });
+      buildLoadingDialog(context);
       _formKey.currentState!.save();
-      AuthService().login(phoneNumber!, password!);
-      setState(() {
-        isLoading = false;
-      });
+      await AuthService().login(phoneNumber!, password!);
+      if (context.mounted) Navigator.of(context).pop();
     }
-    // Perform login authentication here
-    // You can use Firebase Authentication or any other authentication method
-    // Example:
-    // AuthService().loginWithPhoneAndPassword(phone, password);
   }
 
   @override
@@ -80,10 +71,7 @@ class _LoginFormState extends State<LoginForm> {
                     onSaved: (value) => password = value),
                 const SizedBox(height: 20),
                 buildSaveButton(
-                    isLoading: isLoading,
-                    context: context,
-                    onPressed: _login,
-                    label: "Login"),
+                    context: context, onPressed: _login, label: "Login"),
                 const SizedBox(height: 4),
                 TextButton(
                     onPressed: () {}, child: const Text("Forgot password")),

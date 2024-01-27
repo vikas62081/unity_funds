@@ -222,3 +222,14 @@ Widget buildProfileAvatar(
     ],
   );
 }
+
+buildLoadingDialog(BuildContext context) {
+  showDialog(
+    barrierDismissible: false,
+    barrierColor: Colors.transparent,
+    context: context,
+    builder: (ctx) => const Center(
+      child: CircularProgressIndicator.adaptive(),
+    ),
+  );
+}

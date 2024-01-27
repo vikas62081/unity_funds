@@ -30,11 +30,13 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
     super.initState();
   }
 
-  void _updateUser(User newUser) {
-    ref.read(userProvider.notifier).updateUserById(user!.id, newUser,
+  Future<void> _updateUser(User newUser) async {
+    await ref.read(userProvider.notifier).updateUserById(user!.id, newUser,
         hasUserNameChanged: user!.name != newUser.name);
     _getActiveUserData();
-    showSnackbar(context, "Profile updated successfully");
+    if (context.mounted) {
+      showSnackbar(context, "Profile updated successfully");
+    }
   }
 
   void _showEditProfileScreen(BuildContext context) {
@@ -57,6 +59,12 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
         ),
       ),
     );
+  }
+
+  void _logout() async {
+    buildLoadingDialog(context);
+    await AuthService().logOut();
+    if (context.mounted) Navigator.of(context).pop();
   }
 
   @override
@@ -122,7 +130,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                     trailingIcon: Icons.logout,
                     title: 'Log Out',
                     subtitle: 'Logout',
-                    onTap: () => AuthService().logOut(),
+                    onTap: _logout,
                   ),
                 ],
               ),

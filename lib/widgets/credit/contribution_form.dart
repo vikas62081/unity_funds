@@ -52,7 +52,7 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
     super.initState();
   }
 
-  void _saveForm(BuildContext context) {
+  void _saveForm(BuildContext context) async {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
@@ -65,20 +65,23 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
                 ));
         return;
       }
+      buildLoadingDialog(context);
       _formKey.currentState!.save();
-      ref.read(creditTransactionPrvoider.notifier).addCreditTransaction(
+      await ref.read(creditTransactionPrvoider.notifier).addCreditTransaction(
           Transaction.credit(
               groupId: group!.id,
               groupName: group!.name,
               amount: amount,
               contributorName: user!.name,
               contributorUserId: user!.id));
-      ref
+      await ref
           .read(groupProvider.notifier)
           .updateGroupTotalCollected(widget.group!.id, amount);
-      showSnackbar(context, "Contribution added successfully.");
-      Navigator.of(context).pop();
-      setState(() {});
+      if (context.mounted) {
+        showSnackbar(context, "Contribution added successfully.");
+        Navigator.of(context).pop(); // removing loader
+        Navigator.of(context).pop(); // removing form
+      }
     }
   }
 
