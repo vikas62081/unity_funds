@@ -72,9 +72,8 @@ class _LoginFormState extends State<LoginForm> {
                 const SizedBox(height: 20),
                 buildSaveButton(
                     context: context, onPressed: _login, label: "Login"),
-                const SizedBox(height: 4),
-                TextButton(
-                    onPressed: () {}, child: const Text("Forgot password")),
+                const TextButton(
+                    onPressed: null, child: Text("Forgot password")),
                 TextButton(
                     onPressed: widget.onCreateAccount,
                     child: const Text("Don't have an account? Sign Up"))

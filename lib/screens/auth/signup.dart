@@ -119,7 +119,6 @@ class _SignUpFormState extends State<SignUpForm> {
                   onPressed: _signUp,
                   label: "Sign Up",
                 ),
-                const SizedBox(height: 20),
                 TextButton(
                   onPressed: widget.onLogin,
                   child: const Text("Already have an account? Log In"),
