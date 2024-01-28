@@ -95,7 +95,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 buildTextField(
                   context: context,
                   hintText: "Password",
-                  icon: Icons.security,
+                  icon: Icons.lock,
                   obscureText: true,
                   onChanged: (value) => password = value,
                   onSaved: (value) => password = value,
@@ -105,7 +105,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 buildTextField(
                   context: context,
                   hintText: "Confirm Password",
-                  icon: Icons.security,
+                  icon: Icons.lock,
                   obscureText: true,
                   onSaved: (value) => confirmPassword = value,
                   validator: (value) => _validator.validateConfirmPassword(

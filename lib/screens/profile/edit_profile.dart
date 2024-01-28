@@ -32,21 +32,20 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
   late String name;
   String? imageUrl;
 
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-
   void _loadAllGroups() async {
-    List<Group> groupList;
-    await ref.read(groupProvider.notifier).getGroups();
-    groupList = await ref.read(groupProvider);
+    List<Group> groupList = await ref.read(groupProvider.notifier).getGroups();
     _updateGroupInitialState(groupList);
   }
 
   void _updateGroupInitialState(List<Group> allGroup) {
     setState(() {
       groups = allGroup;
-      group = allGroup
-          .firstWhere((element) => element.id == widget.user.defaultGroupId);
+      try {
+        group = allGroup
+            .firstWhere((element) => element.id == widget.user.defaultGroupId);
+      } catch (e) {
+        print("defaultGroupId not found");
+      }
     });
   }
 
@@ -146,6 +145,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                 const SizedBox(height: 16),
                 // Text fields for updating profile details
                 buildTextField(
+                  enabled: false,
                   context: context,
                   hintText: "Email",
                   icon: Icons.email,
@@ -164,8 +164,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     reduceWidth: 32,
                     onSelected: (value) => group = value!,
                     items: groups
-                        .map((group) =>
-                            DropdownMenuEntry(label: group.name, value: group))
+                        .map((grp) =>
+                            DropdownMenuEntry(label: grp.name, value: grp))
                         .toList()),
                 const SizedBox(height: 16),
                 buildSaveButton(

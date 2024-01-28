@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:unity_funds/screens/auth/auth_wrapper.dart';
-import 'package:unity_funds/screens/expense_tracker.dart';
+import 'package:unity_funds/screens/unity_funds_wrapper.dart';
 
 class AppContentWrapper extends StatelessWidget {
   const AppContentWrapper({super.key});
@@ -17,7 +17,7 @@ class AppContentWrapper extends StatelessWidget {
           );
         }
         if (snapshot.hasData) {
-          return const ExpenseTrackerScreen(title: "Expense Tracker");
+          return const UnityFundsWrapper(title: "Expense Tracker");
         }
         return const AuthWrapper();
       },

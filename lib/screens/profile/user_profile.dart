@@ -93,7 +93,7 @@ class _UserProfileScreenState extends ConsumerState<UserProfileScreen> {
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                   const SizedBox(height: 8),
-                  ElevatedButton(
+                  OutlinedButton(
                     onPressed: () => _showEditProfileScreen(context),
                     child: const Text("Edit Profile"),
                   ),

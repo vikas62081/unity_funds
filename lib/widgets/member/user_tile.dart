@@ -38,19 +38,21 @@ class UserTile extends StatelessWidget {
         style: Theme.of(context).textTheme.labelLarge,
       ),
       subtitle: Text("Phone : ${user.phoneNumber}"),
-      trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.location_on,
-              color: Colors.black54,
-            ),
-            Text(
-              user.address,
-              style: Theme.of(context).textTheme.bodySmall,
-            )
-          ]),
+      trailing: user.address.isEmpty
+          ? null
+          : Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                  const Icon(
+                    Icons.location_on,
+                    color: Colors.black54,
+                  ),
+                  Text(
+                    user.address,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  )
+                ]),
     );
   }
 }

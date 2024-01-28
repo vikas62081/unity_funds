@@ -57,7 +57,7 @@ class _LoginFormState extends State<LoginForm> {
                 buildTextField(
                     context: context,
                     hintText: "Email",
-                    icon: Icons.phone,
+                    icon: Icons.email,
                     onSaved: (value) => phoneNumber = value,
                     textCapitalization: TextCapitalization.none,
                     validator: _validator.validateEmail),
@@ -65,7 +65,7 @@ class _LoginFormState extends State<LoginForm> {
                 buildTextField(
                     context: context,
                     hintText: "Password",
-                    icon: Icons.security,
+                    icon: Icons.lock,
                     obscureText: true,
                     validator: _validator.validatePassword,
                     onSaved: (value) => password = value),

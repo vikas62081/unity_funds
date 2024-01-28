@@ -5,7 +5,6 @@ import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/modals/user.dart';
 import 'package:unity_funds/providers/credit_notifier.dart';
 import 'package:unity_funds/providers/group_provider.dart';
-import 'package:unity_funds/providers/transaction_provider.dart';
 import 'package:unity_funds/providers/user_provider.dart';
 import 'package:unity_funds/utils/new_transaction_validator.dart';
 import 'package:unity_funds/widgets/utils/utils_widgets.dart';
@@ -24,7 +23,7 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
   final _validator = NewTransactionValidator();
   final _formKey = GlobalKey<FormState>();
   User? user;
-  Group? group;
+  String? groupId;
   late double amount;
   late bool isEnableGroupInput = true;
   List<User> users = [];
@@ -46,10 +45,14 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
     _loadUsers();
     groups = ref.read(groupProvider);
     if (widget.group != null) {
-      group = widget.group!;
+      groupId = widget.group!.id;
       isEnableGroupInput = false;
     }
     super.initState();
+  }
+
+  Group _getGroupById(String id) {
+    return groups.firstWhere((element) => element.id == id);
   }
 
   void _saveForm(BuildContext context) async {
@@ -67,10 +70,11 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
       }
       buildLoadingDialog(context);
       _formKey.currentState!.save();
+      Group group = _getGroupById(groupId!);
       await ref.read(creditTransactionPrvoider.notifier).addCreditTransaction(
           Transaction.credit(
-              groupId: group!.id,
-              groupName: group!.name,
+              groupId: group.id,
+              groupName: group.name,
               amount: amount,
               contributorName: user!.name,
               contributorUserId: user!.id));
@@ -102,10 +106,11 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
                   icon: Icons.festival_sharp,
                   hintText: "Select group",
                   enabled: isEnableGroupInput,
-                  initialSelection: group,
+                  initialSelection: groupId,
+                  onSelected: (value) => groupId = value,
                   items: groups
                       .map((group) =>
-                          DropdownMenuEntry(label: group.name, value: group))
+                          DropdownMenuEntry(label: group.name, value: group.id))
                       .toList()),
               const SizedBox(height: 16),
               buildSearchableDropdown(
