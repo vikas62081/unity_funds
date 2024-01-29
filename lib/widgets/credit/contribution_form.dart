@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:transparent_image/transparent_image.dart';
 import 'package:unity_funds/modals/group.dart';
 import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/modals/user.dart';
@@ -119,8 +120,22 @@ class _AddContributionFormState extends ConsumerState<AddContributionForm> {
                   hintText: "Select a member",
                   onSelected: (value) => user = value!,
                   items: users
-                      .map((user) =>
-                          DropdownMenuEntry(label: user.name, value: user))
+                      .map((user) => DropdownMenuEntry(
+                          leadingIcon: CircleAvatar(
+                            child: ClipOval(
+                              child: FadeInImage(
+                                filterQuality: FilterQuality.high,
+                                height: double.infinity,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                                placeholder: MemoryImage(kTransparentImage),
+                                image:
+                                    NetworkImage(user.profilePic!, scale: .6),
+                              ),
+                            ),
+                          ),
+                          label: user.name,
+                          value: user))
                       .toList()),
               const SizedBox(height: 16),
               buildTextField(

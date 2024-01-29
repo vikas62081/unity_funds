@@ -22,7 +22,8 @@ class _EditProfileImageState extends State<EditProfileImage> {
   Future<void> _pickImage(BuildContext context, ImageSource source) async {
     Navigator.of(context).pop();
     final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: source);
+    final XFile? image = await picker.pickImage(
+        source: source, imageQuality: 50, maxWidth: 200, maxHeight: 200);
     if (image == null) return;
     setState(() {
       pickedImage = File(image.path);
