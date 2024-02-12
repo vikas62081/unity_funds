@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:unity_funds/modals/activity.dart';
 import 'package:unity_funds/utils/colors.dart';
@@ -22,8 +23,8 @@ class ActivityTile extends StatelessWidget {
 
     return ListTile(
       onTap: () {},
-      leading: Icon(
-        activity.activityIcon,
+      leading: const Icon(
+        Icons.info_outline,
         size: 24,
       ),
       // title: Text(
@@ -64,9 +65,9 @@ class ActivityTile extends StatelessWidget {
   Widget debitActivityTile(context) {
     return ListTile(
       onTap: () {},
-      leading: const Icon(
-        Icons.receipt_long_outlined,
-        color: errorColor,
+      leading: Icon(
+        Icons.receipt_outlined,
+        color: errorColor.withOpacity(0.7),
         size: 24,
       ),
       title: RichText(
@@ -90,7 +91,7 @@ class ActivityTile extends StatelessWidget {
               text: activity.expense,
               style: const TextStyle(
                 fontWeight: FontWeight.w500,
-                color: Colors.grey,
+                color: Colors.blueGrey,
               ),
             ),
             TextSpan(
@@ -99,24 +100,27 @@ class ActivityTile extends StatelessWidget {
             TextSpan(
               text: activity.groupName,
               style: const TextStyle(
-                // fontStyle: FontStyle.italic,
-                color: Colors.green,
-              ),
+                  // fontStyle: FontStyle.italic,
+                  color: Colors.blueGrey,
+                  fontWeight: FontWeight.w500),
             ),
           ],
         ),
       ),
       subtitle: Text(activity.createdDate),
-      trailing: Text(activity.amount.toString()),
+      trailing: Text(
+        '₹${NumberFormat().format(activity.amount)}',
+        style: Theme.of(context).textTheme.labelMedium,
+      ),
     );
   }
 
   Widget creditActivityTile(context) {
     return ListTile(
       onTap: () {},
-      leading: const Icon(
+      leading: Icon(
         Icons.attach_money_outlined,
-        color: successColor,
+        color: successColor.withOpacity(.7),
         size: 24,
       ),
       title: RichText(
@@ -139,15 +143,18 @@ class ActivityTile extends StatelessWidget {
             TextSpan(
               text: activity.groupName,
               style: const TextStyle(
-                // fontStyle: FontStyle.italic,
-                color: Colors.green,
+                fontWeight: FontWeight.w500,
+                color: Colors.blueGrey,
               ),
             ),
           ],
         ),
       ),
       subtitle: Text(activity.createdDate),
-      trailing: Text(activity.amount.toString()),
+      trailing: Text(
+        '₹${NumberFormat().format(activity.amount)}',
+        style: Theme.of(context).textTheme.labelMedium,
+      ),
     );
   }
 
@@ -178,8 +185,8 @@ class ActivityTile extends StatelessWidget {
             TextSpan(
               text: activity.groupName,
               style: const TextStyle(
-                // fontStyle: FontStyle.italic,
-                color: Colors.green,
+                fontWeight: FontWeight.w500,
+                color: Colors.blueGrey,
               ),
             ),
           ],

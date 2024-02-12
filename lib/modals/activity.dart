@@ -16,7 +16,7 @@ const messages = {
   ActivityType.newUser: [" has added "],
   ActivityType.newGroup: [" created a new group "],
   ActivityType.creditTransaction: [" contributed to "],
-  ActivityType.debitTransaction: [" has added ", " in "]
+  ActivityType.debitTransaction: [" has spent in ", " for "]
 };
 
 class Activity {
@@ -119,21 +119,6 @@ class Activity {
       "contributorName": contributorName,
       "expense": expense
     };
-  }
-
-  IconData get activityIcon {
-    switch (type) {
-      case ActivityType.newGroup:
-        return Icons.group_add_outlined;
-      case ActivityType.creditTransaction:
-        return Icons.attach_money_outlined;
-      case ActivityType.debitTransaction:
-        return Icons.receipt_long_outlined;
-      case ActivityType.newUser:
-        return Icons.person_add_alt_1_outlined;
-      default:
-        return Icons.info_outline;
-    }
   }
 
   String get createdDate {
