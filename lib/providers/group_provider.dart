@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:unity_funds/modals/group.dart';
+import 'package:unity_funds/services/activity.dart';
 import 'package:unity_funds/services/storage.dart';
 
 var db = FirebaseFirestore.instance;
@@ -34,6 +35,8 @@ class GroupNotifier extends StateNotifier<List<Group>> {
     await updateGroupImageUrl(id, imageUrl);
     newGroup.setId(id);
     newGroup.setImage(imageUrl);
+
+    ActivityService().addNewGroup(newGroup.name);
 
     state = [...state, newGroup];
   }

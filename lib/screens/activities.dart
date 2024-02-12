@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unity_funds/screens/expense/new_expense.dart';
+import 'package:unity_funds/widgets/activities/activity_list.dart';
 
 class ActivitiesScreen extends StatelessWidget {
   const ActivitiesScreen({super.key});
@@ -33,12 +34,7 @@ class ActivitiesScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text("Activity"),
-      ),
-      // floatingActionButton: buildFloatingActionButton(
-      //     onPressed: () => _onFloatingButtonPress(context),
-      //     label: "Add expense"),
+      body: const ActivityList(),
     );
   }
 }

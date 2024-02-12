@@ -3,11 +3,13 @@ import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unity_funds/modals/transaction.dart';
 import 'package:unity_funds/providers/transaction_provider.dart';
+import 'package:unity_funds/services/activity.dart';
 import 'package:unity_funds/services/storage.dart';
 
 class DebitNotifier extends StateNotifier<List<Transaction>> {
   TransactionNotifier transactionNotifier = TransactionNotifier();
   StorageService storageHelper = StorageService();
+  ActivityService activityService = ActivityService();
   DebitNotifier() : super([]);
 
   Future<void> getDebitTransByGroupId(String groupId) async {
@@ -27,6 +29,10 @@ class DebitNotifier extends StateNotifier<List<Transaction>> {
 
     newTransaction.setId(id);
     state = [...state, newTransaction];
+    activityService.addDebitActivity(
+        expense: newTransaction.description!,
+        amount: newTransaction.amount,
+        groupName: newTransaction.groupName);
   }
 }
 
