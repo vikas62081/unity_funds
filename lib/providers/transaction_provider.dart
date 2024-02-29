@@ -2,33 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart' as cloud_firestore;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:unity_funds/modals/transaction.dart';
-import 'package:unity_funds/providers/credit_notifier.dart';
-import 'package:unity_funds/providers/debit_notifier.dart';
 
 class TransactionNotifier extends StateNotifier<List<Transaction>> {
-  TransactionNotifier()
-      : super([
-          // Transaction.debit(
-          //     amount: 10000,
-          //     group: groups[0].name,
-          //     bill: groups[0].image,
-          //     description: "Tent"),
-          // Transaction.debit(
-          //     amount: 1200,
-          //     group: groups[0].name,
-          //     bill: groups[0].image,
-          //     description: "Pandit fee"),
-          // Transaction.debit(
-          //     amount: 1800,
-          //     group: groups[0].name,
-          //     bill: groups[0].image,
-          //     description: "Crackers"),
-          // Transaction.debit(
-          //     amount: 8000,
-          //     group: groups[1].name,
-          //     bill: groups[1].image,
-          //     description: "DJ"),
-        ]);
+  TransactionNotifier() : super([]);
 
   Future<String> addTransaction(Transaction newTransaction) async {
     cloud_firestore.DocumentReference<Map<String, dynamic>> documentReference =
